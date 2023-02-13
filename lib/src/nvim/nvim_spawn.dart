@@ -1,27 +1,45 @@
 import 'dart:io';
 
+import 'package:dart_nvim/src/bridge/nvim_bridge.dart';
+import 'package:dart_nvim/src/bridge/nvim_bridge_stream.dart';
 import 'package:dart_nvim/src/nvim/nvim.dart';
 
 class NvimSpawn implements Nvim {
-  final Process process;
+  final String binary;
+  final List<String> args;
 
-  const NvimSpawn._(this.process);
+  late final Process _process;
 
-  /// This method is called only once in [NvimSpawn.create]
-  Future<void> initialize() async {
-// TODO: implement initialize
+  @override
+  late final NvimBridge api;
+
+  NvimSpawn._({required this.binary, required this.args});
+
+  @override
+  Future<void> close() async {
+    _process.kill();
+    await _process.exitCode;
+    api.dispose();
   }
 
-  static Future<Nvim> create({
-    required String binary,
-    required List<String> args,
-  }) async {
-    final process = await Process.start(
+  /// This method is called only once in [NvimSpawn.create]
+  Future<void> _initialize() async {
+    _process = await Process.start(
       binary,
       args,
     );
-    final nvim = NvimSpawn._(process);
-    await nvim.initialize();
+    api = await NvimBridgeStream.create(
+      read: _process.stdout,
+      write: _process.stdin,
+    );
+  }
+
+  static Future<NvimSpawn> create({
+    required String binary,
+    required List<String> args,
+  }) async {
+    final nvim = NvimSpawn._(binary: binary, args: args);
+    await nvim._initialize();
     return nvim;
   }
 }

@@ -1,5 +1,8 @@
 import 'package:dart_nvim/src/types/nvim_rpc_notification.dart';
 import 'package:dart_nvim/src/types/nvim_rpc_request.dart';
+import 'package:dart_nvim/src/types/nvim_ext.dart';
+
+part '../generated/nvim_api_functions.g.dart';
 
 /// Represents the RPC bridge to a neovim instance
 /// All RPC communication are made through this class
@@ -9,4 +12,6 @@ abstract class NvimBridge {
   Stream<NvimRpcNotification> get notifications;
   int get apiLevel;
   int get channelId;
+
+  void dispose();
 }
