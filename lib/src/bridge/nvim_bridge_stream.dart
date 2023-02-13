@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:dart_nvim/src/bridge/nvim_bridge.dart';
+import 'package:dart_nvim/src/types/nvim_error.dart';
+import 'package:dart_nvim/src/types/nvim_ext_handler.dart';
 import 'package:dart_nvim/src/types/nvim_rpc_notification.dart';
 import 'package:dart_nvim/src/types/nvim_rpc_request.dart';
 import 'package:msgpack_dart/msgpack_dart.dart' as mpack;
@@ -12,7 +14,8 @@ const _kMsgpackRPCTypeResponse = 1;
 class NvimBridgeStream implements NvimBridge {
   final Stream<List<int>> _read;
   final Sink<List<int>> _write;
-  final mpack.Serializer _serializer = mpack.Serializer();
+  final mpack.Serializer _serializer =
+      mpack.Serializer(extEncoder: NvimExtEncoder());
 
   late final StreamSubscription _readSubscription;
   int _requestId = 0;
@@ -57,7 +60,7 @@ class NvimBridgeStream implements NvimBridge {
   /// This method is called only once in [NvimBridgeStream.create]
   Future<void> _initialize() async {
     _readSubscription = _read
-        .transform(mpack.StreamDeserializer())
+        .transform(mpack.StreamDeserializer(extDecoder: NvimExtDecoder()))
         .listen(_onData, onDone: _detachStreams);
     final info = await call('nvim_get_api_info', []) as List;
     channelId = info[0] as int;
@@ -117,7 +120,7 @@ class NvimBridgeStream implements NvimBridge {
       );
     }
     if (error != null) {
-      completer.completeError(error);
+      completer.completeError(NvimError.parse(error as List));
     } else {
       completer.complete(result);
     }
