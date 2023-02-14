@@ -1,0 +1,48 @@
+name: gen-latest-bindings
+on: 
+  schedule:
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
+jobs:
+  gen-latest-bindings:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+    steps:
+      - name: Install dart sdk
+        uses: dart-lang/setup-dart@v1
+
+      - name: Install neovim nightly
+        uses: rhysd/action-setup-vim@v1
+        with:
+          neovim: true
+          version: nightly
+
+      - name: Setting env vars
+        run: echo "NVIM_VER=$(nvim --version | head -n 1)" >> $GITHUB_ENV
+
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: dart pub get
+      
+      - name: Generate neovim bindings
+        run: dart run tools/dart_nvim_gen.dart -s
+
+      - name: Analyze project source
+        run: dart analyze
+
+      - name: Run tests
+        run: dart test
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          commit-message: "actions: Generated neovim bindings based on `${{ env.NVIM_VER }}`"
+          title: "Bump bindings to `${{ env.NVIM_VER }}`"
+          labels: |
+            github actions
+          assignees: SilverMira
+          reviewers: SilverMira
