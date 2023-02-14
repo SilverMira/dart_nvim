@@ -35,6 +35,7 @@ void main() {
 
   group('dart_nvim socket', () {
     const host = '127.0.0.1';
+    const socketTimeout = Duration(seconds: 5);
     Future<int> findFreePort() {
       return ServerSocket.bind(InternetAddress.anyIPv4, 0).then((socket) {
         final port = socket.port;
@@ -44,7 +45,7 @@ void main() {
     }
 
     Future<Nvim> createNeovimFn(int port) async {
-      final nvim = await DartNvim.socket(host, port);
+      final nvim = await DartNvim.socket(host, port, timeout: socketTimeout);
       return nvim;
     }
 
