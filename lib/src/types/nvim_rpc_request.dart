@@ -11,11 +11,7 @@ class NvimRpcRequest {
     required this.params,
   });
 
-  void complete(FutureOr<dynamic> value) {
-    _completer.complete(value);
-  }
+  void complete([FutureOr<dynamic>? value]) => _completer.complete(value);
 
-  void completeError(Object error) {
-    _completer.completeError(error);
-  }
+  void completeError(Object error) => _completer.completeError(error);
 }

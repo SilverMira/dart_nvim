@@ -13,5 +13,7 @@ abstract class NvimBridge {
   int get apiLevel;
   int get channelId;
 
+  bool get closed;
+
   void dispose();
 }

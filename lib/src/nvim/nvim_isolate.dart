@@ -27,6 +27,7 @@ class NvimIsolate implements Nvim {
       NvimIsolateRunner.kKeyIsolateMessageCloseForce: force,
     });
     await exit;
+    api.dispose();
   }
 
   Future<void> _initialize() async {

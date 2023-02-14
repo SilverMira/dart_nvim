@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:dart_nvim/src/bridge/nvim_bridge.dart';
+import 'package:dart_nvim/src/types/nvim_channel_error.dart';
 import 'package:dart_nvim/src/types/nvim_error.dart';
 import 'package:dart_nvim/src/types/nvim_ext_handler.dart';
 import 'package:dart_nvim/src/types/nvim_rpc_notification.dart';
@@ -24,6 +25,9 @@ class NvimBridgeStream implements NvimBridge {
   final _notificationSink = StreamController<NvimRpcNotification>();
 
   final _requestSink = StreamController<NvimRpcRequest>();
+  var _closed = false;
+  @override
+  bool get closed => _closed;
 
   NvimBridgeStream._({
     required Stream<List<int>> read,
@@ -43,12 +47,16 @@ class NvimBridgeStream implements NvimBridge {
 
   @override
   void dispose() {
-    _detachStreams();
-    _requests.clear();
+    _readSubscription.cancel();
+    _notificationSink.close();
+    _requestSink.close();
+    _closed = true;
   }
 
   @override
   Future call(String method, List args) {
+    if (closed) throw NvimChannelClosedError();
+
     final requestId = _requestId++;
     final request = [_kMsgpackRPCTypeRequest, requestId, method, args];
     final completer = Completer<dynamic>();
@@ -61,7 +69,7 @@ class NvimBridgeStream implements NvimBridge {
   Future<void> _initialize() async {
     _readSubscription = mpack.StreamDeserializer(extDecoder: NvimExtDecoder())
         .bind(_read)
-        .listen(_onData, onDone: _detachStreams);
+        .listen(_onData, onDone: _onReadClosed);
     final info = await call('nvim_get_api_info', []) as List;
     channelId = info[0] as int;
     apiLevel = info[1]['version']['api_level'] as int;
@@ -131,10 +139,12 @@ class NvimBridgeStream implements NvimBridge {
     _write.add(_serializer.takeBytes());
   }
 
-  void _detachStreams() {
-    _readSubscription.cancel();
-    _notificationSink.close();
-    _requestSink.close();
+  void _onReadClosed() {
+    for (final completer in _requests.values) {
+      completer.completeError(NvimChannelClosedError());
+    }
+    _requests.clear();
+    dispose();
   }
 
   static Future<NvimBridgeStream> create({

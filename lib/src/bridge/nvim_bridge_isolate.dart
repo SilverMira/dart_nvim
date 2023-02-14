@@ -3,6 +3,7 @@ import 'dart:isolate';
 
 import 'package:dart_nvim/src/bridge/nvim_bridge.dart';
 import 'package:dart_nvim/src/nvim/nvim_isolate_runner.dart';
+import 'package:dart_nvim/src/types/nvim_channel_error.dart';
 import 'package:dart_nvim/src/types/nvim_rpc_notification.dart';
 import 'package:dart_nvim/src/types/nvim_rpc_request.dart';
 
@@ -21,6 +22,10 @@ class NvimBridgeIsolate implements NvimBridge {
   int _requestId = 0;
   final _requestCompleters = <int, Completer>{};
 
+  bool _closed = false;
+  @override
+  bool get closed => _closed;
+
   NvimBridgeIsolate._(this.read, this.write, this.channelId, this.apiLevel);
 
   @override
@@ -32,6 +37,8 @@ class NvimBridgeIsolate implements NvimBridge {
 
   @override
   Future call(String method, List args) {
+    if (closed) throw NvimChannelClosedError();
+
     final requestId = _requestId++;
     final completer = Completer();
     _requestCompleters[requestId] = completer;
@@ -48,13 +55,19 @@ class NvimBridgeIsolate implements NvimBridge {
   @override
   void dispose() {
     _isolateListener.cancel();
-    for (var c in _requestCompleters.values) {
-      c.completeError('disposed');
-    }
+    _notificationSink.close();
+    _requestSink.close();
+    _closed = true;
   }
 
   Future<void> _initialize() async {
-    _isolateListener = read.listen(_onIsolateMessage);
+    _isolateListener = read.listen(_onIsolateMessage, onDone: _onReadClosed);
+  }
+
+  void _onReadClosed() {
+    for (var c in _requestCompleters.values) {
+      c.completeError(NvimChannelClosedError());
+    }
   }
 
   static Future<NvimBridgeIsolate> create(

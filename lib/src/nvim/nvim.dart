@@ -8,11 +8,11 @@ abstract class Nvim {
   /// Returns a future that completes when the connection is closed
   /// 
   /// [force] will forcefully close the remote neovim instance if the instance is:
-  ///   - spawned using [DartNvim.spawn]
+  ///   - spawned using [DartNvim.spawn] with SIGTERM
   /// 
   /// This is not recommended as it may cause data loss
   /// 
-  /// Consider using [api.nvimExec] to send a `:q` command, which should not be awaited (due to neovim not responding to the command after exiting)
+  /// Consider using [api.nvimExec] to send a `qall!` command, which will throw [NvimChannelClosedError] 
   /// to the remote instance before awaiting this method
   Future<void> close([bool force = false]);
 }

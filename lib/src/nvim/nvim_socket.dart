@@ -23,9 +23,6 @@ class NvimSocket implements Nvim {
     this.timeout,
   });
 
-  /// [force] has no effect on a socket connection
-  /// To terminate the remote neovim instance
-  /// make sure to call `:qa` or `:qall` before calling `close`
   @override
   Future<void> close([bool force = false]) async {
     _socket.destroy();

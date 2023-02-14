@@ -13,10 +13,10 @@ void main() {
 
     test('can spawn', () async {
       final nvim = await createNeovimFn();
-      final result = await nvim.api.nvimEval('1 + 1');
-      expect(result, equals(2));
-      nvim.api.nvimExec('qall!', false);
-      await nvim.close();
+      expect(nvim.api.nvimEval('1 + 1'), completion(equals(2)));
+      await expectLater(nvim.api.nvimExec('qall!', false), throwsA(isA<NvimChannelClosedError>()));
+      await expectLater(nvim.close(), completes);
+      await expectLater(nvim.api.nvimGetApiInfo(), throwsA(isA<NvimChannelClosedError>()));
     });
     group('>', () {
       late Nvim nvim;
@@ -25,12 +25,14 @@ void main() {
       });
       testSuite(createNeovimFn);
       tearDown(() async {
-        nvim.api.nvimExec('qall!', false);
+        try {
+          await nvim.api.nvimExec('qall!', false);
+        } on NvimChannelClosedError catch (_) {}
         await nvim.close();
       });
     });
   });
-  
+
   group('dart_nvim socket', () {
     const host = '127.0.0.1';
     Future<int> findFreePort() {
@@ -45,19 +47,21 @@ void main() {
       final nvim = await DartNvim.socket(host, port);
       return nvim;
     }
+
     Future<Process> startNeovim(int port) async {
       final args = ['--clean', '--headless', '--listen', '$host:$port'];
       return await Process.start('nvim', args);
     }
+
     test('can connect', () async {
       final port = await findFreePort();
       final process = await startNeovim(port);
       final nvim = await createNeovimFn(port);
-      final result = await nvim.api.nvimEval('1 + 1');
-      expect(result, equals(2));
-      nvim.api.nvimExec('qall!', false);
-      await nvim.close();
-      await process.exitCode;
+      expect(nvim.api.nvimEval('1 + 1'), completion(equals(2)));
+      await expectLater(nvim.api.nvimExec('qall!', false), throwsA(isA<NvimChannelClosedError>()));
+      await expectLater(nvim.close(), completes);
+      await expectLater(process.exitCode, completion(equals(0)));
+      await expectLater(nvim.api.nvimGetApiInfo(), throwsA(isA<NvimChannelClosedError>()));
     });
 
     group('>', () {
@@ -73,7 +77,9 @@ void main() {
       testSuite(() => nvim.future);
       tearDown(() async {
         final neovim = await nvim.future;
-        neovim.api.nvimExec('qall!', false);
+        try {
+          await neovim.api.nvimExec('qall!', false);
+        } on NvimChannelClosedError catch (_) {}
         await neovim.close();
         await process.exitCode;
       });
