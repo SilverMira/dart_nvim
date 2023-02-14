@@ -1,39 +1,79 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+# Neovim API for Dart (Experimental)
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- Sync with Neovim nightly every week
+- Stream interfaces
+- Type safety \*_to the extent of type information provided by `nvim --api-info`_
+- Runs in isolate, keep your application running fast
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Currently, this package is not publishable on [pub.dev](https://pub.dev/) due to using a fork of [msgpack_dart](https://github.com/knopp/msgpack_dart/) while pending merge for [#13](https://github.com/knopp/msgpack_dart/pull/13).
+
+Temporary installation method, in `pubspec.yaml`, add the following under `dependencies`
+
+```yml
+dart_nvim:
+  git:
+    url: https://github.com/SilverMira/dart_nvim
+    ref: main # or any other commit refs
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+All api functions are accessible via `Nvim.api` with naming convention in camelCase. Consult neovim help with `:help <api_name_snakecase>` when in doubt.
 
 ```dart
-const like = 'sample';
+import 'package:dart_nvim/dart_nvim.dart';
+
+Future<void> main() async {
+  final neovim = await DartNvim.spawn(
+    binary: 'nvim',
+    args: ['--embed'],
+    isolate: true,
+  );
+  final result = await neovim.api.nvimEval('1 + 1');
+  print(result); // 2
+  try {
+    await neovim.api.nvimEval('*');
+  } on NvimError catch (err) {
+    print(err);
+  } 
+  await neovim.api.nvimUiAttach(
+    100,
+    50,
+    NvimUIOption(
+      extLinegrid: true,
+    ).toMap(),
+  );
+  neovim.api.notifications.typed.listen((notification) {
+    notification.when(
+      redraw: (redraw) {
+        for (final event in redraw.events) {
+          final result = event.maybeWhen(
+            gridClear: (gridClear) => 'gridClear',
+            $$unknown: (unknown) => 'unknown',
+            orElse: (event) => 'exhaustive',
+          );
+          print(result);
+        }
+      },
+      $$unknown: (unknown) =>
+          print('received unknown notification: ${unknown.method}'),
+    );
+  });
+  try {
+    await neovim.api.nvimCommand('qall!');
+  } on NvimChannelClosedError catch (_) {}
+  await neovim.close(false); /// No [force]-closing
+}
 ```
 
-## Additional information
+## TODO
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+1. Implement alternative methods of establishing channel with neovim instance.
+
+## Additional Information
+
+Pull requests are welcomed and feel free to open an issue!
