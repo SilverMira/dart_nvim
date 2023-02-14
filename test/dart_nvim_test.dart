@@ -1,20 +1,79 @@
+import 'dart:io';
+
 import 'package:dart_nvim/dart_nvim.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('dart_nvim spawn', () {
-    test('can spawn', () async {
-      final nvim = await DartNvim.spawn();
-      final result = await nvim.api.nvimEval('1 + 1');
-      expect(result, equals(2));
-    });
-
     Future<Nvim> createNeovimFn() async {
-      final nvim = await DartNvim.spawn();
+      final nvim = await DartNvim.spawn(args: ['--embed', '--clean']);
       return nvim;
     }
 
-    testSuite(createNeovimFn);
+    test('can spawn', () async {
+      final nvim = await createNeovimFn();
+      final result = await nvim.api.nvimEval('1 + 1');
+      expect(result, equals(2));
+      nvim.api.nvimExec('qall!', false);
+      await nvim.close();
+    });
+    group('>', () {
+      late Nvim nvim;
+      setUp(() async {
+        nvim = await createNeovimFn();
+      });
+      testSuite(createNeovimFn);
+      tearDown(() async {
+        nvim.api.nvimExec('qall!', false);
+        await nvim.close();
+      });
+    });
+  });
+  
+  group('dart_nvim socket', () {
+    const host = '127.0.0.1';
+    Future<int> findFreePort() {
+      return ServerSocket.bind(InternetAddress.anyIPv4, 0).then((socket) {
+        final port = socket.port;
+        socket.close();
+        return port;
+      });
+    }
+
+    Future<Nvim> createNeovimFn(int port) async {
+      final nvim = await DartNvim.socket(host, port);
+      return nvim;
+    }
+    Future<Process> startNeovim(int port) async {
+      final args = ['--clean', '--headless', '--listen', '$host:$port'];
+      return await Process.start('nvim', args);
+    }
+    test('can connect', () async {
+      final port = await findFreePort();
+      final process = await startNeovim(port);
+      final nvim = await createNeovimFn(port);
+      final result = await nvim.api.nvimEval('1 + 1');
+      expect(result, equals(2));
+      nvim.api.nvimExec('qall!', false);
+      await nvim.close();
+      await process.exitCode;
+    });
+
+    group('>', () {
+      late Process process;
+      late int port;
+      setUpAll(() async {
+        port = await findFreePort();
+        process = await startNeovim(port);
+      });
+      tearDownAll(() async {
+        final neovim = await createNeovimFn(port);
+        neovim.api.nvimExec('qall!', false);
+        await neovim.close();
+        await process.exitCode;
+      });
+      testSuite(() => createNeovimFn(port));
+    });
   });
 }
 
