@@ -7,6 +7,11 @@
 - Type safety \*_to the extent of type information provided by `nvim --api-info`_
 - Runs in isolate, keep your application running fast
 
+## Currently supported channel types
+
+- Spawned child process using stdio
+- Socket using `Socket.connect`
+
 ## Getting started
 
 Currently, this package is not publishable on [pub.dev](https://pub.dev/) due to using a fork of [msgpack_dart](https://github.com/knopp/msgpack_dart/) while pending merge for [#13](https://github.com/knopp/msgpack_dart/pull/13).
