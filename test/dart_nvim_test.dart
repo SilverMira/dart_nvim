@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:dart_nvim/dart_nvim.dart';
@@ -60,19 +61,22 @@ void main() {
     });
 
     group('>', () {
-      late Process process;
       late int port;
-      setUpAll(() async {
+      late Process process;
+      late Completer<Nvim> nvim;
+      setUp(() async {
         port = await findFreePort();
         process = await startNeovim(port);
+        nvim = Completer();
+        nvim.complete(createNeovimFn(port));
       });
-      tearDownAll(() async {
-        final neovim = await createNeovimFn(port);
+      testSuite(() => nvim.future);
+      tearDown(() async {
+        final neovim = await nvim.future;
         neovim.api.nvimExec('qall!', false);
         await neovim.close();
         await process.exitCode;
       });
-      testSuite(() => createNeovimFn(port));
     });
   });
 }
@@ -82,21 +86,18 @@ void testSuite(Future<Nvim> Function() createNeovimFn) {
     final neovim = await createNeovimFn();
     final call = neovim.api.nvimEval('1 + 1');
     await expectLater(call, completion(equals(2)));
-    await neovim.close();
   });
 
   test('can request neovim api with exception', () async {
     final neovim = await createNeovimFn();
     final call = neovim.api.nvimEval('*');
     await expectLater(call, throwsA(isA<NvimExceptionError>()));
-    await neovim.close();
   });
 
   test('can request neovim api with validation exception', () async {
     final neovim = await createNeovimFn();
     final call = neovim.api.nvimExecLua('vim.validate', []);
     await expectLater(call, throwsA(isA<NvimValidationError>()));
-    await neovim.close();
   });
 
   test('can call neovim api to request itself', () async {
@@ -108,7 +109,6 @@ void testSuite(Future<Nvim> Function() createNeovimFn) {
     expect(request.params, equals(['hello']));
     request.complete('hello');
     await expectLater(call, completion(equals('hello')));
-    await neovim.close();
   });
 
   test('can call neovim api to request itself with exception', () async {
@@ -120,7 +120,6 @@ void testSuite(Future<Nvim> Function() createNeovimFn) {
     expect(request.params, equals(['hello']));
     request.completeError('NO');
     await expectLater(call, throwsA(isA<NvimExceptionError>()));
-    await neovim.close();
   });
 
   test('can call neovim api to notify itself', () async {
@@ -131,28 +130,24 @@ void testSuite(Future<Nvim> Function() createNeovimFn) {
     final request = await neovim.api.notifications.first;
     expect(request.method, equals('echo'));
     expect(request.params, equals(['hello']));
-    await neovim.close();
   });
 
   test('can call neovim api to receive window type', () async {
     final neovim = await createNeovimFn();
     final call = neovim.api.nvimGetCurrentWin();
     await expectLater(call, completion(isA<NvimExt$Window>()));
-    await neovim.close();
   });
 
   test('can call neovim api to receive buffer type', () async {
     final neovim = await createNeovimFn();
     final call = neovim.api.nvimGetCurrentBuf();
     await expectLater(call, completion(isA<NvimExt$Buffer>()));
-    await neovim.close();
   });
 
   test('can call neovim api to receive tabpage type', () async {
     final neovim = await createNeovimFn();
     final call = neovim.api.nvimGetCurrentTabpage();
     await expectLater(call, completion(isA<NvimExt$Tabpage>()));
-    await neovim.close();
   });
 
   test('can call neovim api using window type', () async {
@@ -162,7 +157,6 @@ void testSuite(Future<Nvim> Function() createNeovimFn) {
     await expectLater(setWinVarCall, completion(equals(null)));
     final getWinVarCall = neovim.api.nvimWinGetVar(window, 'test');
     await expectLater(getWinVarCall, completion(equals('hello')));
-    await neovim.close();
   });
 
   test('can call neovim api using buffer type', () async {
@@ -172,7 +166,6 @@ void testSuite(Future<Nvim> Function() createNeovimFn) {
     await expectLater(setBufVarCall, completion(equals(null)));
     final getBufVarCall = neovim.api.nvimBufGetVar(buffer, 'test');
     await expectLater(getBufVarCall, completion(equals('hello')));
-    await neovim.close();
   });
 
   test('can call neovim api using tabpage type', () async {
@@ -183,7 +176,6 @@ void testSuite(Future<Nvim> Function() createNeovimFn) {
     await expectLater(setTabVarCall, completion(equals(null)));
     final getTabVarCall = neovim.api.nvimTabpageGetVar(tabpage, 'test');
     await expectLater(getTabVarCall, completion(equals('hello')));
-    await neovim.close();
   });
 
   test('can parse neovim ui events', () async {
@@ -192,6 +184,5 @@ void testSuite(Future<Nvim> Function() createNeovimFn) {
     final eventStream = neovim.api.notifications.typed.take(1);
     final result = eventStream.first;
     await expectLater(result, completion(isA<NvimRpcNotificationTyped>()));
-    await neovim.close();
   });
 }
