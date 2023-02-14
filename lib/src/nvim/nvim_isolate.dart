@@ -50,28 +50,29 @@ class NvimIsolate implements Nvim {
       exitPort.close();
       errorPort.close();
     }());
-    final setupError = Completer<RemoteError>();
-    setupError.complete(() async {
-      final error = await errorPort.first as List;
-      return RemoteError(error[0], error[1]);
-    }());
-    final setupOrError = await Future.any([
-      setupPort.first,
-      setupError.future,
-    ]);
-    errorPort.close();
-    setupPort.close();
-    if(setupOrError is RemoteError) {
-      throw setupOrError;
+    final setupCompleter = Completer<Map<String, dynamic>>();
+    errorPort.first
+        .then((error) =>
+            setupCompleter.completeError(RemoteError(error[0], error[1])))
+        .catchError((_) {}); // Swallowing badstate error when port is closed.
+    setupPort.first
+        .then((setup) => setupCompleter.complete(setup))
+        .catchError((_) {}); // Swallowing badstate error when port is closed.
+    late Map<String, dynamic> setup;
+    try {
+      setup = await setupCompleter.future;
+    } catch (e) {
+      rethrow;
+    } finally {
+      errorPort.close();
+      setupPort.close();
     }
-    final setup = setupOrError as Map;
-    final writePort = _isolateWrite =
-        setup[NvimIsolateRunner.kKeyIsolateReadPort] as SendPort;
+    _isolateWrite = setup[NvimIsolateRunner.kKeyIsolateReadPort] as SendPort;
     final channelId = setup[NvimIsolateRunner.kKeyIsolateChannelId] as int;
     final apiLevel = setup[NvimIsolateRunner.kKeyIsolateApiLevel] as int;
     api = await NvimBridgeIsolate.create(
       readPort,
-      writePort,
+      _isolateWrite,
       channelId,
       apiLevel,
     );
