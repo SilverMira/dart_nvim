@@ -59,8 +59,8 @@ class NvimBridgeStream implements NvimBridge {
 
   /// This method is called only once in [NvimBridgeStream.create]
   Future<void> _initialize() async {
-    _readSubscription = _read
-        .transform(mpack.StreamDeserializer(extDecoder: NvimExtDecoder()))
+    _readSubscription = mpack.StreamDeserializer(extDecoder: NvimExtDecoder())
+        .bind(_read)
         .listen(_onData, onDone: _detachStreams);
     final info = await call('nvim_get_api_info', []) as List;
     channelId = info[0] as int;

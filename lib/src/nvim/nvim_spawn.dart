@@ -16,8 +16,8 @@ class NvimSpawn implements Nvim {
   NvimSpawn._({required this.binary, required this.args});
 
   @override
-  Future<void> close() async {
-    _process.kill();
+  Future<void> close([bool force = false]) async {
+    if (force) _process.kill();
     await _process.exitCode;
     api.dispose();
   }

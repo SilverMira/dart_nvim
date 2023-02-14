@@ -1,0 +1,128 @@
+import 'dart:async';
+import 'dart:isolate';
+
+import 'package:dart_nvim/src/bridge/nvim_bridge.dart';
+import 'package:dart_nvim/src/bridge/nvim_bridge_isolate.dart';
+import 'package:dart_nvim/src/nvim/nvim.dart';
+import 'package:dart_nvim/src/nvim/nvim_isolate_runner.dart';
+
+class NvimIsolate implements Nvim {
+  @override
+  late final NvimBridge api;
+  late final Isolate _isolate;
+  late final SendPort _isolateWrite;
+
+  final _exitCompleter = Completer<void>();
+  Future<void> get exit => _exitCompleter.future;
+
+  final Map<String, dynamic> _isolateArgs;
+
+  NvimIsolate(this._isolateArgs);
+
+  @override
+  Future<void> close([bool force = false]) async {
+    _isolateWrite.send({
+      NvimIsolateRunner.kKeyIsolateMessageType:
+          NvimIsolateRunner.kIsolateMessageTypeClose,
+      NvimIsolateRunner.kKeyIsolateMessageCloseForce: force,
+    });
+    await exit;
+  }
+
+  Future<void> _initialize() async {
+    final setupPort = ReceivePort();
+    final readPort = ReceivePort();
+    final exitPort = ReceivePort();
+    final errorPort = ReceivePort();
+    _isolate = await Isolate.spawn(
+      NvimIsolateRunner.nvimIsolateMain,
+      {
+        ..._isolateArgs,
+        NvimIsolateRunner.kKeyIsolateSetupPort: setupPort.sendPort,
+        NvimIsolateRunner.kKeyIsolateWritePort: readPort.sendPort,
+      },
+      onExit: exitPort.sendPort,
+      onError: errorPort.sendPort,
+    );
+    // ignore: void_checks
+    _exitCompleter.complete(() async {
+      await exitPort.first;
+      readPort.close();
+      exitPort.close();
+      errorPort.close();
+    });
+    final setupError = Completer<RemoteError>();
+    setupError.complete(() async {
+      final error = await errorPort.first as List;
+      return RemoteError(error[0], error[1]);
+    }());
+    final setupOrError = await Future.any([
+      setupPort.first,
+      setupError.future,
+    ]);
+    errorPort.close();
+    setupPort.close();
+    if(setupOrError is RemoteError) {
+      throw setupOrError;
+    }
+    final setup = setupOrError as Map;
+    final writePort = _isolateWrite =
+        setup[NvimIsolateRunner.kKeyIsolateReadPort] as SendPort;
+    final channelId = setup[NvimIsolateRunner.kKeyIsolateChannelId] as int;
+    final apiLevel = setup[NvimIsolateRunner.kKeyIsolateApiLevel] as int;
+    api = await NvimBridgeIsolate.create(
+      readPort,
+      writePort,
+      channelId,
+      apiLevel,
+    );
+  }
+
+  static Future<NvimIsolate> createSpawn({
+    required String binary,
+    required List<String> args,
+  }) async {
+    final isolateArgs = <String, dynamic>{
+      NvimIsolateRunner.kKeyIsolateType: NvimIsolateRunner.kIsolateTypeSpawn,
+      NvimIsolateRunner.kKeySpawnBinary: binary,
+      NvimIsolateRunner.kKeySpawnArgs: args,
+    };
+    final nvim = NvimIsolate(isolateArgs);
+    await nvim._initialize();
+    return nvim;
+  }
+
+  static Future<NvimIsolate> createSocket(
+    host,
+    int port, {
+    sourceAddress,
+    int sourcePort = 0,
+    Duration? timeout,
+  }) async {
+    // /// [InternetAddress] is not sendable through [SendPort],
+    // /// encode it to [TransferableTypedData] instead.
+    // if (host is InternetAddress) {
+    //   host = NvimIsolateRunner.encodeInternetAddress(host);
+    // }
+    // if (sourceAddress is InternetAddress) {
+    //   sourceAddress = NvimIsolateRunner.encodeInternetAddress(sourceAddress);
+    // }
+    //
+    // /// Encode [Duration] to [int] in microseconds.
+    // int? timeoutMicroSeconds;
+    // if (timeout != null) {
+    //   timeoutMicroSeconds = NvimIsolateRunner.encodeDuration(timeout);
+    // }
+    final isolateArgs = <String, dynamic>{
+      NvimIsolateRunner.kKeyIsolateType: NvimIsolateRunner.kIsolateTypeSocket,
+      NvimIsolateRunner.kKeySocketHost: host,
+      NvimIsolateRunner.kKeySocketPort: port,
+      NvimIsolateRunner.kKeySocketSourceAddress: sourceAddress,
+      NvimIsolateRunner.kKeySocketSourcePort: sourcePort,
+      NvimIsolateRunner.kKeySocketTimeout: timeout,
+    };
+    final nvim = NvimIsolate(isolateArgs);
+    await nvim._initialize();
+    return nvim;
+  }
+}
