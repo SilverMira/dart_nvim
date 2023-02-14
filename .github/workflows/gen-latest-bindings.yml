@@ -35,7 +35,7 @@ jobs:
         run: dart analyze
 
       - name: Run tests
-        run: dart test
+        run: "dart test -N 'dart_nvim spawn'"
 
       - name: Create pull request
         uses: peter-evans/create-pull-request@v4
