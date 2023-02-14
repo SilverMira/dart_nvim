@@ -44,13 +44,12 @@ class NvimIsolate implements Nvim {
       onExit: exitPort.sendPort,
       onError: errorPort.sendPort,
     );
-    // ignore: void_checks
     _exitCompleter.complete(() async {
       await exitPort.first;
       readPort.close();
       exitPort.close();
       errorPort.close();
-    });
+    }());
     final setupError = Completer<RemoteError>();
     setupError.complete(() async {
       final error = await errorPort.first as List;
