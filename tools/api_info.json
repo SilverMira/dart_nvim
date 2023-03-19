@@ -4482,6 +4482,10 @@
         [
           "Integer",
           "line_count"
+        ],
+        [
+          "Integer",
+          "scroll_delta"
         ]
       ],
       "since": 7

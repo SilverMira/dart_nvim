@@ -7237,6 +7237,7 @@ class NvimUIEvent$WinViewport extends NvimUIEvent {
     required this.curline,
     required this.curcol,
     required this.lineCount,
+    required this.scrollDelta,
   });
 
   @override
@@ -7258,6 +7259,8 @@ class NvimUIEvent$WinViewport extends NvimUIEvent {
   int curcol;
 
   int lineCount;
+
+  int scrollDelta;
 
   @override
   R when<R>({
@@ -11554,6 +11557,7 @@ NvimUIEvent _parseUIEvent(
         curline: eventArgs[4],
         curcol: eventArgs[5],
         lineCount: eventArgs[6],
+        scrollDelta: eventArgs[7],
       );
     case r"win_extmark":
       return NvimUIEvent$WinExtmark(
