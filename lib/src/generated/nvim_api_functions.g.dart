@@ -1031,6 +1031,56 @@ extension NvimApiFunctions on NvimBridge {
     );
   }
 
+  /// Generated from `nvim_get_hl_by_id`
+  ///
+  /// Since API level: `3`
+  /// Deprecated since API level: `9`
+  ///
+  /// Parameters:
+  /// - `hl_id`: `Integer`
+  /// - `rgb`: `Boolean`
+  ///
+  /// Returns: `Dictionary`
+  @Deprecated('Deprecated since API level: `9`')
+  Future<Map> nvimGetHlById(
+    int hlId,
+    bool rgb,
+  ) async {
+    final $$args = [
+      hlId,
+      rgb,
+    ];
+    return await call(
+      'nvim_get_hl_by_id',
+      $$args,
+    );
+  }
+
+  /// Generated from `nvim_get_hl_by_name`
+  ///
+  /// Since API level: `3`
+  /// Deprecated since API level: `9`
+  ///
+  /// Parameters:
+  /// - `name`: `String`
+  /// - `rgb`: `Boolean`
+  ///
+  /// Returns: `Dictionary`
+  @Deprecated('Deprecated since API level: `9`')
+  Future<Map> nvimGetHlByName(
+    String name,
+    bool rgb,
+  ) async {
+    final $$args = [
+      name,
+      rgb,
+    ];
+    return await call(
+      'nvim_get_hl_by_name',
+      $$args,
+    );
+  }
+
   /// Generated from `buffer_insert`
   ///
   /// Since API level: `0`
@@ -2200,52 +2250,6 @@ extension NvimApiFunctions on NvimBridge {
     );
   }
 
-  /// Generated from `nvim_get_hl_by_name`
-  ///
-  /// Since API level: `3`
-  ///
-  /// Parameters:
-  /// - `name`: `String`
-  /// - `rgb`: `Boolean`
-  ///
-  /// Returns: `Dictionary`
-  Future<Map> nvimGetHlByName(
-    String name,
-    bool rgb,
-  ) async {
-    final $$args = [
-      name,
-      rgb,
-    ];
-    return await call(
-      'nvim_get_hl_by_name',
-      $$args,
-    );
-  }
-
-  /// Generated from `nvim_get_hl_by_id`
-  ///
-  /// Since API level: `3`
-  ///
-  /// Parameters:
-  /// - `hl_id`: `Integer`
-  /// - `rgb`: `Boolean`
-  ///
-  /// Returns: `Dictionary`
-  Future<Map> nvimGetHlById(
-    int hlId,
-    bool rgb,
-  ) async {
-    final $$args = [
-      hlId,
-      rgb,
-    ];
-    return await call(
-      'nvim_get_hl_by_id',
-      $$args,
-    );
-  }
-
   /// Generated from `nvim_get_hl_id_by_name`
   ///
   /// Since API level: `7`
@@ -2258,6 +2262,29 @@ extension NvimApiFunctions on NvimBridge {
     final $$args = [name];
     return await call(
       'nvim_get_hl_id_by_name',
+      $$args,
+    );
+  }
+
+  /// Generated from `nvim_get_hl`
+  ///
+  /// Since API level: `11`
+  ///
+  /// Parameters:
+  /// - `ns_id`: `Integer`
+  /// - `opts`: `Dictionary`
+  ///
+  /// Returns: `Dictionary`
+  Future<Map> nvimGetHl(
+    int nsId,
+    Map opts,
+  ) async {
+    final $$args = [
+      nsId,
+      opts,
+    ];
+    return await call(
+      'nvim_get_hl',
       $$args,
     );
   }

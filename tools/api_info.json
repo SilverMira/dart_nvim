@@ -794,6 +794,40 @@
       "since": 5
     },
     {
+      "deprecated_since": 9,
+      "method": false,
+      "name": "nvim_get_hl_by_id",
+      "parameters": [
+        [
+          "Integer",
+          "hl_id"
+        ],
+        [
+          "Boolean",
+          "rgb"
+        ]
+      ],
+      "return_type": "Dictionary",
+      "since": 3
+    },
+    {
+      "deprecated_since": 9,
+      "method": false,
+      "name": "nvim_get_hl_by_name",
+      "parameters": [
+        [
+          "String",
+          "name"
+        ],
+        [
+          "Boolean",
+          "rgb"
+        ]
+      ],
+      "return_type": "Dictionary",
+      "since": 3
+    },
+    {
       "deprecated_since": 1,
       "method": false,
       "name": "buffer_insert",
@@ -1671,38 +1705,6 @@
     },
     {
       "method": false,
-      "name": "nvim_get_hl_by_name",
-      "parameters": [
-        [
-          "String",
-          "name"
-        ],
-        [
-          "Boolean",
-          "rgb"
-        ]
-      ],
-      "return_type": "Dictionary",
-      "since": 3
-    },
-    {
-      "method": false,
-      "name": "nvim_get_hl_by_id",
-      "parameters": [
-        [
-          "Integer",
-          "hl_id"
-        ],
-        [
-          "Boolean",
-          "rgb"
-        ]
-      ],
-      "return_type": "Dictionary",
-      "since": 3
-    },
-    {
-      "method": false,
       "name": "nvim_get_hl_id_by_name",
       "parameters": [
         [
@@ -1712,6 +1714,22 @@
       ],
       "return_type": "Integer",
       "since": 7
+    },
+    {
+      "method": false,
+      "name": "nvim_get_hl",
+      "parameters": [
+        [
+          "Integer",
+          "ns_id"
+        ],
+        [
+          "Dictionary",
+          "opts"
+        ]
+      ],
+      "return_type": "Dictionary",
+      "since": 11
     },
     {
       "method": false,
