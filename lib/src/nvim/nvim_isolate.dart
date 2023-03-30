@@ -100,20 +100,6 @@ class NvimIsolate implements Nvim {
     int sourcePort = 0,
     Duration? timeout,
   }) async {
-    // /// [InternetAddress] is not sendable through [SendPort],
-    // /// encode it to [TransferableTypedData] instead.
-    // if (host is InternetAddress) {
-    //   host = NvimIsolateRunner.encodeInternetAddress(host);
-    // }
-    // if (sourceAddress is InternetAddress) {
-    //   sourceAddress = NvimIsolateRunner.encodeInternetAddress(sourceAddress);
-    // }
-    //
-    // /// Encode [Duration] to [int] in microseconds.
-    // int? timeoutMicroSeconds;
-    // if (timeout != null) {
-    //   timeoutMicroSeconds = NvimIsolateRunner.encodeDuration(timeout);
-    // }
     final isolateArgs = <String, dynamic>{
       NvimIsolateRunner.kKeyIsolateType: NvimIsolateRunner.kIsolateTypeSocket,
       NvimIsolateRunner.kKeySocketHost: host,
