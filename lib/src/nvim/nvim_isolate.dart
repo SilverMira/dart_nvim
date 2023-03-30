@@ -126,4 +126,18 @@ class NvimIsolate implements Nvim {
     await nvim._initialize();
     return nvim;
   }
+
+  static Future<Nvim> createWsl({
+    required String binary,
+    required List<String> args,
+  }) async {
+    final isolateArgs = <String, dynamic>{
+      NvimIsolateRunner.kKeyIsolateType: NvimIsolateRunner.kIsolateTypeWsl,
+      NvimIsolateRunner.kKeyWslBinary: binary,
+      NvimIsolateRunner.kKeyWslArgs: args,
+    };
+    final nvim = NvimIsolate(isolateArgs);
+    await nvim._initialize();
+    return nvim;
+  }
 }

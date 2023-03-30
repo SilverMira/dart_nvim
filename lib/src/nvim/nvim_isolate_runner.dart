@@ -6,6 +6,7 @@ import 'dart:typed_data';
 import 'package:dart_nvim/src/nvim/nvim.dart';
 import 'package:dart_nvim/src/nvim/nvim_socket.dart';
 import 'package:dart_nvim/src/nvim/nvim_spawn.dart';
+import 'package:dart_nvim/src/nvim/nvim_wsl.dart';
 import 'package:dart_nvim/src/types/nvim_rpc_notification.dart';
 import 'package:dart_nvim/src/types/nvim_rpc_request.dart';
 
@@ -27,6 +28,8 @@ class NvimIsolateRunner {
 
   static const kIsolateTypeSocket = 1;
 
+  static const kIsolateTypeWsl = 2;
+
   static const kKeySpawnBinary = 'binary';
 
   static const kKeySpawnArgs = 'args';
@@ -40,6 +43,10 @@ class NvimIsolateRunner {
   static const kKeySocketSourcePort = 'sourcePort';
 
   static const kKeySocketTimeout = 'timeout';
+
+  static const kKeyWslBinary = 'binary';
+
+  static const kKeyWslArgs = 'args';
 
   static const kKeyIsolateMessageType = 'type';
 
@@ -231,6 +238,8 @@ class NvimIsolateRunner {
         return _createNvimSpawn(args);
       case kIsolateTypeSocket:
         return _createNvimSocket(args);
+      case kIsolateTypeWsl:
+        return _createNvimWsl(args);
       default:
         throw Exception('Unknown isolate type: $type');
     }
@@ -238,19 +247,10 @@ class NvimIsolateRunner {
 
   static Future<Nvim> _createNvimSocket(Map<String, dynamic> args) {
     var host = args[kKeySocketHost];
-    // if (host is TransferableTypedData) {
-    //   host = decodeInternetAddress(host);
-    // }
     final port = args[kKeySocketPort] as int;
     var sourceAddress = args[kKeySocketSourceAddress];
-    // if (sourceAddress is TransferableTypedData) {
-    //   sourceAddress = decodeInternetAddress(sourceAddress);
-    // }
     final sourcePort = args[kKeySocketSourcePort] as int;
     var timeout = args[kKeySocketTimeout];
-    // if (timeout is int) {
-    //   timeout = decodeDuration(timeout);
-    // }
     return NvimSocket.create(
       host,
       port,
@@ -264,5 +264,11 @@ class NvimIsolateRunner {
     final binary = args[kKeySpawnBinary] as String;
     final programArgs = args[kKeySpawnArgs] as List<String>;
     return NvimSpawn.create(binary: binary, args: programArgs);
+  }
+
+  static Future<Nvim> _createNvimWsl(Map<String, dynamic> args) {
+    final binary = args[kKeyWslBinary] as String;
+    final programArgs = args[kKeyWslArgs] as List<String>;
+    return NvimWsl.create(binary: binary, args: programArgs);
   }
 }

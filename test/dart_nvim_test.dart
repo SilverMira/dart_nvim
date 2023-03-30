@@ -86,6 +86,34 @@ void main() {
       });
     });
   });
+
+  group('dart_nvim wsl', () {
+    Future<Nvim> createNeovimFn() async {
+      final nvim = await DartNvim.wsl(args: ['--embed', '--clean']);
+      return nvim;
+    }
+
+    test('can wsl', () async {
+      final nvim = await createNeovimFn();
+      expect(nvim.api.nvimEval('1 + 1'), completion(equals(2)));
+      await expectLater(nvim.api.nvimExec('qall!', false), throwsA(isA<NvimChannelClosedError>()));
+      await expectLater(nvim.close(), completes);
+      await expectLater(nvim.api.nvimGetApiInfo(), throwsA(isA<NvimChannelClosedError>()));
+    });
+    group('>', () {
+      late Nvim nvim;
+      setUp(() async {
+        nvim = await createNeovimFn();
+      });
+      testSuite(createNeovimFn);
+      tearDown(() async {
+        try {
+          await nvim.api.nvimExec('qall!', false);
+        } on NvimChannelClosedError catch (_) {}
+        await nvim.close();
+      });
+    });
+  });
 }
 
 void testSuite(Future<Nvim> Function() createNeovimFn) {
