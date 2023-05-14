@@ -697,6 +697,23 @@
       "since": 4
     },
     {
+      "deprecated_since": 11,
+      "method": false,
+      "name": "nvim_exec",
+      "parameters": [
+        [
+          "String",
+          "src"
+        ],
+        [
+          "Boolean",
+          "output"
+        ]
+      ],
+      "return_type": "String",
+      "since": 7
+    },
+    {
       "deprecated_since": 7,
       "method": false,
       "name": "nvim_command_output",
@@ -1111,6 +1128,18 @@
     },
     {
       "method": false,
+      "name": "nvim_get_option_info",
+      "parameters": [
+        [
+          "String",
+          "name"
+        ]
+      ],
+      "return_type": "Dictionary",
+      "since": 7
+    },
+    {
+      "method": false,
       "name": "nvim_create_namespace",
       "parameters": [
         [
@@ -1345,15 +1374,19 @@
     },
     {
       "method": false,
-      "name": "nvim_get_option_info",
+      "name": "nvim_get_option_info2",
       "parameters": [
         [
           "String",
           "name"
+        ],
+        [
+          "Dictionary",
+          "opts"
         ]
       ],
       "return_type": "Dictionary",
-      "since": 7
+      "since": 11
     },
     {
       "method": false,
@@ -2559,19 +2592,19 @@
     },
     {
       "method": false,
-      "name": "nvim_exec",
+      "name": "nvim_exec2",
       "parameters": [
         [
           "String",
           "src"
         ],
         [
-          "Boolean",
-          "output"
+          "Dictionary",
+          "opts"
         ]
       ],
-      "return_type": "String",
-      "since": 7
+      "return_type": "Dictionary",
+      "since": 11
     },
     {
       "method": false,
@@ -4807,9 +4840,9 @@
   "version": {
     "api_compatible": 0,
     "api_level": 11,
-    "api_prerelease": true,
+    "api_prerelease": false,
     "major": 0,
-    "minor": 9,
+    "minor": 10,
     "patch": 0,
     "prerelease": true
   }

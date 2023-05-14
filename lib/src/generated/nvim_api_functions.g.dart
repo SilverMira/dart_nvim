@@ -905,6 +905,31 @@ extension NvimApiFunctions on NvimBridge {
     );
   }
 
+  /// Generated from `nvim_exec`
+  ///
+  /// Since API level: `7`
+  /// Deprecated since API level: `11`
+  ///
+  /// Parameters:
+  /// - `src`: `String`
+  /// - `output`: `Boolean`
+  ///
+  /// Returns: `String`
+  @Deprecated('Deprecated since API level: `11`')
+  Future<String> nvimExec(
+    String src,
+    bool output,
+  ) async {
+    final $$args = [
+      src,
+      output,
+    ];
+    return await call(
+      'nvim_exec',
+      $$args,
+    );
+  }
+
   /// Generated from `nvim_command_output`
   ///
   /// Since API level: `1`
@@ -1460,6 +1485,22 @@ extension NvimApiFunctions on NvimBridge {
     );
   }
 
+  /// Generated from `nvim_get_option_info`
+  ///
+  /// Since API level: `7`
+  ///
+  /// Parameters:
+  /// - `name`: `String`
+  ///
+  /// Returns: `Dictionary`
+  Future<Map> nvimGetOptionInfo(String name) async {
+    final $$args = [name];
+    return await call(
+      'nvim_get_option_info',
+      $$args,
+    );
+  }
+
   /// Generated from `nvim_create_namespace`
   ///
   /// Since API level: `5`
@@ -1759,18 +1800,25 @@ extension NvimApiFunctions on NvimBridge {
     );
   }
 
-  /// Generated from `nvim_get_option_info`
+  /// Generated from `nvim_get_option_info2`
   ///
-  /// Since API level: `7`
+  /// Since API level: `11`
   ///
   /// Parameters:
   /// - `name`: `String`
+  /// - `opts`: `Dictionary`
   ///
   /// Returns: `Dictionary`
-  Future<Map> nvimGetOptionInfo(String name) async {
-    final $$args = [name];
+  Future<Map> nvimGetOptionInfo2(
+    String name,
+    Map opts,
+  ) async {
+    final $$args = [
+      name,
+      opts,
+    ];
     return await call(
-      'nvim_get_option_info',
+      'nvim_get_option_info2',
       $$args,
     );
   }
@@ -3444,25 +3492,25 @@ extension NvimApiFunctions on NvimBridge {
     );
   }
 
-  /// Generated from `nvim_exec`
+  /// Generated from `nvim_exec2`
   ///
-  /// Since API level: `7`
+  /// Since API level: `11`
   ///
   /// Parameters:
   /// - `src`: `String`
-  /// - `output`: `Boolean`
+  /// - `opts`: `Dictionary`
   ///
-  /// Returns: `String`
-  Future<String> nvimExec(
+  /// Returns: `Dictionary`
+  Future<Map> nvimExec2(
     String src,
-    bool output,
+    Map opts,
   ) async {
     final $$args = [
       src,
-      output,
+      opts,
     ];
     return await call(
-      'nvim_exec',
+      'nvim_exec2',
       $$args,
     );
   }
