@@ -9,6 +9,7 @@ import 'package:dart_nvim/src/nvim/nvim_isolate_runner.dart';
 class NvimIsolate implements Nvim {
   @override
   late final NvimBridge api;
+  // ignore: unused_field
   late final Isolate _isolate;
   late final SendPort _isolateWrite;
 
