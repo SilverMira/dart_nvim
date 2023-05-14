@@ -14,7 +14,7 @@ void main() {
     test('can spawn', () async {
       final nvim = await createNeovimFn();
       expect(nvim.api.nvimEval('1 + 1'), completion(equals(2)));
-      await expectLater(nvim.api.nvimExec('qall!', false), throwsA(isA<NvimChannelClosedError>()));
+      await expectLater(nvim.api.nvimCommand('qall!'), throwsA(isA<NvimChannelClosedError>()));
       await expectLater(nvim.close(), completes);
       await expectLater(nvim.api.nvimGetApiInfo(), throwsA(isA<NvimChannelClosedError>()));
     });
@@ -26,7 +26,7 @@ void main() {
       testSuite(createNeovimFn);
       tearDown(() async {
         try {
-          await nvim.api.nvimExec('qall!', false);
+          await nvim.api.nvimCommand('qall!');
         } on NvimChannelClosedError catch (_) {}
         await nvim.close();
       });
@@ -59,7 +59,7 @@ void main() {
       final process = await startNeovim(port);
       final nvim = await createNeovimFn(port);
       expect(nvim.api.nvimEval('1 + 1'), completion(equals(2)));
-      await expectLater(nvim.api.nvimExec('qall!', false), throwsA(isA<NvimChannelClosedError>()));
+      await expectLater(nvim.api.nvimCommand('qall!'), throwsA(isA<NvimChannelClosedError>()));
       await expectLater(nvim.close(), completes);
       await expectLater(process.exitCode, completion(equals(0)));
       await expectLater(nvim.api.nvimGetApiInfo(), throwsA(isA<NvimChannelClosedError>()));
@@ -79,7 +79,7 @@ void main() {
       tearDown(() async {
         final neovim = await nvim.future;
         try {
-          await neovim.api.nvimExec('qall!', false);
+          await neovim.api.nvimCommand('qall!');
         } on NvimChannelClosedError catch (_) {}
         await neovim.close();
         await process.exitCode;
@@ -96,7 +96,7 @@ void main() {
     test('can wsl', () async {
       final nvim = await createNeovimFn();
       expect(nvim.api.nvimEval('1 + 1'), completion(equals(2)));
-      await expectLater(nvim.api.nvimExec('qall!', false), throwsA(isA<NvimChannelClosedError>()));
+      await expectLater(nvim.api.nvimCommand('qall!'), throwsA(isA<NvimChannelClosedError>()));
       await expectLater(nvim.close(), completes);
       await expectLater(nvim.api.nvimGetApiInfo(), throwsA(isA<NvimChannelClosedError>()));
     });
@@ -108,7 +108,7 @@ void main() {
       testSuite(createNeovimFn);
       tearDown(() async {
         try {
-          await nvim.api.nvimExec('qall!', false);
+          await nvim.api.nvimCommand('qall!');
         } on NvimChannelClosedError catch (_) {}
         await nvim.close();
       });
