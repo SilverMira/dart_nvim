@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:collection';
+import 'dart:isolate';
 
 import 'package:dart_nvim/src/base/api.dart';
 import 'package:dart_nvim/src/class/isolate_message.dart';
@@ -8,11 +9,11 @@ import 'package:dart_nvim/src/class/rpc_notification.dart';
 import 'package:dart_nvim/src/class/rpc_request.dart';
 
 base class IsolateApi implements Api {
-  final StreamSink<IsolateMessage> tx;
-  final Stream<IsolateMessage> rx;
+  final SendPort sendPort;
+  final ReceivePort receivePort;
 
-  IsolateApi({required this.tx, required this.rx}) {
-    rx.listen(onReceive);
+  IsolateApi({required this.sendPort, required this.receivePort}) {
+    receivePort.listen(onReceive);
   }
 
   int _requestId = 0;
@@ -22,12 +23,13 @@ base class IsolateApi implements Api {
   Future call(String method, List args) async {
     final requestId = _requestId++;
     final requestCompleter = Completer();
-    final request = IsolateMessage.request(
+    final request = IsolateMessageRequest(
       requestId: requestId,
       method: method,
-      args: args,
+      arguments: args,
     );
-    tx.add(request);
+    _requestQueue[requestId] = requestCompleter;
+    sendPort.send(request);
     final result = await requestCompleter.future;
     return result;
   }
@@ -40,21 +42,22 @@ base class IsolateApi implements Api {
   @override
   Stream<RpcRequest> get requests => requestsController.stream;
 
-  void onReceive(IsolateMessage event) {
+  void onReceive(event) {
     return switch (event) {
       IsolateMessageRequest request => onReceiveRequest(request),
       IsolateMessageResponse response => onReceiveResponse(response),
       IsolateMessageNotification notification =>
-        onReceiveNotification(notification)
+        onReceiveNotification(notification),
+      _ => throw Exception('Unknown message type: $event'),
     };
   }
 
   void onReceiveRequest(IsolateMessageRequest request) async {
-    final IsolateMessageRequest(:requestId, :method, :args) = request;
+    final IsolateMessageRequest(:requestId, :method, :arguments) = request;
     final requestCompleter = Completer<dynamic>();
     requestsController.add(RpcRequest(
       method: method,
-      arguments: args,
+      arguments: arguments,
       completer: requestCompleter,
     ));
     final response = await requestCompleter.future
@@ -62,7 +65,7 @@ base class IsolateApi implements Api {
             IsolateMessageResponse(requestId: requestId, result: result))
         .onError((error, _) =>
             IsolateMessageResponse(requestId: requestId, error: error));
-    tx.add(response);
+    sendPort.send(response);
   }
 
   void onReceiveResponse(IsolateMessageResponse response) {
@@ -83,8 +86,8 @@ base class IsolateApi implements Api {
   }
 
   void onReceiveNotification(IsolateMessageNotification notification) {
-    final IsolateMessageNotification(:method, :args) = notification;
+    final IsolateMessageNotification(:method, :arguments) = notification;
     notificationsController
-        .add(RpcNotification(method: method, arguments: args));
+        .add(RpcNotification(method: method, arguments: arguments));
   }
 }

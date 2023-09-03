@@ -18,26 +18,32 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$IsolateMessage {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int requestId, String method, List<dynamic> args)
+    required TResult Function(
+            int requestId, String method, List<dynamic> arguments)
         request,
     required TResult Function(int requestId, Object? error, Object? result)
         response,
-    required TResult Function(String method, List<dynamic> args) notification,
+    required TResult Function(String method, List<dynamic> arguments)
+        notification,
+    required TResult Function(bool force) close,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int requestId, String method, List<dynamic> args)?
+    TResult? Function(int requestId, String method, List<dynamic> arguments)?
         request,
     TResult? Function(int requestId, Object? error, Object? result)? response,
-    TResult? Function(String method, List<dynamic> args)? notification,
+    TResult? Function(String method, List<dynamic> arguments)? notification,
+    TResult? Function(bool force)? close,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int requestId, String method, List<dynamic> args)? request,
+    TResult Function(int requestId, String method, List<dynamic> arguments)?
+        request,
     TResult Function(int requestId, Object? error, Object? result)? response,
-    TResult Function(String method, List<dynamic> args)? notification,
+    TResult Function(String method, List<dynamic> arguments)? notification,
+    TResult Function(bool force)? close,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -46,6 +52,7 @@ mixin _$IsolateMessage {
     required TResult Function(IsolateMessageRequest value) request,
     required TResult Function(IsolateMessageResponse value) response,
     required TResult Function(IsolateMessageNotification value) notification,
+    required TResult Function(IsolateMessageClose value) close,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -53,6 +60,7 @@ mixin _$IsolateMessage {
     TResult? Function(IsolateMessageRequest value)? request,
     TResult? Function(IsolateMessageResponse value)? response,
     TResult? Function(IsolateMessageNotification value)? notification,
+    TResult? Function(IsolateMessageClose value)? close,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +68,7 @@ mixin _$IsolateMessage {
     TResult Function(IsolateMessageRequest value)? request,
     TResult Function(IsolateMessageResponse value)? response,
     TResult Function(IsolateMessageNotification value)? notification,
+    TResult Function(IsolateMessageClose value)? close,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -89,7 +98,7 @@ abstract class _$$IsolateMessageRequestCopyWith<$Res> {
           $Res Function(_$IsolateMessageRequest) then) =
       __$$IsolateMessageRequestCopyWithImpl<$Res>;
   @useResult
-  $Res call({int requestId, String method, List<dynamic> args});
+  $Res call({int requestId, String method, List<dynamic> arguments});
 }
 
 /// @nodoc
@@ -105,7 +114,7 @@ class __$$IsolateMessageRequestCopyWithImpl<$Res>
   $Res call({
     Object? requestId = null,
     Object? method = null,
-    Object? args = null,
+    Object? arguments = null,
   }) {
     return _then(_$IsolateMessageRequest(
       requestId: null == requestId
@@ -116,9 +125,9 @@ class __$$IsolateMessageRequestCopyWithImpl<$Res>
           ? _value.method
           : method // ignore: cast_nullable_to_non_nullable
               as String,
-      args: null == args
-          ? _value._args
-          : args // ignore: cast_nullable_to_non_nullable
+      arguments: null == arguments
+          ? _value._arguments
+          : arguments // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
     ));
   }
@@ -130,25 +139,25 @@ class _$IsolateMessageRequest extends IsolateMessageRequest {
   const _$IsolateMessageRequest(
       {required this.requestId,
       required this.method,
-      required final List<dynamic> args})
-      : _args = args,
+      required final List<dynamic> arguments})
+      : _arguments = arguments,
         super._();
 
   @override
   final int requestId;
   @override
   final String method;
-  final List<dynamic> _args;
+  final List<dynamic> _arguments;
   @override
-  List<dynamic> get args {
-    if (_args is EqualUnmodifiableListView) return _args;
+  List<dynamic> get arguments {
+    if (_arguments is EqualUnmodifiableListView) return _arguments;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_args);
+    return EqualUnmodifiableListView(_arguments);
   }
 
   @override
   String toString() {
-    return 'IsolateMessage.request(requestId: $requestId, method: $method, args: $args)';
+    return 'IsolateMessage.request(requestId: $requestId, method: $method, arguments: $arguments)';
   }
 
   @override
@@ -159,12 +168,13 @@ class _$IsolateMessageRequest extends IsolateMessageRequest {
             (identical(other.requestId, requestId) ||
                 other.requestId == requestId) &&
             (identical(other.method, method) || other.method == method) &&
-            const DeepCollectionEquality().equals(other._args, _args));
+            const DeepCollectionEquality()
+                .equals(other._arguments, _arguments));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, requestId, method,
-      const DeepCollectionEquality().hash(_args));
+      const DeepCollectionEquality().hash(_arguments));
 
   @JsonKey(ignore: true)
   @override
@@ -176,36 +186,42 @@ class _$IsolateMessageRequest extends IsolateMessageRequest {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int requestId, String method, List<dynamic> args)
+    required TResult Function(
+            int requestId, String method, List<dynamic> arguments)
         request,
     required TResult Function(int requestId, Object? error, Object? result)
         response,
-    required TResult Function(String method, List<dynamic> args) notification,
+    required TResult Function(String method, List<dynamic> arguments)
+        notification,
+    required TResult Function(bool force) close,
   }) {
-    return request(requestId, method, args);
+    return request(requestId, method, arguments);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int requestId, String method, List<dynamic> args)?
+    TResult? Function(int requestId, String method, List<dynamic> arguments)?
         request,
     TResult? Function(int requestId, Object? error, Object? result)? response,
-    TResult? Function(String method, List<dynamic> args)? notification,
+    TResult? Function(String method, List<dynamic> arguments)? notification,
+    TResult? Function(bool force)? close,
   }) {
-    return request?.call(requestId, method, args);
+    return request?.call(requestId, method, arguments);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int requestId, String method, List<dynamic> args)? request,
+    TResult Function(int requestId, String method, List<dynamic> arguments)?
+        request,
     TResult Function(int requestId, Object? error, Object? result)? response,
-    TResult Function(String method, List<dynamic> args)? notification,
+    TResult Function(String method, List<dynamic> arguments)? notification,
+    TResult Function(bool force)? close,
     required TResult orElse(),
   }) {
     if (request != null) {
-      return request(requestId, method, args);
+      return request(requestId, method, arguments);
     }
     return orElse();
   }
@@ -216,6 +232,7 @@ class _$IsolateMessageRequest extends IsolateMessageRequest {
     required TResult Function(IsolateMessageRequest value) request,
     required TResult Function(IsolateMessageResponse value) response,
     required TResult Function(IsolateMessageNotification value) notification,
+    required TResult Function(IsolateMessageClose value) close,
   }) {
     return request(this);
   }
@@ -226,6 +243,7 @@ class _$IsolateMessageRequest extends IsolateMessageRequest {
     TResult? Function(IsolateMessageRequest value)? request,
     TResult? Function(IsolateMessageResponse value)? response,
     TResult? Function(IsolateMessageNotification value)? notification,
+    TResult? Function(IsolateMessageClose value)? close,
   }) {
     return request?.call(this);
   }
@@ -236,6 +254,7 @@ class _$IsolateMessageRequest extends IsolateMessageRequest {
     TResult Function(IsolateMessageRequest value)? request,
     TResult Function(IsolateMessageResponse value)? response,
     TResult Function(IsolateMessageNotification value)? notification,
+    TResult Function(IsolateMessageClose value)? close,
     required TResult orElse(),
   }) {
     if (request != null) {
@@ -249,12 +268,12 @@ abstract class IsolateMessageRequest extends IsolateMessage {
   const factory IsolateMessageRequest(
       {required final int requestId,
       required final String method,
-      required final List<dynamic> args}) = _$IsolateMessageRequest;
+      required final List<dynamic> arguments}) = _$IsolateMessageRequest;
   const IsolateMessageRequest._() : super._();
 
   int get requestId;
   String get method;
-  List<dynamic> get args;
+  List<dynamic> get arguments;
   @JsonKey(ignore: true)
   _$$IsolateMessageRequestCopyWith<_$IsolateMessageRequest> get copyWith =>
       throw _privateConstructorUsedError;
@@ -342,11 +361,14 @@ class _$IsolateMessageResponse extends IsolateMessageResponse {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int requestId, String method, List<dynamic> args)
+    required TResult Function(
+            int requestId, String method, List<dynamic> arguments)
         request,
     required TResult Function(int requestId, Object? error, Object? result)
         response,
-    required TResult Function(String method, List<dynamic> args) notification,
+    required TResult Function(String method, List<dynamic> arguments)
+        notification,
+    required TResult Function(bool force) close,
   }) {
     return response(requestId, error, result);
   }
@@ -354,10 +376,11 @@ class _$IsolateMessageResponse extends IsolateMessageResponse {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int requestId, String method, List<dynamic> args)?
+    TResult? Function(int requestId, String method, List<dynamic> arguments)?
         request,
     TResult? Function(int requestId, Object? error, Object? result)? response,
-    TResult? Function(String method, List<dynamic> args)? notification,
+    TResult? Function(String method, List<dynamic> arguments)? notification,
+    TResult? Function(bool force)? close,
   }) {
     return response?.call(requestId, error, result);
   }
@@ -365,9 +388,11 @@ class _$IsolateMessageResponse extends IsolateMessageResponse {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int requestId, String method, List<dynamic> args)? request,
+    TResult Function(int requestId, String method, List<dynamic> arguments)?
+        request,
     TResult Function(int requestId, Object? error, Object? result)? response,
-    TResult Function(String method, List<dynamic> args)? notification,
+    TResult Function(String method, List<dynamic> arguments)? notification,
+    TResult Function(bool force)? close,
     required TResult orElse(),
   }) {
     if (response != null) {
@@ -382,6 +407,7 @@ class _$IsolateMessageResponse extends IsolateMessageResponse {
     required TResult Function(IsolateMessageRequest value) request,
     required TResult Function(IsolateMessageResponse value) response,
     required TResult Function(IsolateMessageNotification value) notification,
+    required TResult Function(IsolateMessageClose value) close,
   }) {
     return response(this);
   }
@@ -392,6 +418,7 @@ class _$IsolateMessageResponse extends IsolateMessageResponse {
     TResult? Function(IsolateMessageRequest value)? request,
     TResult? Function(IsolateMessageResponse value)? response,
     TResult? Function(IsolateMessageNotification value)? notification,
+    TResult? Function(IsolateMessageClose value)? close,
   }) {
     return response?.call(this);
   }
@@ -402,6 +429,7 @@ class _$IsolateMessageResponse extends IsolateMessageResponse {
     TResult Function(IsolateMessageRequest value)? request,
     TResult Function(IsolateMessageResponse value)? response,
     TResult Function(IsolateMessageNotification value)? notification,
+    TResult Function(IsolateMessageClose value)? close,
     required TResult orElse(),
   }) {
     if (response != null) {
@@ -433,7 +461,7 @@ abstract class _$$IsolateMessageNotificationCopyWith<$Res> {
           $Res Function(_$IsolateMessageNotification) then) =
       __$$IsolateMessageNotificationCopyWithImpl<$Res>;
   @useResult
-  $Res call({String method, List<dynamic> args});
+  $Res call({String method, List<dynamic> arguments});
 }
 
 /// @nodoc
@@ -449,16 +477,16 @@ class __$$IsolateMessageNotificationCopyWithImpl<$Res>
   @override
   $Res call({
     Object? method = null,
-    Object? args = null,
+    Object? arguments = null,
   }) {
     return _then(_$IsolateMessageNotification(
       method: null == method
           ? _value.method
           : method // ignore: cast_nullable_to_non_nullable
               as String,
-      args: null == args
-          ? _value._args
-          : args // ignore: cast_nullable_to_non_nullable
+      arguments: null == arguments
+          ? _value._arguments
+          : arguments // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
     ));
   }
@@ -468,23 +496,23 @@ class __$$IsolateMessageNotificationCopyWithImpl<$Res>
 
 class _$IsolateMessageNotification extends IsolateMessageNotification {
   const _$IsolateMessageNotification(
-      {required this.method, required final List<dynamic> args})
-      : _args = args,
+      {required this.method, required final List<dynamic> arguments})
+      : _arguments = arguments,
         super._();
 
   @override
   final String method;
-  final List<dynamic> _args;
+  final List<dynamic> _arguments;
   @override
-  List<dynamic> get args {
-    if (_args is EqualUnmodifiableListView) return _args;
+  List<dynamic> get arguments {
+    if (_arguments is EqualUnmodifiableListView) return _arguments;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_args);
+    return EqualUnmodifiableListView(_arguments);
   }
 
   @override
   String toString() {
-    return 'IsolateMessage.notification(method: $method, args: $args)';
+    return 'IsolateMessage.notification(method: $method, arguments: $arguments)';
   }
 
   @override
@@ -493,12 +521,13 @@ class _$IsolateMessageNotification extends IsolateMessageNotification {
         (other.runtimeType == runtimeType &&
             other is _$IsolateMessageNotification &&
             (identical(other.method, method) || other.method == method) &&
-            const DeepCollectionEquality().equals(other._args, _args));
+            const DeepCollectionEquality()
+                .equals(other._arguments, _arguments));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, method, const DeepCollectionEquality().hash(_args));
+      runtimeType, method, const DeepCollectionEquality().hash(_arguments));
 
   @JsonKey(ignore: true)
   @override
@@ -510,36 +539,42 @@ class _$IsolateMessageNotification extends IsolateMessageNotification {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int requestId, String method, List<dynamic> args)
+    required TResult Function(
+            int requestId, String method, List<dynamic> arguments)
         request,
     required TResult Function(int requestId, Object? error, Object? result)
         response,
-    required TResult Function(String method, List<dynamic> args) notification,
+    required TResult Function(String method, List<dynamic> arguments)
+        notification,
+    required TResult Function(bool force) close,
   }) {
-    return notification(method, args);
+    return notification(method, arguments);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int requestId, String method, List<dynamic> args)?
+    TResult? Function(int requestId, String method, List<dynamic> arguments)?
         request,
     TResult? Function(int requestId, Object? error, Object? result)? response,
-    TResult? Function(String method, List<dynamic> args)? notification,
+    TResult? Function(String method, List<dynamic> arguments)? notification,
+    TResult? Function(bool force)? close,
   }) {
-    return notification?.call(method, args);
+    return notification?.call(method, arguments);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int requestId, String method, List<dynamic> args)? request,
+    TResult Function(int requestId, String method, List<dynamic> arguments)?
+        request,
     TResult Function(int requestId, Object? error, Object? result)? response,
-    TResult Function(String method, List<dynamic> args)? notification,
+    TResult Function(String method, List<dynamic> arguments)? notification,
+    TResult Function(bool force)? close,
     required TResult orElse(),
   }) {
     if (notification != null) {
-      return notification(method, args);
+      return notification(method, arguments);
     }
     return orElse();
   }
@@ -550,6 +585,7 @@ class _$IsolateMessageNotification extends IsolateMessageNotification {
     required TResult Function(IsolateMessageRequest value) request,
     required TResult Function(IsolateMessageResponse value) response,
     required TResult Function(IsolateMessageNotification value) notification,
+    required TResult Function(IsolateMessageClose value) close,
   }) {
     return notification(this);
   }
@@ -560,6 +596,7 @@ class _$IsolateMessageNotification extends IsolateMessageNotification {
     TResult? Function(IsolateMessageRequest value)? request,
     TResult? Function(IsolateMessageResponse value)? response,
     TResult? Function(IsolateMessageNotification value)? notification,
+    TResult? Function(IsolateMessageClose value)? close,
   }) {
     return notification?.call(this);
   }
@@ -570,6 +607,7 @@ class _$IsolateMessageNotification extends IsolateMessageNotification {
     TResult Function(IsolateMessageRequest value)? request,
     TResult Function(IsolateMessageResponse value)? response,
     TResult Function(IsolateMessageNotification value)? notification,
+    TResult Function(IsolateMessageClose value)? close,
     required TResult orElse(),
   }) {
     if (notification != null) {
@@ -582,12 +620,166 @@ class _$IsolateMessageNotification extends IsolateMessageNotification {
 abstract class IsolateMessageNotification extends IsolateMessage {
   const factory IsolateMessageNotification(
       {required final String method,
-      required final List<dynamic> args}) = _$IsolateMessageNotification;
+      required final List<dynamic> arguments}) = _$IsolateMessageNotification;
   const IsolateMessageNotification._() : super._();
 
   String get method;
-  List<dynamic> get args;
+  List<dynamic> get arguments;
   @JsonKey(ignore: true)
   _$$IsolateMessageNotificationCopyWith<_$IsolateMessageNotification>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$IsolateMessageCloseCopyWith<$Res> {
+  factory _$$IsolateMessageCloseCopyWith(_$IsolateMessageClose value,
+          $Res Function(_$IsolateMessageClose) then) =
+      __$$IsolateMessageCloseCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool force});
+}
+
+/// @nodoc
+class __$$IsolateMessageCloseCopyWithImpl<$Res>
+    extends _$IsolateMessageCopyWithImpl<$Res, _$IsolateMessageClose>
+    implements _$$IsolateMessageCloseCopyWith<$Res> {
+  __$$IsolateMessageCloseCopyWithImpl(
+      _$IsolateMessageClose _value, $Res Function(_$IsolateMessageClose) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? force = null,
+  }) {
+    return _then(_$IsolateMessageClose(
+      force: null == force
+          ? _value.force
+          : force // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$IsolateMessageClose extends IsolateMessageClose {
+  const _$IsolateMessageClose({required this.force}) : super._();
+
+  @override
+  final bool force;
+
+  @override
+  String toString() {
+    return 'IsolateMessage.close(force: $force)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$IsolateMessageClose &&
+            (identical(other.force, force) || other.force == force));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, force);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$IsolateMessageCloseCopyWith<_$IsolateMessageClose> get copyWith =>
+      __$$IsolateMessageCloseCopyWithImpl<_$IsolateMessageClose>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            int requestId, String method, List<dynamic> arguments)
+        request,
+    required TResult Function(int requestId, Object? error, Object? result)
+        response,
+    required TResult Function(String method, List<dynamic> arguments)
+        notification,
+    required TResult Function(bool force) close,
+  }) {
+    return close(force);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int requestId, String method, List<dynamic> arguments)?
+        request,
+    TResult? Function(int requestId, Object? error, Object? result)? response,
+    TResult? Function(String method, List<dynamic> arguments)? notification,
+    TResult? Function(bool force)? close,
+  }) {
+    return close?.call(force);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int requestId, String method, List<dynamic> arguments)?
+        request,
+    TResult Function(int requestId, Object? error, Object? result)? response,
+    TResult Function(String method, List<dynamic> arguments)? notification,
+    TResult Function(bool force)? close,
+    required TResult orElse(),
+  }) {
+    if (close != null) {
+      return close(force);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(IsolateMessageRequest value) request,
+    required TResult Function(IsolateMessageResponse value) response,
+    required TResult Function(IsolateMessageNotification value) notification,
+    required TResult Function(IsolateMessageClose value) close,
+  }) {
+    return close(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(IsolateMessageRequest value)? request,
+    TResult? Function(IsolateMessageResponse value)? response,
+    TResult? Function(IsolateMessageNotification value)? notification,
+    TResult? Function(IsolateMessageClose value)? close,
+  }) {
+    return close?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(IsolateMessageRequest value)? request,
+    TResult Function(IsolateMessageResponse value)? response,
+    TResult Function(IsolateMessageNotification value)? notification,
+    TResult Function(IsolateMessageClose value)? close,
+    required TResult orElse(),
+  }) {
+    if (close != null) {
+      return close(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class IsolateMessageClose extends IsolateMessage {
+  const factory IsolateMessageClose({required final bool force}) =
+      _$IsolateMessageClose;
+  const IsolateMessageClose._() : super._();
+
+  bool get force;
+  @JsonKey(ignore: true)
+  _$$IsolateMessageCloseCopyWith<_$IsolateMessageClose> get copyWith =>
+      throw _privateConstructorUsedError;
 }
