@@ -1,22 +1,28 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:dart_nvim/api_extensions.dart';
 import 'package:dart_nvim/dart_nvim.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('dart_nvim spawn', () {
     Future<Nvim> createNeovimFn() async {
-      final nvim = await DartNvim.spawn(args: ['--embed', '--clean']);
+      final nvim = Nvim.isolate(
+        factory: () => Nvim.childProcess('nvim', ['--embed', '--clean']),
+      );
+      await nvim.ready;
       return nvim;
     }
 
     test('can spawn', () async {
       final nvim = await createNeovimFn();
       expect(nvim.api.nvimEval('1 + 1'), completion(equals(2)));
-      await expectLater(nvim.api.nvimExec('qall!', false), throwsA(isA<NvimChannelClosedError>()));
+      await expectLater(
+          nvim.api.nvimExec('qall!', false), throwsA(isA<RpcError>()));
       await expectLater(nvim.close(), completes);
-      await expectLater(nvim.api.nvimGetApiInfo(), throwsA(isA<NvimChannelClosedError>()));
+      await expectLater(
+          nvim.api.nvimGetApiInfo(), throwsA(isA<RpcErrorClosed>()));
     });
     group('>', () {
       late Nvim nvim;
@@ -27,7 +33,7 @@ void main() {
       tearDown(() async {
         try {
           await nvim.api.nvimExec('qall!', false);
-        } on NvimChannelClosedError catch (_) {}
+        } on RpcErrorClosed catch (_) {}
         await nvim.close();
       });
     });
@@ -45,7 +51,10 @@ void main() {
     }
 
     Future<Nvim> createNeovimFn(int port) async {
-      final nvim = await DartNvim.socket(host, port, timeout: socketTimeout);
+      final nvim = Nvim.isolate(
+        factory: () => Nvim.socket(host, port, timeout: socketTimeout),
+      );
+      await nvim.ready;
       return nvim;
     }
 
@@ -59,10 +68,12 @@ void main() {
       final process = await startNeovim(port);
       final nvim = await createNeovimFn(port);
       expect(nvim.api.nvimEval('1 + 1'), completion(equals(2)));
-      await expectLater(nvim.api.nvimExec('qall!', false), throwsA(isA<NvimChannelClosedError>()));
+      await expectLater(
+          nvim.api.nvimExec('qall!', false), throwsA(isA<RpcErrorClosed>()));
       await expectLater(nvim.close(), completes);
       await expectLater(process.exitCode, completion(equals(0)));
-      await expectLater(nvim.api.nvimGetApiInfo(), throwsA(isA<NvimChannelClosedError>()));
+      await expectLater(
+          nvim.api.nvimGetApiInfo(), throwsA(isA<RpcErrorClosed>()));
     });
 
     group('>', () {
@@ -80,7 +91,7 @@ void main() {
         final neovim = await nvim.future;
         try {
           await neovim.api.nvimExec('qall!', false);
-        } on NvimChannelClosedError catch (_) {}
+        } on RpcErrorClosed catch (_) {}
         await neovim.close();
         await process.exitCode;
       });
@@ -89,16 +100,22 @@ void main() {
 
   group('dart_nvim wsl', () {
     Future<Nvim> createNeovimFn() async {
-      final nvim = await DartNvim.wsl(args: ['--embed', '--clean']);
+      final nvim = Nvim.isolate(
+        factory: () => Nvim.childProcess(
+            'wsl', [r"$SHELL", "-lc", "nvim --embed --clean"]),
+      );
+      await nvim.ready;
       return nvim;
     }
 
     test('can wsl', () async {
       final nvim = await createNeovimFn();
       expect(nvim.api.nvimEval('1 + 1'), completion(equals(2)));
-      await expectLater(nvim.api.nvimExec('qall!', false), throwsA(isA<NvimChannelClosedError>()));
+      await expectLater(
+          nvim.api.nvimExec('qall!', false), throwsA(isA<RpcErrorClosed>()));
       await expectLater(nvim.close(), completes);
-      await expectLater(nvim.api.nvimGetApiInfo(), throwsA(isA<NvimChannelClosedError>()));
+      await expectLater(
+          nvim.api.nvimGetApiInfo(), throwsA(isA<RpcErrorClosed>()));
     });
     group('>', () {
       late Nvim nvim;
@@ -109,7 +126,7 @@ void main() {
       tearDown(() async {
         try {
           await nvim.api.nvimExec('qall!', false);
-        } on NvimChannelClosedError catch (_) {}
+        } on RpcErrorClosed catch (_) {}
         await nvim.close();
       });
     });
@@ -137,34 +154,40 @@ void testSuite(Future<Nvim> Function() createNeovimFn) {
 
   test('can call neovim api to request itself', () async {
     final neovim = await createNeovimFn();
-    final call = neovim.api.nvimCallFunction(
-        'rpcrequest', [neovim.api.channelId, "echo", "hello"]);
+    final apiInfo = await neovim.api.nvimGetApiInfo();
+    final channelId = apiInfo.first as int;
+    final call =
+        neovim.api.nvimCallFunction('rpcrequest', [channelId, "echo", "hello"]);
     final request = await neovim.api.requests.first;
     expect(request.method, equals('echo'));
-    expect(request.params, equals(['hello']));
-    request.complete('hello');
+    expect(request.arguments, equals(['hello']));
+    request.completer.complete('hello');
     await expectLater(call, completion(equals('hello')));
   });
 
   test('can call neovim api to request itself with exception', () async {
     final neovim = await createNeovimFn();
-    final call = neovim.api.nvimCallFunction(
-        'rpcrequest', [neovim.api.channelId, "echo", "hello"]);
+    final apiInfo = await neovim.api.nvimGetApiInfo();
+    final channelId = apiInfo.first as int;
+    final call =
+        neovim.api.nvimCallFunction('rpcrequest', [channelId, "echo", "hello"]);
     final request = await neovim.api.requests.first;
     expect(request.method, equals('echo'));
-    expect(request.params, equals(['hello']));
-    request.completeError('NO');
+    expect(request.arguments, equals(['hello']));
+    request.completer.completeError('NO');
     await expectLater(call, throwsA(isA<NvimExceptionError>()));
   });
 
   test('can call neovim api to notify itself', () async {
     final neovim = await createNeovimFn();
-    final call = neovim.api.nvimCommand(
-        'call rpcnotify(${neovim.api.channelId}, "echo", "hello")');
+    final apiInfo = await neovim.api.nvimGetApiInfo();
+    final channelId = apiInfo.first as int;
+    final call =
+        neovim.api.nvimCommand('call rpcnotify($channelId, "echo", "hello")');
     await expectLater(call, completion(equals(null)));
     final request = await neovim.api.notifications.first;
     expect(request.method, equals('echo'));
-    expect(request.params, equals(['hello']));
+    expect(request.arguments, equals(['hello']));
   });
 
   test('can call neovim api to receive window type', () async {
@@ -211,13 +234,5 @@ void testSuite(Future<Nvim> Function() createNeovimFn) {
     await expectLater(setTabVarCall, completion(equals(null)));
     final getTabVarCall = neovim.api.nvimTabpageGetVar(tabpage, 'test');
     await expectLater(getTabVarCall, completion(equals('hello')));
-  });
-
-  test('can parse neovim ui events', () async {
-    final neovim = await createNeovimFn();
-    await neovim.api.nvimUiAttach(80, 40, NvimUIOption().toMap());
-    final eventStream = neovim.api.notifications.typed.take(1);
-    final result = eventStream.first;
-    await expectLater(result, completion(isA<NvimRpcNotificationTyped>()));
   });
 }

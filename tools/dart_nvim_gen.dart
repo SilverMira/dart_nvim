@@ -254,7 +254,8 @@ Future<void> _generateFunctions(
   final apiFunctionsTemplate = ApiFunctionsTemplate(apiFunctions);
 
   final library = Library((b) => b
-    ..body.add(Directive.partOf(ApiFunctionsTemplate.classRef.url!))
+    ..body.add(Directive.import(ApiFunctionsTemplate.classRef.url!))
+    ..body.add(Directive.import(ApiFunctionsTemplate.extClassRef.url!))
     ..body.add(apiFunctionsTemplate.spec));
   final emitter = DartEmitter();
   final code = library.accept(emitter).toString();

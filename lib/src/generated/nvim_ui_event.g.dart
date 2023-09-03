@@ -5626,6 +5626,7 @@ class NvimUIEvent$GridLine extends NvimUIEvent {
     required this.row,
     required this.colStart,
     required this.data,
+    required this.wrap,
   });
 
   @override
@@ -5641,6 +5642,8 @@ class NvimUIEvent$GridLine extends NvimUIEvent {
   int colStart;
 
   List data;
+
+  bool wrap;
 
   @override
   R when<R>({
@@ -11499,6 +11502,7 @@ NvimUIEvent _parseUIEvent(
         row: eventArgs[1],
         colStart: eventArgs[2],
         data: eventArgs[3],
+        wrap: eventArgs[4],
       );
     case r"grid_scroll":
       return NvimUIEvent$GridScroll(

@@ -36,6 +36,7 @@ base class IsolateNvim<TNvim extends Nvim> implements Nvim {
       onExit: exitPort.sendPort,
     );
     isolateExited = exitPort.first;
+    isolateExited.then((_) => close(false, true));
 
     setup() async {
       final setupPortIterator = StreamIterator(setupPort);
@@ -65,15 +66,21 @@ base class IsolateNvim<TNvim extends Nvim> implements Nvim {
   late final Api api;
 
   @override
-  FutureOr<void> close([bool force = false]) async {
+  FutureOr<void> close([bool force = false, bool skipSignal = false]) async {
+    if (_closed.isCompleted) return;
     await ready;
-    sendPort.send(IsolateMessageClose(force: force));
+    if (!skipSignal) sendPort.send(IsolateMessageClose(force: force));
     await isolateExited;
     receivePort.close();
+    if (!_closed.isCompleted) _closed.complete();
   }
 
   @override
   late final Future<void> ready;
+
+  final _closed = Completer<void>();
+  @override
+  Future<void> get closed => _closed.future;
 }
 
 base class IsolateNvimRunner {
@@ -112,6 +119,8 @@ base class IsolateNvimRunner {
     // Send ready message
     args.setupSendPort.send(null);
     final streamIterator = StreamIterator(receivePort);
+    // Exit when nvim is closed
+    nvim.closed.then((_) => streamIterator.cancel());
     while (await streamIterator.moveNext()) {
       final message = streamIterator.current;
       switch (message) {

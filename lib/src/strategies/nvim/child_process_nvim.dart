@@ -10,6 +10,9 @@ base class ChildProcessNvim implements Nvim {
   late final StreamApi api;
   @override
   late final Future<void> ready;
+  late final Completer<void> _closed = Completer();
+  @override
+  Future<void> get closed => _closed.future;
 
   ChildProcessNvim(
     String executable,
@@ -32,6 +35,7 @@ base class ChildProcessNvim implements Nvim {
       this.process = process;
       api = StreamApi(tx: process.stdin, rx: process.stdout);
       ready.complete();
+      process.exitCode.then((_) => close());
     }).onError<Object>((error, stackTrace) {
       ready.completeError(error, stackTrace);
     });
@@ -39,8 +43,10 @@ base class ChildProcessNvim implements Nvim {
 
   @override
   Future<void> close([bool force = false]) async {
+    if (_closed.isCompleted) return;
     await ready;
     process.kill(force ? ProcessSignal.sigkill : ProcessSignal.sigint);
     await process.exitCode;
+    if (!_closed.isCompleted) _closed.complete();
   }
 }

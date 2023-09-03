@@ -87,8 +87,13 @@ class ApiFunctionsTemplate extends CodeTemplate {
   final Iterable<ApiFunctionTemplate> apiFunctions;
 
   static Reference classRef = refer(
-    'NvimBridge',
-    'package:dart_nvim/src/bridge/nvim_bridge.dart',
+    'Api',
+    'package:dart_nvim/src/base/api.dart',
+  );
+
+  static Reference extClassRef = refer(
+    'NvimExt',
+    'package:dart_nvim/src/types/nvim_ext.dart',
   );
 
   ApiFunctionsTemplate(this.apiFunctions);

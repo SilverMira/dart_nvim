@@ -1,6 +1,7 @@
-part of 'package:dart_nvim/src/bridge/nvim_bridge.dart';
+import 'package:dart_nvim/src/base/api.dart';
+import 'package:dart_nvim/src/types/nvim_ext.dart';
 
-extension NvimApiFunctions on NvimBridge {
+extension NvimApiFunctions on Api {
   /// Generated from `nvim_get_autocmds`
   ///
   /// Since API level: `9`
@@ -905,6 +906,31 @@ extension NvimApiFunctions on NvimBridge {
     );
   }
 
+  /// Generated from `nvim_exec`
+  ///
+  /// Since API level: `7`
+  /// Deprecated since API level: `11`
+  ///
+  /// Parameters:
+  /// - `src`: `String`
+  /// - `output`: `Boolean`
+  ///
+  /// Returns: `String`
+  @Deprecated('Deprecated since API level: `11`')
+  Future<String> nvimExec(
+    String src,
+    bool output,
+  ) async {
+    final $$args = [
+      src,
+      output,
+    ];
+    return await call(
+      'nvim_exec',
+      $$args,
+    );
+  }
+
   /// Generated from `nvim_command_output`
   ///
   /// Since API level: `1`
@@ -1460,6 +1486,159 @@ extension NvimApiFunctions on NvimBridge {
     );
   }
 
+  /// Generated from `nvim_get_option_info`
+  ///
+  /// Since API level: `7`
+  ///
+  /// Parameters:
+  /// - `name`: `String`
+  ///
+  /// Returns: `Dictionary`
+  Future<Map> nvimGetOptionInfo(String name) async {
+    final $$args = [name];
+    return await call(
+      'nvim_get_option_info',
+      $$args,
+    );
+  }
+
+  /// Generated from `nvim_set_option`
+  ///
+  /// Since API level: `1`
+  ///
+  /// Parameters:
+  /// - `name`: `String`
+  /// - `value`: `Object`
+  ///
+  /// Returns: `void`
+  Future<void> nvimSetOption(
+    String name,
+    Object value,
+  ) async {
+    final $$args = [
+      name,
+      value,
+    ];
+    return await call(
+      'nvim_set_option',
+      $$args,
+    );
+  }
+
+  /// Generated from `nvim_get_option`
+  ///
+  /// Since API level: `1`
+  ///
+  /// Parameters:
+  /// - `name`: `String`
+  ///
+  /// Returns: `Object`
+  Future<Object> nvimGetOption(String name) async {
+    final $$args = [name];
+    return await call(
+      'nvim_get_option',
+      $$args,
+    );
+  }
+
+  /// Generated from `nvim_buf_get_option`
+  ///
+  /// Since API level: `1`
+  ///
+  /// Parameters:
+  /// - `buffer`: `Buffer`
+  /// - `name`: `String`
+  ///
+  /// Returns: `Object`
+  Future<Object> nvimBufGetOption(
+    NvimExt$Buffer buffer,
+    String name,
+  ) async {
+    final $$args = [
+      buffer,
+      name,
+    ];
+    return await call(
+      'nvim_buf_get_option',
+      $$args,
+    );
+  }
+
+  /// Generated from `nvim_buf_set_option`
+  ///
+  /// Since API level: `1`
+  ///
+  /// Parameters:
+  /// - `buffer`: `Buffer`
+  /// - `name`: `String`
+  /// - `value`: `Object`
+  ///
+  /// Returns: `void`
+  Future<void> nvimBufSetOption(
+    NvimExt$Buffer buffer,
+    String name,
+    Object value,
+  ) async {
+    final $$args = [
+      buffer,
+      name,
+      value,
+    ];
+    return await call(
+      'nvim_buf_set_option',
+      $$args,
+    );
+  }
+
+  /// Generated from `nvim_win_get_option`
+  ///
+  /// Since API level: `1`
+  ///
+  /// Parameters:
+  /// - `window`: `Window`
+  /// - `name`: `String`
+  ///
+  /// Returns: `Object`
+  Future<Object> nvimWinGetOption(
+    NvimExt$Window window,
+    String name,
+  ) async {
+    final $$args = [
+      window,
+      name,
+    ];
+    return await call(
+      'nvim_win_get_option',
+      $$args,
+    );
+  }
+
+  /// Generated from `nvim_win_set_option`
+  ///
+  /// Since API level: `1`
+  ///
+  /// Parameters:
+  /// - `window`: `Window`
+  /// - `name`: `String`
+  /// - `value`: `Object`
+  ///
+  /// Returns: `void`
+  Future<void> nvimWinSetOption(
+    NvimExt$Window window,
+    String name,
+    Object value,
+  ) async {
+    final $$args = [
+      window,
+      name,
+      value,
+    ];
+    return await call(
+      'nvim_win_set_option',
+      $$args,
+    );
+  }
+
   /// Generated from `nvim_create_namespace`
   ///
   /// Since API level: `5`
@@ -1759,155 +1938,25 @@ extension NvimApiFunctions on NvimBridge {
     );
   }
 
-  /// Generated from `nvim_get_option_info`
+  /// Generated from `nvim_get_option_info2`
   ///
-  /// Since API level: `7`
+  /// Since API level: `11`
   ///
   /// Parameters:
   /// - `name`: `String`
+  /// - `opts`: `Dictionary`
   ///
   /// Returns: `Dictionary`
-  Future<Map> nvimGetOptionInfo(String name) async {
-    final $$args = [name];
-    return await call(
-      'nvim_get_option_info',
-      $$args,
-    );
-  }
-
-  /// Generated from `nvim_set_option`
-  ///
-  /// Since API level: `1`
-  ///
-  /// Parameters:
-  /// - `name`: `String`
-  /// - `value`: `Object`
-  ///
-  /// Returns: `void`
-  Future<void> nvimSetOption(
+  Future<Map> nvimGetOptionInfo2(
     String name,
-    Object value,
+    Map opts,
   ) async {
     final $$args = [
       name,
-      value,
+      opts,
     ];
     return await call(
-      'nvim_set_option',
-      $$args,
-    );
-  }
-
-  /// Generated from `nvim_get_option`
-  ///
-  /// Since API level: `1`
-  ///
-  /// Parameters:
-  /// - `name`: `String`
-  ///
-  /// Returns: `Object`
-  Future<Object> nvimGetOption(String name) async {
-    final $$args = [name];
-    return await call(
-      'nvim_get_option',
-      $$args,
-    );
-  }
-
-  /// Generated from `nvim_buf_get_option`
-  ///
-  /// Since API level: `1`
-  ///
-  /// Parameters:
-  /// - `buffer`: `Buffer`
-  /// - `name`: `String`
-  ///
-  /// Returns: `Object`
-  Future<Object> nvimBufGetOption(
-    NvimExt$Buffer buffer,
-    String name,
-  ) async {
-    final $$args = [
-      buffer,
-      name,
-    ];
-    return await call(
-      'nvim_buf_get_option',
-      $$args,
-    );
-  }
-
-  /// Generated from `nvim_buf_set_option`
-  ///
-  /// Since API level: `1`
-  ///
-  /// Parameters:
-  /// - `buffer`: `Buffer`
-  /// - `name`: `String`
-  /// - `value`: `Object`
-  ///
-  /// Returns: `void`
-  Future<void> nvimBufSetOption(
-    NvimExt$Buffer buffer,
-    String name,
-    Object value,
-  ) async {
-    final $$args = [
-      buffer,
-      name,
-      value,
-    ];
-    return await call(
-      'nvim_buf_set_option',
-      $$args,
-    );
-  }
-
-  /// Generated from `nvim_win_get_option`
-  ///
-  /// Since API level: `1`
-  ///
-  /// Parameters:
-  /// - `window`: `Window`
-  /// - `name`: `String`
-  ///
-  /// Returns: `Object`
-  Future<Object> nvimWinGetOption(
-    NvimExt$Window window,
-    String name,
-  ) async {
-    final $$args = [
-      window,
-      name,
-    ];
-    return await call(
-      'nvim_win_get_option',
-      $$args,
-    );
-  }
-
-  /// Generated from `nvim_win_set_option`
-  ///
-  /// Since API level: `1`
-  ///
-  /// Parameters:
-  /// - `window`: `Window`
-  /// - `name`: `String`
-  /// - `value`: `Object`
-  ///
-  /// Returns: `void`
-  Future<void> nvimWinSetOption(
-    NvimExt$Window window,
-    String name,
-    Object value,
-  ) async {
-    final $$args = [
-      window,
-      name,
-      value,
-    ];
-    return await call(
-      'nvim_win_set_option',
+      'nvim_get_option_info2',
       $$args,
     );
   }
@@ -3444,25 +3493,25 @@ extension NvimApiFunctions on NvimBridge {
     );
   }
 
-  /// Generated from `nvim_exec`
+  /// Generated from `nvim_exec2`
   ///
-  /// Since API level: `7`
+  /// Since API level: `11`
   ///
   /// Parameters:
   /// - `src`: `String`
-  /// - `output`: `Boolean`
+  /// - `opts`: `Dictionary`
   ///
-  /// Returns: `String`
-  Future<String> nvimExec(
+  /// Returns: `Dictionary`
+  Future<Map> nvimExec2(
     String src,
-    bool output,
+    Map opts,
   ) async {
     final $$args = [
       src,
-      output,
+      opts,
     ];
     return await call(
-      'nvim_exec',
+      'nvim_exec2',
       $$args,
     );
   }
@@ -4016,6 +4065,29 @@ extension NvimApiFunctions on NvimBridge {
     );
   }
 
+  /// Generated from `nvim_win_text_height`
+  ///
+  /// Since API level: `12`
+  ///
+  /// Parameters:
+  /// - `window`: `Window`
+  /// - `opts`: `Dictionary`
+  ///
+  /// Returns: `Dictionary`
+  Future<Map> nvimWinTextHeight(
+    NvimExt$Window window,
+    Map opts,
+  ) async {
+    final $$args = [
+      window,
+      opts,
+    ];
+    return await call(
+      'nvim_win_text_height',
+      $$args,
+    );
+  }
+
   /// Generated from `buffer_line_count`
   ///
   /// Since API level: `0`
@@ -4277,43 +4349,6 @@ extension NvimApiFunctions on NvimBridge {
     );
   }
 
-  /// Generated from `buffer_add_highlight`
-  ///
-  /// Since API level: `0`
-  /// Deprecated since API level: `1`
-  ///
-  /// Parameters:
-  /// - `buffer`: `Buffer`
-  /// - `ns_id`: `Integer`
-  /// - `hl_group`: `String`
-  /// - `line`: `Integer`
-  /// - `col_start`: `Integer`
-  /// - `col_end`: `Integer`
-  ///
-  /// Returns: `Integer`
-  @Deprecated('Deprecated since API level: `1`')
-  Future<int> bufferAddHighlight(
-    NvimExt$Buffer buffer,
-    int nsId,
-    String hlGroup,
-    int line,
-    int colStart,
-    int colEnd,
-  ) async {
-    final $$args = [
-      buffer,
-      nsId,
-      hlGroup,
-      line,
-      colStart,
-      colEnd,
-    ];
-    return await call(
-      'buffer_add_highlight',
-      $$args,
-    );
-  }
-
   /// Generated from `vim_set_option`
   ///
   /// Since API level: `0`
@@ -4459,6 +4494,43 @@ extension NvimApiFunctions on NvimBridge {
     ];
     return await call(
       'window_set_option',
+      $$args,
+    );
+  }
+
+  /// Generated from `buffer_add_highlight`
+  ///
+  /// Since API level: `0`
+  /// Deprecated since API level: `1`
+  ///
+  /// Parameters:
+  /// - `buffer`: `Buffer`
+  /// - `ns_id`: `Integer`
+  /// - `hl_group`: `String`
+  /// - `line`: `Integer`
+  /// - `col_start`: `Integer`
+  /// - `col_end`: `Integer`
+  ///
+  /// Returns: `Integer`
+  @Deprecated('Deprecated since API level: `1`')
+  Future<int> bufferAddHighlight(
+    NvimExt$Buffer buffer,
+    int nsId,
+    String hlGroup,
+    int line,
+    int colStart,
+    int colEnd,
+  ) async {
+    final $$args = [
+      buffer,
+      nsId,
+      hlGroup,
+      line,
+      colStart,
+      colEnd,
+    ];
+    return await call(
+      'buffer_add_highlight',
       $$args,
     );
   }

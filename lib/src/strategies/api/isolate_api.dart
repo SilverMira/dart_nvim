@@ -11,9 +11,16 @@ import 'package:dart_nvim/src/class/rpc_request.dart';
 base class IsolateApi implements Api {
   final SendPort sendPort;
   final ReceivePort receivePort;
+  bool _closed = false;
 
   IsolateApi({required this.sendPort, required this.receivePort}) {
-    receivePort.listen(onReceive);
+    receivePort.listen(onReceive, onDone: () {
+      _closed = true;
+      for (final completer in _requestQueue.values) {
+        completer.completeError(RpcError.closed());
+      }
+      _requestQueue.clear();
+    });
   }
 
   int _requestId = 0;
@@ -21,6 +28,7 @@ base class IsolateApi implements Api {
 
   @override
   Future call(String method, List args) async {
+    if (_closed) throw RpcError.closed();
     final requestId = _requestId++;
     final requestCompleter = Completer();
     final request = IsolateMessageRequest(

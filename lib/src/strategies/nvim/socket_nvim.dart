@@ -33,7 +33,13 @@ base class SocketNvim implements Nvim {
   }
 
   @override
-  void close([bool force = false]) {
+  Future<void> close([bool force = false]) async {
+    if (_closed.isCompleted) return;
     socket.destroy();
+    if (!_closed.isCompleted) _closed.complete();
   }
+
+  final _closed = Completer<void>();
+  @override
+  Future<void> get closed => _closed.future;
 }

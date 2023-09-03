@@ -1,7 +1,8 @@
 import 'dart:io';
 
-import 'package:dart_nvim/dart_nvim.dart';
+import 'package:dart_nvim/src/bridge/nvim_bridge.dart';
 import 'package:dart_nvim/src/bridge/nvim_bridge_stream.dart';
+import 'package:dart_nvim/src/nvim/nvim.dart';
 
 class NvimWsl implements Nvim {
   final String binary;
@@ -24,10 +25,8 @@ class NvimWsl implements Nvim {
   /// This method is called only once in [NvimWsl.create]
   Future<void> _initialize() async {
     _process = await Process.start(
-      "wsl",
-      [r"$SHELL", "-lc", "$binary ${args.join(' ')}".trim()],
-      runInShell: true
-    );
+        "wsl", [r"$SHELL", "-lc", "$binary ${args.join(' ')}".trim()],
+        runInShell: true);
     api = await NvimBridgeStream.create(
       read: _process.stdout,
       write: _process.stdin,
@@ -38,7 +37,8 @@ class NvimWsl implements Nvim {
     required String binary,
     required List<String> args,
   }) async {
-    if(!Platform.isWindows) throw UnsupportedError('WSL is only supported on Windows');
+    if (!Platform.isWindows)
+      throw UnsupportedError('WSL is only supported on Windows');
     final nvim = NvimWsl._(binary: binary, args: args);
     await nvim._initialize();
     return nvim;

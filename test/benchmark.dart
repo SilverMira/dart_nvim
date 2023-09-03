@@ -1,10 +1,9 @@
 import 'dart:async';
 
-import 'package:dart_nvim/src/base/nvim.dart';
-import 'package:dart_nvim/src/strategies/nvim/isolate_nvim.dart';
+import 'package:dart_nvim/dart_nvim.dart';
 
 void main() async {
-  final nvim = IsolateNvim(
+  final nvim = Nvim.isolate(
     factory: () => Nvim.childProcess('nvim', ['--embed', '--clean']),
   );
   await nvim.ready;

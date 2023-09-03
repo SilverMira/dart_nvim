@@ -11,4 +11,7 @@ class NvimError implements Exception {
 
   factory NvimError.parse(List rawError) =>
       _parseNvimError(rawError[0], rawError[1]);
+
+  factory NvimError.from(int id, String message) =>
+      _parseNvimError(id, message);
 }

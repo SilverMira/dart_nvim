@@ -64,12 +64,12 @@ abstract class DartNvim {
     List<String> args = const ['--embed'],
     bool isolate = true,
   }) async {
-    if(isolate) {
+    if (isolate) {
       return NvimIsolate.createWsl(
         binary: binary,
         args: args,
       );
-    } 
+    }
     return NvimWsl.create(
       binary: binary,
       args: args,
