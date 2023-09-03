@@ -152,7 +152,7 @@ base class IsolateNvimRunner {
 
   void forwardResponse(IsolateMessageResponse response) {
     final IsolateMessageResponse(:requestId, :result, :error) = response;
-    final completer = _requestCompleters[response.requestId];
+    final completer = _requestCompleters.remove(response.requestId);
     if (completer == null) {
       throw RpcError.requestNotFound(
         requestId: requestId,
