@@ -1,20 +1,21 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:dart_nvim/src/strategies/api/stream_api.dart';
-import 'package:dart_nvim/src/base/nvim.dart';
+import 'package:dart_nvim/src/strategies/nvim/stream_nvim.dart';
 
-base class ChildProcessNvim implements Nvim {
+base class ChildProcessNvim extends StreamNvim {
   late final Process process;
-  @override
-  late final StreamApi api;
-  @override
-  late final Future<void> ready;
-  late final Completer<void> _closed = Completer();
-  @override
-  Future<void> get closed => _closed.future;
 
-  ChildProcessNvim(
+  ChildProcessNvim._({required Future<Process> process})
+      : super(
+          pipeFactory: process.then(
+            (process) => StreamNvimPipe(rx: process.stdout, tx: process.stdin),
+          ),
+        ) {
+    process.then((process) => this.process = process);
+  }
+
+  factory ChildProcessNvim(
     String executable,
     List<String> arguments, {
     String? workingDirectory,
@@ -22,31 +23,24 @@ base class ChildProcessNvim implements Nvim {
     bool includeParentEnvironment = true,
     bool runInShell = false,
   }) {
-    final ready = Completer();
-    this.ready = ready.future;
-    Process.start(
+    final process = Process.start(
       executable,
       arguments,
       workingDirectory: workingDirectory,
       runInShell: runInShell,
       environment: environment,
       includeParentEnvironment: includeParentEnvironment,
-    ).then((process) async {
-      this.process = process;
-      api = StreamApi(tx: process.stdin, rx: process.stdout);
-      ready.complete();
-      process.exitCode.then((_) => close());
-    }).onError<Object>((error, stackTrace) {
-      ready.completeError(error, stackTrace);
-    });
+    );
+    return ChildProcessNvim._(process: process);
   }
 
   @override
   Future<void> close([bool force = false]) async {
-    if (_closed.isCompleted) return;
-    await ready;
     process.kill(force ? ProcessSignal.sigkill : ProcessSignal.sigint);
-    await process.exitCode;
-    if (!_closed.isCompleted) _closed.complete();
+    super.close(force);
+    await closed;
   }
+
+  @override
+  Future<void> get closed => Future.wait([super.closed, process.exitCode]);
 }
