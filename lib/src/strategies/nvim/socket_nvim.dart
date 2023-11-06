@@ -1,45 +1,44 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:dart_nvim/src/base/api.dart';
-import 'package:dart_nvim/src/base/nvim.dart';
-import 'package:dart_nvim/src/strategies/api/stream_api.dart';
+import 'package:dart_nvim/src/strategies/nvim/stream_nvim.dart';
 
-base class SocketNvim implements Nvim {
+base class SocketNvim extends StreamNvim {
   late final Socket socket;
-  @override
-  late final Future<void> ready;
+
+  SocketNvim._({required Future<Socket> socket})
+      : super(
+          pipeFactory: socket.then(
+            (socket) => StreamNvimPipe(rx: socket, tx: socket),
+          ),
+        ) {
+    socket.then((socket) => this.socket = socket);
+  }
 
   @override
-  late final Api api;
+  Future<void> close([bool force = false]) async {
+    socket.destroy();
+    super.close(force);
+    await closed;
+  }
 
-  SocketNvim(dynamic host, int port,
-      {dynamic sourceAddress, int sourcePort = 0, Duration? timeout}) {
-    final ready = Completer<void>();
-    this.ready = ready.future;
-    Socket.connect(
+  @override
+  Future<void> get closed => Future.wait([super.closed, socket.done]);
+
+  factory SocketNvim(
+    dynamic host,
+    int port, {
+    dynamic sourceAddress,
+    int sourcePort = 0,
+    Duration? timeout,
+  }) {
+    final socket = Socket.connect(
       host,
       port,
       sourceAddress: sourceAddress,
       sourcePort: sourcePort,
       timeout: timeout,
-    ).then((socket) {
-      this.socket = socket;
-      api = StreamApi(tx: socket, rx: socket);
-      ready.complete();
-    }).onError<Object>((error, stackTrace) {
-      ready.completeError(error, stackTrace);
-    });
+    );
+    return SocketNvim._(socket: socket);
   }
-
-  @override
-  Future<void> close([bool force = false]) async {
-    if (_closed.isCompleted) return;
-    socket.destroy();
-    if (!_closed.isCompleted) _closed.complete();
-  }
-
-  final _closed = Completer<void>();
-  @override
-  Future<void> get closed => _closed.future;
 }
