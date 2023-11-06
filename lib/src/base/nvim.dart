@@ -5,6 +5,9 @@ import 'package:dart_nvim/src/strategies/nvim/child_process_nvim.dart';
 import 'package:dart_nvim/src/strategies/nvim/socket_nvim.dart';
 import 'package:dart_nvim/src/strategies/nvim/ssh_nvim.dart';
 import 'package:dart_nvim/src/strategies/nvim/isolate_nvim.dart';
+import 'package:dart_nvim/src/strategies/nvim/stream_nvim.dart';
+export 'package:dart_nvim/src/strategies/nvim/stream_nvim.dart'
+    show StreamNvimPipe;
 import 'package:dartssh2/dartssh2.dart';
 export 'package:dartssh2/dartssh2.dart' show SSHKeyPair;
 
@@ -14,6 +17,10 @@ abstract class Nvim {
   abstract final Future<void> closed;
 
   FutureOr<void> close([bool force = false]);
+
+  factory Nvim({
+    required FutureOr<StreamNvimPipe> pipeFactory,
+  }) = StreamNvim;
 
   factory Nvim.childProcess(
     String command,
