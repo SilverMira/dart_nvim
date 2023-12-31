@@ -1127,6 +1127,7 @@
       "since": 0
     },
     {
+      "deprecated_since": 11,
       "method": false,
       "name": "nvim_get_option_info",
       "parameters": [
@@ -1139,6 +1140,7 @@
       "since": 7
     },
     {
+      "deprecated_since": 11,
       "method": false,
       "name": "nvim_set_option",
       "parameters": [
@@ -1155,6 +1157,7 @@
       "since": 1
     },
     {
+      "deprecated_since": 11,
       "method": false,
       "name": "nvim_get_option",
       "parameters": [
@@ -1167,6 +1170,7 @@
       "since": 1
     },
     {
+      "deprecated_since": 11,
       "method": true,
       "name": "nvim_buf_get_option",
       "parameters": [
@@ -1183,6 +1187,7 @@
       "since": 1
     },
     {
+      "deprecated_since": 11,
       "method": true,
       "name": "nvim_buf_set_option",
       "parameters": [
@@ -1203,6 +1208,7 @@
       "since": 1
     },
     {
+      "deprecated_since": 11,
       "method": true,
       "name": "nvim_win_get_option",
       "parameters": [
@@ -1219,6 +1225,7 @@
       "since": 1
     },
     {
+      "deprecated_since": 11,
       "method": true,
       "name": "nvim_win_set_option",
       "parameters": [
@@ -1783,6 +1790,18 @@
       ],
       "return_type": "void",
       "since": 7
+    },
+    {
+      "method": false,
+      "name": "nvim_get_hl_ns",
+      "parameters": [
+        [
+          "Dictionary",
+          "opts"
+        ]
+      ],
+      "return_type": "Integer",
+      "since": 12
     },
     {
       "method": false,
@@ -4843,6 +4862,16 @@
       "name": "msg_history_clear",
       "parameters": [],
       "since": 10
+    },
+    {
+      "name": "error_exit",
+      "parameters": [
+        [
+          "Integer",
+          "status"
+        ]
+      ],
+      "since": 12
     }
   ],
   "ui_options": [
@@ -4861,7 +4890,7 @@
     "api_compatible": 0,
     "api_level": 12,
     "api_prerelease": true,
-    "build": "gee56daebb",
+    "build": "82b1a38",
     "major": 0,
     "minor": 10,
     "patch": 0,

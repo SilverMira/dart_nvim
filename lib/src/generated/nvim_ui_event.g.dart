@@ -78,6 +78,7 @@ abstract class _BaseNvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   });
   R maybeWhen<R>({
@@ -147,6 +148,7 @@ abstract class _BaseNvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   });
@@ -246,6 +248,7 @@ class NvimUIEvent$ModeInfoSet extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return modeInfoSet(this);
@@ -319,6 +322,7 @@ class NvimUIEvent$ModeInfoSet extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -413,6 +417,7 @@ class NvimUIEvent$UpdateMenu extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return updateMenu(this);
@@ -486,6 +491,7 @@ class NvimUIEvent$UpdateMenu extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -580,6 +586,7 @@ class NvimUIEvent$BusyStart extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return busyStart(this);
@@ -653,6 +660,7 @@ class NvimUIEvent$BusyStart extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -747,6 +755,7 @@ class NvimUIEvent$BusyStop extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return busyStop(this);
@@ -820,6 +829,7 @@ class NvimUIEvent$BusyStop extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -914,6 +924,7 @@ class NvimUIEvent$MouseOn extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return mouseOn(this);
@@ -987,6 +998,7 @@ class NvimUIEvent$MouseOn extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -1081,6 +1093,7 @@ class NvimUIEvent$MouseOff extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return mouseOff(this);
@@ -1154,6 +1167,7 @@ class NvimUIEvent$MouseOff extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -1255,6 +1269,7 @@ class NvimUIEvent$ModeChange extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return modeChange(this);
@@ -1328,6 +1343,7 @@ class NvimUIEvent$ModeChange extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -1422,6 +1438,7 @@ class NvimUIEvent$Bell extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return bell(this);
@@ -1495,6 +1512,7 @@ class NvimUIEvent$Bell extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -1589,6 +1607,7 @@ class NvimUIEvent$VisualBell extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return visualBell(this);
@@ -1662,6 +1681,7 @@ class NvimUIEvent$VisualBell extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -1756,6 +1776,7 @@ class NvimUIEvent$Flush extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return flush(this);
@@ -1829,6 +1850,7 @@ class NvimUIEvent$Flush extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -1923,6 +1945,7 @@ class NvimUIEvent$Suspend extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return suspend(this);
@@ -1996,6 +2019,7 @@ class NvimUIEvent$Suspend extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -2092,6 +2116,7 @@ class NvimUIEvent$SetTitle extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return setTitle(this);
@@ -2165,6 +2190,7 @@ class NvimUIEvent$SetTitle extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -2261,6 +2287,7 @@ class NvimUIEvent$SetIcon extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return setIcon(this);
@@ -2334,6 +2361,7 @@ class NvimUIEvent$SetIcon extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -2430,6 +2458,7 @@ class NvimUIEvent$Screenshot extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return screenshot(this);
@@ -2503,6 +2532,7 @@ class NvimUIEvent$Screenshot extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -2524,7 +2554,7 @@ class NvimUIEvent$OptionSet extends NvimUIEvent {
 
   String name;
 
-  Object value;
+  Object? value;
 
   @override
   R when<R>({
@@ -2604,6 +2634,7 @@ class NvimUIEvent$OptionSet extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return optionSet(this);
@@ -2677,6 +2708,7 @@ class NvimUIEvent$OptionSet extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -2773,6 +2805,7 @@ class NvimUIEvent$UpdateFg extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return updateFg(this);
@@ -2846,6 +2879,7 @@ class NvimUIEvent$UpdateFg extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -2942,6 +2976,7 @@ class NvimUIEvent$UpdateBg extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return updateBg(this);
@@ -3015,6 +3050,7 @@ class NvimUIEvent$UpdateBg extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -3111,6 +3147,7 @@ class NvimUIEvent$UpdateSp extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return updateSp(this);
@@ -3184,6 +3221,7 @@ class NvimUIEvent$UpdateSp extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -3285,6 +3323,7 @@ class NvimUIEvent$Resize extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return resize(this);
@@ -3358,6 +3397,7 @@ class NvimUIEvent$Resize extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -3452,6 +3492,7 @@ class NvimUIEvent$Clear extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return clear(this);
@@ -3525,6 +3566,7 @@ class NvimUIEvent$Clear extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -3619,6 +3661,7 @@ class NvimUIEvent$EolClear extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return eolClear(this);
@@ -3692,6 +3735,7 @@ class NvimUIEvent$EolClear extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -3793,6 +3837,7 @@ class NvimUIEvent$CursorGoto extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return cursorGoto(this);
@@ -3866,6 +3911,7 @@ class NvimUIEvent$CursorGoto extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -3962,6 +4008,7 @@ class NvimUIEvent$HighlightSet extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return highlightSet(this);
@@ -4035,6 +4082,7 @@ class NvimUIEvent$HighlightSet extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -4131,6 +4179,7 @@ class NvimUIEvent$Put extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return put(this);
@@ -4204,6 +4253,7 @@ class NvimUIEvent$Put extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -4311,6 +4361,7 @@ class NvimUIEvent$SetScrollRegion extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return setScrollRegion(this);
@@ -4384,6 +4435,7 @@ class NvimUIEvent$SetScrollRegion extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -4480,6 +4532,7 @@ class NvimUIEvent$Scroll extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return scroll(this);
@@ -4553,6 +4606,7 @@ class NvimUIEvent$Scroll extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -4663,6 +4717,7 @@ class NvimUIEvent$DefaultColorsSet extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return defaultColorsSet(this);
@@ -4736,6 +4791,7 @@ class NvimUIEvent$DefaultColorsSet extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -4843,6 +4899,7 @@ class NvimUIEvent$HlAttrDefine extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return hlAttrDefine(this);
@@ -4916,6 +4973,7 @@ class NvimUIEvent$HlAttrDefine extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -5017,6 +5075,7 @@ class NvimUIEvent$HlGroupSet extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return hlGroupSet(this);
@@ -5090,6 +5149,7 @@ class NvimUIEvent$HlGroupSet extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -5194,6 +5254,7 @@ class NvimUIEvent$GridResize extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return gridResize(this);
@@ -5267,6 +5328,7 @@ class NvimUIEvent$GridResize extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -5363,6 +5425,7 @@ class NvimUIEvent$GridClear extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return gridClear(this);
@@ -5436,6 +5499,7 @@ class NvimUIEvent$GridClear extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -5540,6 +5604,7 @@ class NvimUIEvent$GridCursorGoto extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return gridCursorGoto(this);
@@ -5613,6 +5678,7 @@ class NvimUIEvent$GridCursorGoto extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -5723,6 +5789,7 @@ class NvimUIEvent$GridLine extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return gridLine(this);
@@ -5796,6 +5863,7 @@ class NvimUIEvent$GridLine extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -5912,6 +5980,7 @@ class NvimUIEvent$GridScroll extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return gridScroll(this);
@@ -5985,6 +6054,7 @@ class NvimUIEvent$GridScroll extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -6081,6 +6151,7 @@ class NvimUIEvent$GridDestroy extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return gridDestroy(this);
@@ -6154,6 +6225,7 @@ class NvimUIEvent$GridDestroy extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -6267,6 +6339,7 @@ class NvimUIEvent$WinPos extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return winPos(this);
@@ -6340,6 +6413,7 @@ class NvimUIEvent$WinPos extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -6459,6 +6533,7 @@ class NvimUIEvent$WinFloatPos extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return winFloatPos(this);
@@ -6532,6 +6607,7 @@ class NvimUIEvent$WinFloatPos extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -6633,6 +6709,7 @@ class NvimUIEvent$WinExternalPos extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return winExternalPos(this);
@@ -6706,6 +6783,7 @@ class NvimUIEvent$WinExternalPos extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -6802,6 +6880,7 @@ class NvimUIEvent$WinHide extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return winHide(this);
@@ -6875,6 +6954,7 @@ class NvimUIEvent$WinHide extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -6971,6 +7051,7 @@ class NvimUIEvent$WinClose extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return winClose(this);
@@ -7044,6 +7125,7 @@ class NvimUIEvent$WinClose extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -7151,6 +7233,7 @@ class NvimUIEvent$MsgSetPos extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return msgSetPos(this);
@@ -7224,6 +7307,7 @@ class NvimUIEvent$MsgSetPos extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -7343,6 +7427,7 @@ class NvimUIEvent$WinViewport extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return winViewport(this);
@@ -7416,6 +7501,7 @@ class NvimUIEvent$WinViewport extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -7529,6 +7615,7 @@ class NvimUIEvent$WinExtmark extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return winExtmark(this);
@@ -7602,6 +7689,7 @@ class NvimUIEvent$WinExtmark extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -7712,6 +7800,7 @@ class NvimUIEvent$PopupmenuShow extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return popupmenuShow(this);
@@ -7785,6 +7874,7 @@ class NvimUIEvent$PopupmenuShow extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -7879,6 +7969,7 @@ class NvimUIEvent$PopupmenuHide extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return popupmenuHide(this);
@@ -7952,6 +8043,7 @@ class NvimUIEvent$PopupmenuHide extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -8048,6 +8140,7 @@ class NvimUIEvent$PopupmenuSelect extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return popupmenuSelect(this);
@@ -8121,6 +8214,7 @@ class NvimUIEvent$PopupmenuSelect extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -8228,6 +8322,7 @@ class NvimUIEvent$TablineUpdate extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return tablineUpdate(this);
@@ -8301,6 +8396,7 @@ class NvimUIEvent$TablineUpdate extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -8414,6 +8510,7 @@ class NvimUIEvent$CmdlineShow extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return cmdlineShow(this);
@@ -8487,6 +8584,7 @@ class NvimUIEvent$CmdlineShow extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -8588,6 +8686,7 @@ class NvimUIEvent$CmdlinePos extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return cmdlinePos(this);
@@ -8661,6 +8760,7 @@ class NvimUIEvent$CmdlinePos extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -8765,6 +8865,7 @@ class NvimUIEvent$CmdlineSpecialChar extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return cmdlineSpecialChar(this);
@@ -8838,6 +8939,7 @@ class NvimUIEvent$CmdlineSpecialChar extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -8934,6 +9036,7 @@ class NvimUIEvent$CmdlineHide extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return cmdlineHide(this);
@@ -9007,6 +9110,7 @@ class NvimUIEvent$CmdlineHide extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -9103,6 +9207,7 @@ class NvimUIEvent$CmdlineBlockShow extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return cmdlineBlockShow(this);
@@ -9176,6 +9281,7 @@ class NvimUIEvent$CmdlineBlockShow extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -9272,6 +9378,7 @@ class NvimUIEvent$CmdlineBlockAppend extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return cmdlineBlockAppend(this);
@@ -9345,6 +9452,7 @@ class NvimUIEvent$CmdlineBlockAppend extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -9439,6 +9547,7 @@ class NvimUIEvent$CmdlineBlockHide extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return cmdlineBlockHide(this);
@@ -9512,6 +9621,7 @@ class NvimUIEvent$CmdlineBlockHide extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -9608,6 +9718,7 @@ class NvimUIEvent$WildmenuShow extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return wildmenuShow(this);
@@ -9681,6 +9792,7 @@ class NvimUIEvent$WildmenuShow extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -9777,6 +9889,7 @@ class NvimUIEvent$WildmenuSelect extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return wildmenuSelect(this);
@@ -9850,6 +9963,7 @@ class NvimUIEvent$WildmenuSelect extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -9944,6 +10058,7 @@ class NvimUIEvent$WildmenuHide extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return wildmenuHide(this);
@@ -10017,6 +10132,7 @@ class NvimUIEvent$WildmenuHide extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -10121,6 +10237,7 @@ class NvimUIEvent$MsgShow extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return msgShow(this);
@@ -10194,6 +10311,7 @@ class NvimUIEvent$MsgShow extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -10288,6 +10406,7 @@ class NvimUIEvent$MsgClear extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return msgClear(this);
@@ -10361,6 +10480,7 @@ class NvimUIEvent$MsgClear extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -10457,6 +10577,7 @@ class NvimUIEvent$MsgShowcmd extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return msgShowcmd(this);
@@ -10530,6 +10651,7 @@ class NvimUIEvent$MsgShowcmd extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -10626,6 +10748,7 @@ class NvimUIEvent$MsgShowmode extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return msgShowmode(this);
@@ -10699,6 +10822,7 @@ class NvimUIEvent$MsgShowmode extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -10795,6 +10919,7 @@ class NvimUIEvent$MsgRuler extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return msgRuler(this);
@@ -10868,6 +10993,7 @@ class NvimUIEvent$MsgRuler extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -10964,6 +11090,7 @@ class NvimUIEvent$MsgHistoryShow extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return msgHistoryShow(this);
@@ -11037,6 +11164,7 @@ class NvimUIEvent$MsgHistoryShow extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -11131,6 +11259,7 @@ class NvimUIEvent$MsgHistoryClear extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return msgHistoryClear(this);
@@ -11204,10 +11333,182 @@ class NvimUIEvent$MsgHistoryClear extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
     return msgHistoryClear != null ? msgHistoryClear(this) : orElse(this);
+  }
+}
+
+class NvimUIEvent$ErrorExit extends NvimUIEvent {
+  NvimUIEvent$ErrorExit({required this.status});
+
+  @override
+  final String $$name = r'error_exit';
+
+  @override
+  final int $$since = 12;
+
+  int status;
+
+  @override
+  R when<R>({
+    required R Function(NvimUIEvent$ModeInfoSet modeInfoSet) modeInfoSet,
+    required R Function(NvimUIEvent$UpdateMenu updateMenu) updateMenu,
+    required R Function(NvimUIEvent$BusyStart busyStart) busyStart,
+    required R Function(NvimUIEvent$BusyStop busyStop) busyStop,
+    required R Function(NvimUIEvent$MouseOn mouseOn) mouseOn,
+    required R Function(NvimUIEvent$MouseOff mouseOff) mouseOff,
+    required R Function(NvimUIEvent$ModeChange modeChange) modeChange,
+    required R Function(NvimUIEvent$Bell bell) bell,
+    required R Function(NvimUIEvent$VisualBell visualBell) visualBell,
+    required R Function(NvimUIEvent$Flush flush) flush,
+    required R Function(NvimUIEvent$Suspend suspend) suspend,
+    required R Function(NvimUIEvent$SetTitle setTitle) setTitle,
+    required R Function(NvimUIEvent$SetIcon setIcon) setIcon,
+    required R Function(NvimUIEvent$Screenshot screenshot) screenshot,
+    required R Function(NvimUIEvent$OptionSet optionSet) optionSet,
+    required R Function(NvimUIEvent$UpdateFg updateFg) updateFg,
+    required R Function(NvimUIEvent$UpdateBg updateBg) updateBg,
+    required R Function(NvimUIEvent$UpdateSp updateSp) updateSp,
+    required R Function(NvimUIEvent$Resize resize) resize,
+    required R Function(NvimUIEvent$Clear clear) clear,
+    required R Function(NvimUIEvent$EolClear eolClear) eolClear,
+    required R Function(NvimUIEvent$CursorGoto cursorGoto) cursorGoto,
+    required R Function(NvimUIEvent$HighlightSet highlightSet) highlightSet,
+    required R Function(NvimUIEvent$Put put) put,
+    required R Function(NvimUIEvent$SetScrollRegion setScrollRegion)
+        setScrollRegion,
+    required R Function(NvimUIEvent$Scroll scroll) scroll,
+    required R Function(NvimUIEvent$DefaultColorsSet defaultColorsSet)
+        defaultColorsSet,
+    required R Function(NvimUIEvent$HlAttrDefine hlAttrDefine) hlAttrDefine,
+    required R Function(NvimUIEvent$HlGroupSet hlGroupSet) hlGroupSet,
+    required R Function(NvimUIEvent$GridResize gridResize) gridResize,
+    required R Function(NvimUIEvent$GridClear gridClear) gridClear,
+    required R Function(NvimUIEvent$GridCursorGoto gridCursorGoto)
+        gridCursorGoto,
+    required R Function(NvimUIEvent$GridLine gridLine) gridLine,
+    required R Function(NvimUIEvent$GridScroll gridScroll) gridScroll,
+    required R Function(NvimUIEvent$GridDestroy gridDestroy) gridDestroy,
+    required R Function(NvimUIEvent$WinPos winPos) winPos,
+    required R Function(NvimUIEvent$WinFloatPos winFloatPos) winFloatPos,
+    required R Function(NvimUIEvent$WinExternalPos winExternalPos)
+        winExternalPos,
+    required R Function(NvimUIEvent$WinHide winHide) winHide,
+    required R Function(NvimUIEvent$WinClose winClose) winClose,
+    required R Function(NvimUIEvent$MsgSetPos msgSetPos) msgSetPos,
+    required R Function(NvimUIEvent$WinViewport winViewport) winViewport,
+    required R Function(NvimUIEvent$WinExtmark winExtmark) winExtmark,
+    required R Function(NvimUIEvent$PopupmenuShow popupmenuShow) popupmenuShow,
+    required R Function(NvimUIEvent$PopupmenuHide popupmenuHide) popupmenuHide,
+    required R Function(NvimUIEvent$PopupmenuSelect popupmenuSelect)
+        popupmenuSelect,
+    required R Function(NvimUIEvent$TablineUpdate tablineUpdate) tablineUpdate,
+    required R Function(NvimUIEvent$CmdlineShow cmdlineShow) cmdlineShow,
+    required R Function(NvimUIEvent$CmdlinePos cmdlinePos) cmdlinePos,
+    required R Function(NvimUIEvent$CmdlineSpecialChar cmdlineSpecialChar)
+        cmdlineSpecialChar,
+    required R Function(NvimUIEvent$CmdlineHide cmdlineHide) cmdlineHide,
+    required R Function(NvimUIEvent$CmdlineBlockShow cmdlineBlockShow)
+        cmdlineBlockShow,
+    required R Function(NvimUIEvent$CmdlineBlockAppend cmdlineBlockAppend)
+        cmdlineBlockAppend,
+    required R Function(NvimUIEvent$CmdlineBlockHide cmdlineBlockHide)
+        cmdlineBlockHide,
+    required R Function(NvimUIEvent$WildmenuShow wildmenuShow) wildmenuShow,
+    required R Function(NvimUIEvent$WildmenuSelect wildmenuSelect)
+        wildmenuSelect,
+    required R Function(NvimUIEvent$WildmenuHide wildmenuHide) wildmenuHide,
+    required R Function(NvimUIEvent$MsgShow msgShow) msgShow,
+    required R Function(NvimUIEvent$MsgClear msgClear) msgClear,
+    required R Function(NvimUIEvent$MsgShowcmd msgShowcmd) msgShowcmd,
+    required R Function(NvimUIEvent$MsgShowmode msgShowmode) msgShowmode,
+    required R Function(NvimUIEvent$MsgRuler msgRuler) msgRuler,
+    required R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)
+        msgHistoryShow,
+    required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
+        msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
+    required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
+  }) {
+    return errorExit(this);
+  }
+
+  @override
+  R maybeWhen<R>({
+    R Function(NvimUIEvent$ModeInfoSet modeInfoSet)? modeInfoSet,
+    R Function(NvimUIEvent$UpdateMenu updateMenu)? updateMenu,
+    R Function(NvimUIEvent$BusyStart busyStart)? busyStart,
+    R Function(NvimUIEvent$BusyStop busyStop)? busyStop,
+    R Function(NvimUIEvent$MouseOn mouseOn)? mouseOn,
+    R Function(NvimUIEvent$MouseOff mouseOff)? mouseOff,
+    R Function(NvimUIEvent$ModeChange modeChange)? modeChange,
+    R Function(NvimUIEvent$Bell bell)? bell,
+    R Function(NvimUIEvent$VisualBell visualBell)? visualBell,
+    R Function(NvimUIEvent$Flush flush)? flush,
+    R Function(NvimUIEvent$Suspend suspend)? suspend,
+    R Function(NvimUIEvent$SetTitle setTitle)? setTitle,
+    R Function(NvimUIEvent$SetIcon setIcon)? setIcon,
+    R Function(NvimUIEvent$Screenshot screenshot)? screenshot,
+    R Function(NvimUIEvent$OptionSet optionSet)? optionSet,
+    R Function(NvimUIEvent$UpdateFg updateFg)? updateFg,
+    R Function(NvimUIEvent$UpdateBg updateBg)? updateBg,
+    R Function(NvimUIEvent$UpdateSp updateSp)? updateSp,
+    R Function(NvimUIEvent$Resize resize)? resize,
+    R Function(NvimUIEvent$Clear clear)? clear,
+    R Function(NvimUIEvent$EolClear eolClear)? eolClear,
+    R Function(NvimUIEvent$CursorGoto cursorGoto)? cursorGoto,
+    R Function(NvimUIEvent$HighlightSet highlightSet)? highlightSet,
+    R Function(NvimUIEvent$Put put)? put,
+    R Function(NvimUIEvent$SetScrollRegion setScrollRegion)? setScrollRegion,
+    R Function(NvimUIEvent$Scroll scroll)? scroll,
+    R Function(NvimUIEvent$DefaultColorsSet defaultColorsSet)? defaultColorsSet,
+    R Function(NvimUIEvent$HlAttrDefine hlAttrDefine)? hlAttrDefine,
+    R Function(NvimUIEvent$HlGroupSet hlGroupSet)? hlGroupSet,
+    R Function(NvimUIEvent$GridResize gridResize)? gridResize,
+    R Function(NvimUIEvent$GridClear gridClear)? gridClear,
+    R Function(NvimUIEvent$GridCursorGoto gridCursorGoto)? gridCursorGoto,
+    R Function(NvimUIEvent$GridLine gridLine)? gridLine,
+    R Function(NvimUIEvent$GridScroll gridScroll)? gridScroll,
+    R Function(NvimUIEvent$GridDestroy gridDestroy)? gridDestroy,
+    R Function(NvimUIEvent$WinPos winPos)? winPos,
+    R Function(NvimUIEvent$WinFloatPos winFloatPos)? winFloatPos,
+    R Function(NvimUIEvent$WinExternalPos winExternalPos)? winExternalPos,
+    R Function(NvimUIEvent$WinHide winHide)? winHide,
+    R Function(NvimUIEvent$WinClose winClose)? winClose,
+    R Function(NvimUIEvent$MsgSetPos msgSetPos)? msgSetPos,
+    R Function(NvimUIEvent$WinViewport winViewport)? winViewport,
+    R Function(NvimUIEvent$WinExtmark winExtmark)? winExtmark,
+    R Function(NvimUIEvent$PopupmenuShow popupmenuShow)? popupmenuShow,
+    R Function(NvimUIEvent$PopupmenuHide popupmenuHide)? popupmenuHide,
+    R Function(NvimUIEvent$PopupmenuSelect popupmenuSelect)? popupmenuSelect,
+    R Function(NvimUIEvent$TablineUpdate tablineUpdate)? tablineUpdate,
+    R Function(NvimUIEvent$CmdlineShow cmdlineShow)? cmdlineShow,
+    R Function(NvimUIEvent$CmdlinePos cmdlinePos)? cmdlinePos,
+    R Function(NvimUIEvent$CmdlineSpecialChar cmdlineSpecialChar)?
+        cmdlineSpecialChar,
+    R Function(NvimUIEvent$CmdlineHide cmdlineHide)? cmdlineHide,
+    R Function(NvimUIEvent$CmdlineBlockShow cmdlineBlockShow)? cmdlineBlockShow,
+    R Function(NvimUIEvent$CmdlineBlockAppend cmdlineBlockAppend)?
+        cmdlineBlockAppend,
+    R Function(NvimUIEvent$CmdlineBlockHide cmdlineBlockHide)? cmdlineBlockHide,
+    R Function(NvimUIEvent$WildmenuShow wildmenuShow)? wildmenuShow,
+    R Function(NvimUIEvent$WildmenuSelect wildmenuSelect)? wildmenuSelect,
+    R Function(NvimUIEvent$WildmenuHide wildmenuHide)? wildmenuHide,
+    R Function(NvimUIEvent$MsgShow msgShow)? msgShow,
+    R Function(NvimUIEvent$MsgClear msgClear)? msgClear,
+    R Function(NvimUIEvent$MsgShowcmd msgShowcmd)? msgShowcmd,
+    R Function(NvimUIEvent$MsgShowmode msgShowmode)? msgShowmode,
+    R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
+    R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
+    R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
+    R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
+    required R Function(NvimUIEvent) orElse,
+  }) {
+    return errorExit != null ? errorExit(this) : orElse(this);
   }
 }
 
@@ -11305,6 +11606,7 @@ class NvimUIEvent$$$unknown extends NvimUIEvent {
         msgHistoryShow,
     required R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)
         msgHistoryClear,
+    required R Function(NvimUIEvent$ErrorExit errorExit) errorExit,
     required R Function(NvimUIEvent$$$unknown $$unknown) $$unknown,
   }) {
     return $$unknown(this);
@@ -11378,6 +11680,7 @@ class NvimUIEvent$$$unknown extends NvimUIEvent {
     R Function(NvimUIEvent$MsgRuler msgRuler)? msgRuler,
     R Function(NvimUIEvent$MsgHistoryShow msgHistoryShow)? msgHistoryShow,
     R Function(NvimUIEvent$MsgHistoryClear msgHistoryClear)? msgHistoryClear,
+    R Function(NvimUIEvent$ErrorExit errorExit)? errorExit,
     R Function(NvimUIEvent$$$unknown $$unknown)? $$unknown,
     required R Function(NvimUIEvent) orElse,
   }) {
@@ -11643,6 +11946,8 @@ NvimUIEvent _parseUIEvent(
       return NvimUIEvent$MsgHistoryShow(entries: eventArgs[0]);
     case r"msg_history_clear":
       return NvimUIEvent$MsgHistoryClear();
+    case r"error_exit":
+      return NvimUIEvent$ErrorExit(status: eventArgs[0]);
     default:
       return NvimUIEvent$$$unknown(
         eventName: eventName,

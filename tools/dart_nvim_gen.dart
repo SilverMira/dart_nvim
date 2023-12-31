@@ -190,7 +190,7 @@ ResolveTypeFn _getResolveTypeFn(List<ExtTypeTemplate> extTypes) {
     'String': 'String',
     'Array': 'List',
     'Dictionary': 'Map',
-    'Object': 'Object',
+    'Object': 'Object?',
     'Nil': 'Null',
     'void': 'void'
   };

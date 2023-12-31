@@ -28,7 +28,7 @@ extension NvimApiFunctions on Api {
   ///
   /// Returns: `Integer`
   Future<int> nvimCreateAutocmd(
-    Object event,
+    Object? event,
     Map opts,
   ) async {
     final $$args = [
@@ -138,7 +138,7 @@ extension NvimApiFunctions on Api {
   ///
   /// Returns: `void`
   Future<void> nvimExecAutocmds(
-    Object event,
+    Object? event,
     Map opts,
   ) async {
     final $$args = [
@@ -372,7 +372,7 @@ extension NvimApiFunctions on Api {
   /// - `name`: `String`
   ///
   /// Returns: `Object`
-  Future<Object> nvimBufGetVar(
+  Future<Object?> nvimBufGetVar(
     NvimExt$Buffer buffer,
     String name,
   ) async {
@@ -496,7 +496,7 @@ extension NvimApiFunctions on Api {
   Future<void> nvimBufSetVar(
     NvimExt$Buffer buffer,
     String name,
-    Object value,
+    Object? value,
   ) async {
     final $$args = [
       buffer,
@@ -713,7 +713,7 @@ extension NvimApiFunctions on Api {
   /// - `fun`: `LuaRef`
   ///
   /// Returns: `Object`
-  Future<Object> nvimBufCall(
+  Future<Object?> nvimBufCall(
     NvimExt$Buffer buffer,
     dynamic fun,
   ) async {
@@ -785,7 +785,7 @@ extension NvimApiFunctions on Api {
   /// Returns: `void`
   Future<void> nvimCreateUserCommand(
     String name,
-    Object command,
+    Object? command,
     Map opts,
   ) async {
     final $$args = [
@@ -829,7 +829,7 @@ extension NvimApiFunctions on Api {
   Future<void> nvimBufCreateUserCommand(
     NvimExt$Buffer buffer,
     String name,
-    Object command,
+    Object? command,
     Map opts,
   ) async {
     final $$args = [
@@ -960,7 +960,7 @@ extension NvimApiFunctions on Api {
   ///
   /// Returns: `Object`
   @Deprecated('Deprecated since API level: `7`')
-  Future<Object> nvimExecuteLua(
+  Future<Object?> nvimExecuteLua(
     String code,
     List args,
   ) async {
@@ -1296,10 +1296,10 @@ extension NvimApiFunctions on Api {
   ///
   /// Returns: `Object`
   @Deprecated('Deprecated since API level: `1`')
-  Future<Object> bufferSetVar(
+  Future<Object?> bufferSetVar(
     NvimExt$Buffer buffer,
     String name,
-    Object value,
+    Object? value,
   ) async {
     final $$args = [
       buffer,
@@ -1323,7 +1323,7 @@ extension NvimApiFunctions on Api {
   ///
   /// Returns: `Object`
   @Deprecated('Deprecated since API level: `1`')
-  Future<Object> bufferDelVar(
+  Future<Object?> bufferDelVar(
     NvimExt$Buffer buffer,
     String name,
   ) async {
@@ -1349,10 +1349,10 @@ extension NvimApiFunctions on Api {
   ///
   /// Returns: `Object`
   @Deprecated('Deprecated since API level: `1`')
-  Future<Object> windowSetVar(
+  Future<Object?> windowSetVar(
     NvimExt$Window window,
     String name,
-    Object value,
+    Object? value,
   ) async {
     final $$args = [
       window,
@@ -1376,7 +1376,7 @@ extension NvimApiFunctions on Api {
   ///
   /// Returns: `Object`
   @Deprecated('Deprecated since API level: `1`')
-  Future<Object> windowDelVar(
+  Future<Object?> windowDelVar(
     NvimExt$Window window,
     String name,
   ) async {
@@ -1402,10 +1402,10 @@ extension NvimApiFunctions on Api {
   ///
   /// Returns: `Object`
   @Deprecated('Deprecated since API level: `1`')
-  Future<Object> tabpageSetVar(
+  Future<Object?> tabpageSetVar(
     NvimExt$Tabpage tabpage,
     String name,
-    Object value,
+    Object? value,
   ) async {
     final $$args = [
       tabpage,
@@ -1429,7 +1429,7 @@ extension NvimApiFunctions on Api {
   ///
   /// Returns: `Object`
   @Deprecated('Deprecated since API level: `1`')
-  Future<Object> tabpageDelVar(
+  Future<Object?> tabpageDelVar(
     NvimExt$Tabpage tabpage,
     String name,
   ) async {
@@ -1454,9 +1454,9 @@ extension NvimApiFunctions on Api {
   ///
   /// Returns: `Object`
   @Deprecated('Deprecated since API level: `1`')
-  Future<Object> vimSetVar(
+  Future<Object?> vimSetVar(
     String name,
-    Object value,
+    Object? value,
   ) async {
     final $$args = [
       name,
@@ -1478,7 +1478,7 @@ extension NvimApiFunctions on Api {
   ///
   /// Returns: `Object`
   @Deprecated('Deprecated since API level: `1`')
-  Future<Object> vimDelVar(String name) async {
+  Future<Object?> vimDelVar(String name) async {
     final $$args = [name];
     return await call(
       'vim_del_var',
@@ -1489,11 +1489,13 @@ extension NvimApiFunctions on Api {
   /// Generated from `nvim_get_option_info`
   ///
   /// Since API level: `7`
+  /// Deprecated since API level: `11`
   ///
   /// Parameters:
   /// - `name`: `String`
   ///
   /// Returns: `Dictionary`
+  @Deprecated('Deprecated since API level: `11`')
   Future<Map> nvimGetOptionInfo(String name) async {
     final $$args = [name];
     return await call(
@@ -1505,15 +1507,17 @@ extension NvimApiFunctions on Api {
   /// Generated from `nvim_set_option`
   ///
   /// Since API level: `1`
+  /// Deprecated since API level: `11`
   ///
   /// Parameters:
   /// - `name`: `String`
   /// - `value`: `Object`
   ///
   /// Returns: `void`
+  @Deprecated('Deprecated since API level: `11`')
   Future<void> nvimSetOption(
     String name,
-    Object value,
+    Object? value,
   ) async {
     final $$args = [
       name,
@@ -1528,12 +1532,14 @@ extension NvimApiFunctions on Api {
   /// Generated from `nvim_get_option`
   ///
   /// Since API level: `1`
+  /// Deprecated since API level: `11`
   ///
   /// Parameters:
   /// - `name`: `String`
   ///
   /// Returns: `Object`
-  Future<Object> nvimGetOption(String name) async {
+  @Deprecated('Deprecated since API level: `11`')
+  Future<Object?> nvimGetOption(String name) async {
     final $$args = [name];
     return await call(
       'nvim_get_option',
@@ -1544,13 +1550,15 @@ extension NvimApiFunctions on Api {
   /// Generated from `nvim_buf_get_option`
   ///
   /// Since API level: `1`
+  /// Deprecated since API level: `11`
   ///
   /// Parameters:
   /// - `buffer`: `Buffer`
   /// - `name`: `String`
   ///
   /// Returns: `Object`
-  Future<Object> nvimBufGetOption(
+  @Deprecated('Deprecated since API level: `11`')
+  Future<Object?> nvimBufGetOption(
     NvimExt$Buffer buffer,
     String name,
   ) async {
@@ -1567,6 +1575,7 @@ extension NvimApiFunctions on Api {
   /// Generated from `nvim_buf_set_option`
   ///
   /// Since API level: `1`
+  /// Deprecated since API level: `11`
   ///
   /// Parameters:
   /// - `buffer`: `Buffer`
@@ -1574,10 +1583,11 @@ extension NvimApiFunctions on Api {
   /// - `value`: `Object`
   ///
   /// Returns: `void`
+  @Deprecated('Deprecated since API level: `11`')
   Future<void> nvimBufSetOption(
     NvimExt$Buffer buffer,
     String name,
-    Object value,
+    Object? value,
   ) async {
     final $$args = [
       buffer,
@@ -1593,13 +1603,15 @@ extension NvimApiFunctions on Api {
   /// Generated from `nvim_win_get_option`
   ///
   /// Since API level: `1`
+  /// Deprecated since API level: `11`
   ///
   /// Parameters:
   /// - `window`: `Window`
   /// - `name`: `String`
   ///
   /// Returns: `Object`
-  Future<Object> nvimWinGetOption(
+  @Deprecated('Deprecated since API level: `11`')
+  Future<Object?> nvimWinGetOption(
     NvimExt$Window window,
     String name,
   ) async {
@@ -1616,6 +1628,7 @@ extension NvimApiFunctions on Api {
   /// Generated from `nvim_win_set_option`
   ///
   /// Since API level: `1`
+  /// Deprecated since API level: `11`
   ///
   /// Parameters:
   /// - `window`: `Window`
@@ -1623,10 +1636,11 @@ extension NvimApiFunctions on Api {
   /// - `value`: `Object`
   ///
   /// Returns: `void`
+  @Deprecated('Deprecated since API level: `11`')
   Future<void> nvimWinSetOption(
     NvimExt$Window window,
     String name,
-    Object value,
+    Object? value,
   ) async {
     final $$args = [
       window,
@@ -1713,8 +1727,8 @@ extension NvimApiFunctions on Api {
   Future<List> nvimBufGetExtmarks(
     NvimExt$Buffer buffer,
     int nsId,
-    Object start,
-    Object end,
+    Object? start,
+    Object? end,
     Map opts,
   ) async {
     final $$args = [
@@ -1884,7 +1898,7 @@ extension NvimApiFunctions on Api {
   /// - `opts`: `Dictionary`
   ///
   /// Returns: `Object`
-  Future<Object> nvimGetOptionValue(
+  Future<Object?> nvimGetOptionValue(
     String name,
     Map opts,
   ) async {
@@ -1910,7 +1924,7 @@ extension NvimApiFunctions on Api {
   /// Returns: `void`
   Future<void> nvimSetOptionValue(
     String name,
-    Object value,
+    Object? value,
     Map opts,
   ) async {
     final $$args = [
@@ -1987,7 +2001,7 @@ extension NvimApiFunctions on Api {
   /// - `name`: `String`
   ///
   /// Returns: `Object`
-  Future<Object> nvimTabpageGetVar(
+  Future<Object?> nvimTabpageGetVar(
     NvimExt$Tabpage tabpage,
     String name,
   ) async {
@@ -2014,7 +2028,7 @@ extension NvimApiFunctions on Api {
   Future<void> nvimTabpageSetVar(
     NvimExt$Tabpage tabpage,
     String name,
-    Object value,
+    Object? value,
   ) async {
     final $$args = [
       tabpage,
@@ -2216,7 +2230,7 @@ extension NvimApiFunctions on Api {
   /// Returns: `void`
   Future<void> nvimUiSetOption(
     String name,
-    Object value,
+    Object? value,
   ) async {
     final $$args = [
       name,
@@ -2360,6 +2374,22 @@ extension NvimApiFunctions on Api {
     ];
     return await call(
       'nvim_set_hl',
+      $$args,
+    );
+  }
+
+  /// Generated from `nvim_get_hl_ns`
+  ///
+  /// Since API level: `12`
+  ///
+  /// Parameters:
+  /// - `opts`: `Dictionary`
+  ///
+  /// Returns: `Integer`
+  Future<int> nvimGetHlNs(Map opts) async {
+    final $$args = [opts];
+    return await call(
+      'nvim_get_hl_ns',
       $$args,
     );
   }
@@ -2511,7 +2541,7 @@ extension NvimApiFunctions on Api {
   /// - `args`: `Array`
   ///
   /// Returns: `Object`
-  Future<Object> nvimExecLua(
+  Future<Object?> nvimExecLua(
     String code,
     List args,
   ) async {
@@ -2535,7 +2565,7 @@ extension NvimApiFunctions on Api {
   /// - `opts`: `Dictionary`
   ///
   /// Returns: `Object`
-  Future<Object> nvimNotify(
+  Future<Object?> nvimNotify(
     String msg,
     int logLevel,
     Map opts,
@@ -2672,7 +2702,7 @@ extension NvimApiFunctions on Api {
   /// - `name`: `String`
   ///
   /// Returns: `Object`
-  Future<Object> nvimGetVar(String name) async {
+  Future<Object?> nvimGetVar(String name) async {
     final $$args = [name];
     return await call(
       'nvim_get_var',
@@ -2691,7 +2721,7 @@ extension NvimApiFunctions on Api {
   /// Returns: `void`
   Future<void> nvimSetVar(
     String name,
-    Object value,
+    Object? value,
   ) async {
     final $$args = [
       name,
@@ -2727,7 +2757,7 @@ extension NvimApiFunctions on Api {
   /// - `name`: `String`
   ///
   /// Returns: `Object`
-  Future<Object> nvimGetVvar(String name) async {
+  Future<Object?> nvimGetVvar(String name) async {
     final $$args = [name];
     return await call(
       'nvim_get_vvar',
@@ -2746,7 +2776,7 @@ extension NvimApiFunctions on Api {
   /// Returns: `void`
   Future<void> nvimSetVvar(
     String name,
-    Object value,
+    Object? value,
   ) async {
     final $$args = [
       name,
@@ -3174,7 +3204,7 @@ extension NvimApiFunctions on Api {
   /// - `dict`: `Dictionary`
   ///
   /// Returns: `Object`
-  Future<Object> nvimLoadContext(Map dict) async {
+  Future<Object?> nvimLoadContext(Map dict) async {
     final $$args = [dict];
     return await call(
       'nvim_load_context',
@@ -3394,7 +3424,7 @@ extension NvimApiFunctions on Api {
   /// - `pid`: `Integer`
   ///
   /// Returns: `Object`
-  Future<Object> nvimGetProc(int pid) async {
+  Future<Object?> nvimGetProc(int pid) async {
     final $$args = [pid];
     return await call(
       'nvim_get_proc',
@@ -3540,7 +3570,7 @@ extension NvimApiFunctions on Api {
   /// - `expr`: `String`
   ///
   /// Returns: `Object`
-  Future<Object> nvimEval(String expr) async {
+  Future<Object?> nvimEval(String expr) async {
     final $$args = [expr];
     return await call(
       'nvim_eval',
@@ -3557,7 +3587,7 @@ extension NvimApiFunctions on Api {
   /// - `args`: `Array`
   ///
   /// Returns: `Object`
-  Future<Object> nvimCallFunction(
+  Future<Object?> nvimCallFunction(
     String fn,
     List args,
   ) async {
@@ -3581,8 +3611,8 @@ extension NvimApiFunctions on Api {
   /// - `args`: `Array`
   ///
   /// Returns: `Object`
-  Future<Object> nvimCallDictFunction(
-    Object dict,
+  Future<Object?> nvimCallDictFunction(
+    Object? dict,
     String fn,
     List args,
   ) async {
@@ -3853,7 +3883,7 @@ extension NvimApiFunctions on Api {
   /// - `name`: `String`
   ///
   /// Returns: `Object`
-  Future<Object> nvimWinGetVar(
+  Future<Object?> nvimWinGetVar(
     NvimExt$Window window,
     String name,
   ) async {
@@ -3880,7 +3910,7 @@ extension NvimApiFunctions on Api {
   Future<void> nvimWinSetVar(
     NvimExt$Window window,
     String name,
-    Object value,
+    Object? value,
   ) async {
     final $$args = [
       window,
@@ -4028,7 +4058,7 @@ extension NvimApiFunctions on Api {
   /// - `fun`: `LuaRef`
   ///
   /// Returns: `Object`
-  Future<Object> nvimWinCall(
+  Future<Object?> nvimWinCall(
     NvimExt$Window window,
     dynamic fun,
   ) async {
@@ -4182,7 +4212,7 @@ extension NvimApiFunctions on Api {
   ///
   /// Returns: `Object`
   @Deprecated('Deprecated since API level: `1`')
-  Future<Object> bufferGetVar(
+  Future<Object?> bufferGetVar(
     NvimExt$Buffer buffer,
     String name,
   ) async {
@@ -4362,7 +4392,7 @@ extension NvimApiFunctions on Api {
   @Deprecated('Deprecated since API level: `1`')
   Future<void> vimSetOption(
     String name,
-    Object value,
+    Object? value,
   ) async {
     final $$args = [
       name,
@@ -4384,7 +4414,7 @@ extension NvimApiFunctions on Api {
   ///
   /// Returns: `Object`
   @Deprecated('Deprecated since API level: `1`')
-  Future<Object> vimGetOption(String name) async {
+  Future<Object?> vimGetOption(String name) async {
     final $$args = [name];
     return await call(
       'vim_get_option',
@@ -4403,7 +4433,7 @@ extension NvimApiFunctions on Api {
   ///
   /// Returns: `Object`
   @Deprecated('Deprecated since API level: `1`')
-  Future<Object> bufferGetOption(
+  Future<Object?> bufferGetOption(
     NvimExt$Buffer buffer,
     String name,
   ) async {
@@ -4432,7 +4462,7 @@ extension NvimApiFunctions on Api {
   Future<void> bufferSetOption(
     NvimExt$Buffer buffer,
     String name,
-    Object value,
+    Object? value,
   ) async {
     final $$args = [
       buffer,
@@ -4456,7 +4486,7 @@ extension NvimApiFunctions on Api {
   ///
   /// Returns: `Object`
   @Deprecated('Deprecated since API level: `1`')
-  Future<Object> windowGetOption(
+  Future<Object?> windowGetOption(
     NvimExt$Window window,
     String name,
   ) async {
@@ -4485,7 +4515,7 @@ extension NvimApiFunctions on Api {
   Future<void> windowSetOption(
     NvimExt$Window window,
     String name,
-    Object value,
+    Object? value,
   ) async {
     final $$args = [
       window,
@@ -4565,7 +4595,7 @@ extension NvimApiFunctions on Api {
   ///
   /// Returns: `Object`
   @Deprecated('Deprecated since API level: `1`')
-  Future<Object> tabpageGetVar(
+  Future<Object?> tabpageGetVar(
     NvimExt$Tabpage tabpage,
     String name,
   ) async {
@@ -4642,7 +4672,7 @@ extension NvimApiFunctions on Api {
   ///
   /// Returns: `Object`
   @Deprecated('Deprecated since API level: `1`')
-  Future<Object> uiTryResize(
+  Future<Object?> uiTryResize(
     int width,
     int height,
   ) async {
@@ -4845,7 +4875,7 @@ extension NvimApiFunctions on Api {
   ///
   /// Returns: `Object`
   @Deprecated('Deprecated since API level: `1`')
-  Future<Object> vimGetVar(String name) async {
+  Future<Object?> vimGetVar(String name) async {
     final $$args = [name];
     return await call(
       'vim_get_var',
@@ -4863,7 +4893,7 @@ extension NvimApiFunctions on Api {
   ///
   /// Returns: `Object`
   @Deprecated('Deprecated since API level: `1`')
-  Future<Object> vimGetVvar(String name) async {
+  Future<Object?> vimGetVvar(String name) async {
     final $$args = [name];
     return await call(
       'vim_get_vvar',
@@ -5189,7 +5219,7 @@ extension NvimApiFunctions on Api {
   ///
   /// Returns: `Object`
   @Deprecated('Deprecated since API level: `1`')
-  Future<Object> vimEval(String expr) async {
+  Future<Object?> vimEval(String expr) async {
     final $$args = [expr];
     return await call(
       'vim_eval',
@@ -5208,7 +5238,7 @@ extension NvimApiFunctions on Api {
   ///
   /// Returns: `Object`
   @Deprecated('Deprecated since API level: `1`')
-  Future<Object> vimCallFunction(
+  Future<Object?> vimCallFunction(
     String fn,
     List args,
   ) async {
@@ -5380,7 +5410,7 @@ extension NvimApiFunctions on Api {
   ///
   /// Returns: `Object`
   @Deprecated('Deprecated since API level: `1`')
-  Future<Object> windowGetVar(
+  Future<Object?> windowGetVar(
     NvimExt$Window window,
     String name,
   ) async {
