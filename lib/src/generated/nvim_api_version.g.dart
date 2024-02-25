@@ -5,7 +5,7 @@ const NvimApiVersion kApiGenerationVersion = NvimApiVersion(
   minor: 10,
   patch: 0,
   prerelease: true,
-  apiLevel: 11,
+  apiLevel: 12,
   apiCompatible: 0,
-  apiPrerelease: false,
+  apiPrerelease: true,
 );
