@@ -13,11 +13,12 @@
       "name": "nvim_get_autocmds",
       "parameters": [
         [
-          "Dictionary",
-          "opts"
+          "Dict",
+          "opts",
+          true
         ]
       ],
-      "return_type": "Array",
+      "return_type": "ArrayOf(Dict)",
       "since": 9
     },
     {
@@ -26,11 +27,13 @@
       "parameters": [
         [
           "Object",
-          "event"
+          "event",
+          false
         ],
         [
-          "Dictionary",
-          "opts"
+          "Dict",
+          "opts",
+          true
         ]
       ],
       "return_type": "Integer",
@@ -42,7 +45,8 @@
       "parameters": [
         [
           "Integer",
-          "id"
+          "id",
+          false
         ]
       ],
       "return_type": "void",
@@ -53,8 +57,9 @@
       "name": "nvim_clear_autocmds",
       "parameters": [
         [
-          "Dictionary",
-          "opts"
+          "Dict",
+          "opts",
+          true
         ]
       ],
       "return_type": "void",
@@ -66,11 +71,13 @@
       "parameters": [
         [
           "String",
-          "name"
+          "name",
+          false
         ],
         [
-          "Dictionary",
-          "opts"
+          "Dict",
+          "opts",
+          true
         ]
       ],
       "return_type": "Integer",
@@ -82,7 +89,8 @@
       "parameters": [
         [
           "Integer",
-          "id"
+          "id",
+          false
         ]
       ],
       "return_type": "void",
@@ -94,7 +102,8 @@
       "parameters": [
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "void",
@@ -106,11 +115,13 @@
       "parameters": [
         [
           "Object",
-          "event"
+          "event",
+          false
         ],
         [
-          "Dictionary",
-          "opts"
+          "Dict",
+          "opts",
+          true
         ]
       ],
       "return_type": "void",
@@ -122,7 +133,8 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ]
       ],
       "return_type": "Integer",
@@ -134,15 +146,18 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ],
         [
           "Boolean",
-          "send_buffer"
+          "send_buffer",
+          false
         ],
         [
-          "Dictionary",
-          "opts"
+          "Dict",
+          "opts",
+          true
         ]
       ],
       "return_type": "Boolean",
@@ -154,7 +169,8 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ]
       ],
       "return_type": "Boolean",
@@ -166,19 +182,23 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ],
         [
           "Integer",
-          "start"
+          "start",
+          false
         ],
         [
           "Integer",
-          "end"
+          "end",
+          false
         ],
         [
           "Boolean",
-          "strict_indexing"
+          "strict_indexing",
+          false
         ]
       ],
       "return_type": "ArrayOf(String)",
@@ -190,23 +210,28 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ],
         [
           "Integer",
-          "start"
+          "start",
+          false
         ],
         [
           "Integer",
-          "end"
+          "end",
+          false
         ],
         [
           "Boolean",
-          "strict_indexing"
+          "strict_indexing",
+          false
         ],
         [
           "ArrayOf(String)",
-          "replacement"
+          "replacement",
+          false
         ]
       ],
       "return_type": "void",
@@ -218,27 +243,33 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ],
         [
           "Integer",
-          "start_row"
+          "start_row",
+          false
         ],
         [
           "Integer",
-          "start_col"
+          "start_col",
+          false
         ],
         [
           "Integer",
-          "end_row"
+          "end_row",
+          false
         ],
         [
           "Integer",
-          "end_col"
+          "end_col",
+          false
         ],
         [
           "ArrayOf(String)",
-          "replacement"
+          "replacement",
+          false
         ]
       ],
       "return_type": "void",
@@ -250,27 +281,33 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ],
         [
           "Integer",
-          "start_row"
+          "start_row",
+          false
         ],
         [
           "Integer",
-          "start_col"
+          "start_col",
+          false
         ],
         [
           "Integer",
-          "end_row"
+          "end_row",
+          false
         ],
         [
           "Integer",
-          "end_col"
+          "end_col",
+          false
         ],
         [
-          "Dictionary",
-          "opts"
+          "Dict",
+          "opts",
+          true
         ]
       ],
       "return_type": "ArrayOf(String)",
@@ -282,11 +319,13 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ],
         [
           "Integer",
-          "index"
+          "index",
+          false
         ]
       ],
       "return_type": "Integer",
@@ -298,11 +337,13 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ],
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "Object",
@@ -314,7 +355,8 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ]
       ],
       "return_type": "Integer",
@@ -326,14 +368,16 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ],
         [
           "String",
-          "mode"
+          "mode",
+          false
         ]
       ],
-      "return_type": "ArrayOf(Dictionary)",
+      "return_type": "ArrayOf(Dict)",
       "since": 3
     },
     {
@@ -342,23 +386,28 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ],
         [
           "String",
-          "mode"
+          "mode",
+          false
         ],
         [
           "String",
-          "lhs"
+          "lhs",
+          false
         ],
         [
           "String",
-          "rhs"
+          "rhs",
+          false
         ],
         [
-          "Dictionary",
-          "opts"
+          "Dict",
+          "opts",
+          true
         ]
       ],
       "return_type": "void",
@@ -370,15 +419,23 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ],
         [
           "String",
-          "mode"
+          "mode",
+          false
         ],
         [
           "String",
-          "lhs"
+          "lhs",
+          false
+        ],
+        [
+          "Dict",
+          "opts",
+          true
         ]
       ],
       "return_type": "void",
@@ -390,15 +447,18 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ],
         [
           "String",
-          "name"
+          "name",
+          false
         ],
         [
           "Object",
-          "value"
+          "value",
+          false
         ]
       ],
       "return_type": "void",
@@ -410,11 +470,13 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ],
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "void",
@@ -426,7 +488,8 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ]
       ],
       "return_type": "String",
@@ -438,11 +501,13 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ],
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "void",
@@ -454,7 +519,8 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ]
       ],
       "return_type": "Boolean",
@@ -466,11 +532,13 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ],
         [
-          "Dictionary",
-          "opts"
+          "Dict",
+          "opts",
+          true
         ]
       ],
       "return_type": "void",
@@ -482,7 +550,8 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ]
       ],
       "return_type": "Boolean",
@@ -494,11 +563,13 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ],
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "Boolean",
@@ -510,23 +581,28 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ],
         [
           "String",
-          "name"
+          "name",
+          false
         ],
         [
           "Integer",
-          "line"
+          "line",
+          false
         ],
         [
           "Integer",
-          "col"
+          "col",
+          false
         ],
         [
-          "Dictionary",
-          "opts"
+          "Dict",
+          "opts",
+          true
         ]
       ],
       "return_type": "Boolean",
@@ -538,11 +614,13 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ],
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "ArrayOf(Integer, 2)",
@@ -554,11 +632,13 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ],
         [
           "LuaRef",
-          "fun"
+          "fn",
+          false
         ]
       ],
       "return_type": "Object",
@@ -570,14 +650,16 @@
       "parameters": [
         [
           "String",
-          "str"
+          "str",
+          false
         ],
         [
-          "Dictionary",
-          "opts"
+          "Dict",
+          "opts",
+          true
         ]
       ],
-      "return_type": "Dictionary",
+      "return_type": "Dict",
       "since": 10
     },
     {
@@ -585,12 +667,14 @@
       "name": "nvim_cmd",
       "parameters": [
         [
-          "Dictionary",
-          "cmd"
+          "Dict",
+          "cmd",
+          false
         ],
         [
-          "Dictionary",
-          "opts"
+          "Dict",
+          "opts",
+          true
         ]
       ],
       "return_type": "String",
@@ -602,15 +686,18 @@
       "parameters": [
         [
           "String",
-          "name"
+          "name",
+          false
         ],
         [
           "Object",
-          "command"
+          "cmd",
+          false
         ],
         [
-          "Dictionary",
-          "opts"
+          "Dict",
+          "opts",
+          true
         ]
       ],
       "return_type": "void",
@@ -622,7 +709,8 @@
       "parameters": [
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "void",
@@ -634,19 +722,23 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ],
         [
           "String",
-          "name"
+          "name",
+          false
         ],
         [
           "Object",
-          "command"
+          "cmd",
+          false
         ],
         [
-          "Dictionary",
-          "opts"
+          "Dict",
+          "opts",
+          true
         ]
       ],
       "return_type": "void",
@@ -658,11 +750,13 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ],
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "void",
@@ -673,11 +767,12 @@
       "name": "nvim_get_commands",
       "parameters": [
         [
-          "Dictionary",
-          "opts"
+          "Dict",
+          "opts",
+          true
         ]
       ],
-      "return_type": "Dictionary",
+      "return_type": "Dict",
       "since": 4
     },
     {
@@ -686,14 +781,16 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ],
         [
-          "Dictionary",
-          "opts"
+          "Dict",
+          "opts",
+          true
         ]
       ],
-      "return_type": "Dictionary",
+      "return_type": "Dict",
       "since": 4
     },
     {
@@ -703,11 +800,13 @@
       "parameters": [
         [
           "String",
-          "src"
+          "src",
+          false
         ],
         [
           "Boolean",
-          "output"
+          "output",
+          false
         ]
       ],
       "return_type": "String",
@@ -720,7 +819,8 @@
       "parameters": [
         [
           "String",
-          "command"
+          "command",
+          false
         ]
       ],
       "return_type": "String",
@@ -733,11 +833,13 @@
       "parameters": [
         [
           "String",
-          "code"
+          "code",
+          false
         ],
         [
           "Array",
-          "args"
+          "args",
+          false
         ]
       ],
       "return_type": "Object",
@@ -750,7 +852,8 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buffer",
+          false
         ]
       ],
       "return_type": "Integer",
@@ -763,22 +866,65 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buffer",
+          false
         ],
         [
           "Integer",
-          "ns_id"
+          "ns_id",
+          false
         ],
         [
           "Integer",
-          "line_start"
+          "line_start",
+          false
         ],
         [
           "Integer",
-          "line_end"
+          "line_end",
+          false
         ]
       ],
       "return_type": "void",
+      "since": 1
+    },
+    {
+      "deprecated_since": 13,
+      "method": true,
+      "name": "nvim_buf_add_highlight",
+      "parameters": [
+        [
+          "Buffer",
+          "buffer",
+          false
+        ],
+        [
+          "Integer",
+          "ns_id",
+          false
+        ],
+        [
+          "String",
+          "hl_group",
+          false
+        ],
+        [
+          "Integer",
+          "line",
+          false
+        ],
+        [
+          "Integer",
+          "col_start",
+          false
+        ],
+        [
+          "Integer",
+          "col_end",
+          false
+        ]
+      ],
+      "return_type": "Integer",
       "since": 1
     },
     {
@@ -788,23 +934,28 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buffer",
+          false
         ],
         [
           "Integer",
-          "src_id"
+          "src_id",
+          false
         ],
         [
           "Integer",
-          "line"
+          "line",
+          false
         ],
         [
           "Array",
-          "chunks"
+          "chunks",
+          false
         ],
         [
-          "Dictionary",
-          "opts"
+          "Dict",
+          "opts",
+          true
         ]
       ],
       "return_type": "Integer",
@@ -817,14 +968,16 @@
       "parameters": [
         [
           "Integer",
-          "hl_id"
+          "hl_id",
+          false
         ],
         [
           "Boolean",
-          "rgb"
+          "rgb",
+          false
         ]
       ],
-      "return_type": "Dictionary",
+      "return_type": "Dict",
       "since": 3
     },
     {
@@ -834,14 +987,16 @@
       "parameters": [
         [
           "String",
-          "name"
+          "name",
+          false
         ],
         [
           "Boolean",
-          "rgb"
+          "rgb",
+          false
         ]
       ],
-      "return_type": "Dictionary",
+      "return_type": "Dict",
       "since": 3
     },
     {
@@ -851,15 +1006,18 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buffer",
+          false
         ],
         [
           "Integer",
-          "lnum"
+          "lnum",
+          false
         ],
         [
           "ArrayOf(String)",
-          "lines"
+          "lines",
+          false
         ]
       ],
       "return_type": "void",
@@ -872,11 +1030,13 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buffer",
+          false
         ],
         [
           "Integer",
-          "index"
+          "index",
+          false
         ]
       ],
       "return_type": "String",
@@ -889,15 +1049,18 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buffer",
+          false
         ],
         [
           "Integer",
-          "index"
+          "index",
+          false
         ],
         [
           "String",
-          "line"
+          "line",
+          false
         ]
       ],
       "return_type": "void",
@@ -910,11 +1073,13 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buffer",
+          false
         ],
         [
           "Integer",
-          "index"
+          "index",
+          false
         ]
       ],
       "return_type": "void",
@@ -927,23 +1092,28 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buffer",
+          false
         ],
         [
           "Integer",
-          "start"
+          "start",
+          false
         ],
         [
           "Integer",
-          "end"
+          "end",
+          false
         ],
         [
           "Boolean",
-          "include_start"
+          "include_start",
+          false
         ],
         [
           "Boolean",
-          "include_end"
+          "include_end",
+          false
         ]
       ],
       "return_type": "ArrayOf(String)",
@@ -956,27 +1126,33 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buffer",
+          false
         ],
         [
           "Integer",
-          "start"
+          "start",
+          false
         ],
         [
           "Integer",
-          "end"
+          "end",
+          false
         ],
         [
           "Boolean",
-          "include_start"
+          "include_start",
+          false
         ],
         [
           "Boolean",
-          "include_end"
+          "include_end",
+          false
         ],
         [
           "ArrayOf(String)",
-          "replacement"
+          "replacement",
+          false
         ]
       ],
       "return_type": "void",
@@ -989,15 +1165,18 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buffer",
+          false
         ],
         [
           "String",
-          "name"
+          "name",
+          false
         ],
         [
           "Object",
-          "value"
+          "value",
+          false
         ]
       ],
       "return_type": "Object",
@@ -1010,11 +1189,13 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buffer",
+          false
         ],
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "Object",
@@ -1027,15 +1208,18 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "window",
+          false
         ],
         [
           "String",
-          "name"
+          "name",
+          false
         ],
         [
           "Object",
-          "value"
+          "value",
+          false
         ]
       ],
       "return_type": "Object",
@@ -1048,11 +1232,13 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "window",
+          false
         ],
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "Object",
@@ -1065,15 +1251,18 @@
       "parameters": [
         [
           "Tabpage",
-          "tabpage"
+          "tabpage",
+          false
         ],
         [
           "String",
-          "name"
+          "name",
+          false
         ],
         [
           "Object",
-          "value"
+          "value",
+          false
         ]
       ],
       "return_type": "Object",
@@ -1086,11 +1275,13 @@
       "parameters": [
         [
           "Tabpage",
-          "tabpage"
+          "tabpage",
+          false
         ],
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "Object",
@@ -1103,11 +1294,13 @@
       "parameters": [
         [
           "String",
-          "name"
+          "name",
+          false
         ],
         [
           "Object",
-          "value"
+          "value",
+          false
         ]
       ],
       "return_type": "Object",
@@ -1120,23 +1313,309 @@
       "parameters": [
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "Object",
       "since": 0
     },
     {
+      "deprecated_since": 11,
       "method": false,
       "name": "nvim_get_option_info",
       "parameters": [
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
-      "return_type": "Dictionary",
+      "return_type": "Dict",
       "since": 7
+    },
+    {
+      "deprecated_since": 11,
+      "method": false,
+      "name": "nvim_set_option",
+      "parameters": [
+        [
+          "String",
+          "name",
+          false
+        ],
+        [
+          "Object",
+          "value",
+          false
+        ]
+      ],
+      "return_type": "void",
+      "since": 1
+    },
+    {
+      "deprecated_since": 11,
+      "method": false,
+      "name": "nvim_get_option",
+      "parameters": [
+        [
+          "String",
+          "name",
+          false
+        ]
+      ],
+      "return_type": "Object",
+      "since": 1
+    },
+    {
+      "deprecated_since": 11,
+      "method": true,
+      "name": "nvim_buf_get_option",
+      "parameters": [
+        [
+          "Buffer",
+          "buffer",
+          false
+        ],
+        [
+          "String",
+          "name",
+          false
+        ]
+      ],
+      "return_type": "Object",
+      "since": 1
+    },
+    {
+      "deprecated_since": 11,
+      "method": true,
+      "name": "nvim_buf_set_option",
+      "parameters": [
+        [
+          "Buffer",
+          "buffer",
+          false
+        ],
+        [
+          "String",
+          "name",
+          false
+        ],
+        [
+          "Object",
+          "value",
+          false
+        ]
+      ],
+      "return_type": "void",
+      "since": 1
+    },
+    {
+      "deprecated_since": 11,
+      "method": true,
+      "name": "nvim_win_get_option",
+      "parameters": [
+        [
+          "Window",
+          "window",
+          false
+        ],
+        [
+          "String",
+          "name",
+          false
+        ]
+      ],
+      "return_type": "Object",
+      "since": 1
+    },
+    {
+      "deprecated_since": 11,
+      "method": true,
+      "name": "nvim_win_set_option",
+      "parameters": [
+        [
+          "Window",
+          "window",
+          false
+        ],
+        [
+          "String",
+          "name",
+          false
+        ],
+        [
+          "Object",
+          "value",
+          false
+        ]
+      ],
+      "return_type": "void",
+      "since": 1
+    },
+    {
+      "deprecated_since": 12,
+      "method": false,
+      "name": "nvim_call_atomic",
+      "parameters": [
+        [
+          "Array",
+          "calls",
+          false
+        ]
+      ],
+      "return_type": "Array",
+      "since": 1
+    },
+    {
+      "deprecated_since": 13,
+      "method": false,
+      "name": "nvim_subscribe",
+      "parameters": [
+        [
+          "String",
+          "event",
+          false
+        ]
+      ],
+      "return_type": "void",
+      "since": 1
+    },
+    {
+      "deprecated_since": 13,
+      "method": false,
+      "name": "nvim_unsubscribe",
+      "parameters": [
+        [
+          "String",
+          "event",
+          false
+        ]
+      ],
+      "return_type": "void",
+      "since": 1
+    },
+    {
+      "deprecated_since": 13,
+      "method": false,
+      "name": "nvim_out_write",
+      "parameters": [
+        [
+          "String",
+          "str",
+          false
+        ]
+      ],
+      "return_type": "void",
+      "since": 1
+    },
+    {
+      "deprecated_since": 13,
+      "method": false,
+      "name": "nvim_err_write",
+      "parameters": [
+        [
+          "String",
+          "str",
+          false
+        ]
+      ],
+      "return_type": "void",
+      "since": 1
+    },
+    {
+      "deprecated_since": 13,
+      "method": false,
+      "name": "nvim_err_writeln",
+      "parameters": [
+        [
+          "String",
+          "str",
+          false
+        ]
+      ],
+      "return_type": "void",
+      "since": 1
+    },
+    {
+      "deprecated_since": 13,
+      "method": false,
+      "name": "nvim_notify",
+      "parameters": [
+        [
+          "String",
+          "msg",
+          false
+        ],
+        [
+          "Integer",
+          "log_level",
+          false
+        ],
+        [
+          "Dict",
+          "opts",
+          false
+        ]
+      ],
+      "return_type": "Object",
+      "since": 7
+    },
+    {
+      "deprecated_since": 15,
+      "method": true,
+      "name": "nvim_win_set_height",
+      "parameters": [
+        [
+          "Window",
+          "win",
+          false
+        ],
+        [
+          "Integer",
+          "height",
+          false
+        ]
+      ],
+      "return_type": "void",
+      "since": 1
+    },
+    {
+      "deprecated_since": 15,
+      "method": true,
+      "name": "nvim_win_set_width",
+      "parameters": [
+        [
+          "Window",
+          "win",
+          false
+        ],
+        [
+          "Integer",
+          "width",
+          false
+        ]
+      ],
+      "return_type": "void",
+      "since": 1
+    },
+    {
+      "method": false,
+      "name": "nvim_ui_term_event",
+      "parameters": [
+        [
+          "String",
+          "event",
+          false
+        ],
+        [
+          "Object",
+          "value",
+          false
+        ]
+      ],
+      "return_type": "void",
+      "since": 12
     },
     {
       "method": false,
@@ -1144,7 +1623,8 @@
       "parameters": [
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "Integer",
@@ -1154,7 +1634,7 @@
       "method": false,
       "name": "nvim_get_namespaces",
       "parameters": [],
-      "return_type": "Dictionary",
+      "return_type": "Dict",
       "since": 5
     },
     {
@@ -1163,22 +1643,26 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ],
         [
           "Integer",
-          "ns_id"
+          "ns_id",
+          false
         ],
         [
           "Integer",
-          "id"
+          "id",
+          false
         ],
         [
-          "Dictionary",
-          "opts"
+          "Dict",
+          "opts",
+          true
         ]
       ],
-      "return_type": "ArrayOf(Integer)",
+      "return_type": "Array",
       "since": 7
     },
     {
@@ -1187,26 +1671,31 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ],
         [
           "Integer",
-          "ns_id"
+          "ns_id",
+          false
         ],
         [
           "Object",
-          "start"
+          "start",
+          false
         ],
         [
           "Object",
-          "end"
+          "end",
+          false
         ],
         [
-          "Dictionary",
-          "opts"
+          "Dict",
+          "opts",
+          true
         ]
       ],
-      "return_type": "Array",
+      "return_type": "ArrayOf(Dict)",
       "since": 7
     },
     {
@@ -1215,23 +1704,28 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ],
         [
           "Integer",
-          "ns_id"
+          "ns_id",
+          false
         ],
         [
           "Integer",
-          "line"
+          "line",
+          false
         ],
         [
           "Integer",
-          "col"
+          "col",
+          false
         ],
         [
-          "Dictionary",
-          "opts"
+          "Dict",
+          "opts",
+          true
         ]
       ],
       "return_type": "Integer",
@@ -1243,15 +1737,18 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ],
         [
           "Integer",
-          "ns_id"
+          "ns_id",
+          false
         ],
         [
           "Integer",
-          "id"
+          "id",
+          false
         ]
       ],
       "return_type": "Boolean",
@@ -1259,55 +1756,27 @@
     },
     {
       "method": true,
-      "name": "nvim_buf_add_highlight",
-      "parameters": [
-        [
-          "Buffer",
-          "buffer"
-        ],
-        [
-          "Integer",
-          "ns_id"
-        ],
-        [
-          "String",
-          "hl_group"
-        ],
-        [
-          "Integer",
-          "line"
-        ],
-        [
-          "Integer",
-          "col_start"
-        ],
-        [
-          "Integer",
-          "col_end"
-        ]
-      ],
-      "return_type": "Integer",
-      "since": 1
-    },
-    {
-      "method": true,
       "name": "nvim_buf_clear_namespace",
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ],
         [
           "Integer",
-          "ns_id"
+          "ns_id",
+          false
         ],
         [
           "Integer",
-          "line_start"
+          "line_start",
+          false
         ],
         [
           "Integer",
-          "line_end"
+          "line_end",
+          false
         ]
       ],
       "return_type": "void",
@@ -1319,11 +1788,13 @@
       "parameters": [
         [
           "Integer",
-          "ns_id"
+          "ns_id",
+          false
         ],
         [
-          "Dictionary",
-          "opts"
+          "Dict",
+          "opts",
+          true
         ]
       ],
       "return_type": "void",
@@ -1335,11 +1806,13 @@
       "parameters": [
         [
           "String",
-          "name"
+          "name",
+          false
         ],
         [
-          "Dictionary",
-          "opts"
+          "Dict",
+          "opts",
+          true
         ]
       ],
       "return_type": "Object",
@@ -1351,25 +1824,28 @@
       "parameters": [
         [
           "String",
-          "name"
+          "name",
+          false
         ],
         [
           "Object",
-          "value"
+          "value",
+          false
         ],
         [
-          "Dictionary",
-          "opts"
+          "Dict",
+          "opts",
+          true
         ]
       ],
-      "return_type": "void",
+      "return_type": "Object",
       "since": 9
     },
     {
       "method": false,
       "name": "nvim_get_all_options_info",
       "parameters": [],
-      "return_type": "Dictionary",
+      "return_type": "Dict",
       "since": 7
     },
     {
@@ -1378,115 +1854,17 @@
       "parameters": [
         [
           "String",
-          "name"
+          "name",
+          false
         ],
         [
-          "Dictionary",
-          "opts"
+          "Dict",
+          "opts",
+          true
         ]
       ],
-      "return_type": "Dictionary",
+      "return_type": "Dict",
       "since": 11
-    },
-    {
-      "method": false,
-      "name": "nvim_set_option",
-      "parameters": [
-        [
-          "String",
-          "name"
-        ],
-        [
-          "Object",
-          "value"
-        ]
-      ],
-      "return_type": "void",
-      "since": 1
-    },
-    {
-      "method": false,
-      "name": "nvim_get_option",
-      "parameters": [
-        [
-          "String",
-          "name"
-        ]
-      ],
-      "return_type": "Object",
-      "since": 1
-    },
-    {
-      "method": true,
-      "name": "nvim_buf_get_option",
-      "parameters": [
-        [
-          "Buffer",
-          "buffer"
-        ],
-        [
-          "String",
-          "name"
-        ]
-      ],
-      "return_type": "Object",
-      "since": 1
-    },
-    {
-      "method": true,
-      "name": "nvim_buf_set_option",
-      "parameters": [
-        [
-          "Buffer",
-          "buffer"
-        ],
-        [
-          "String",
-          "name"
-        ],
-        [
-          "Object",
-          "value"
-        ]
-      ],
-      "return_type": "void",
-      "since": 1
-    },
-    {
-      "method": true,
-      "name": "nvim_win_get_option",
-      "parameters": [
-        [
-          "Window",
-          "window"
-        ],
-        [
-          "String",
-          "name"
-        ]
-      ],
-      "return_type": "Object",
-      "since": 1
-    },
-    {
-      "method": true,
-      "name": "nvim_win_set_option",
-      "parameters": [
-        [
-          "Window",
-          "window"
-        ],
-        [
-          "String",
-          "name"
-        ],
-        [
-          "Object",
-          "value"
-        ]
-      ],
-      "return_type": "void",
-      "since": 1
     },
     {
       "method": true,
@@ -1494,7 +1872,8 @@
       "parameters": [
         [
           "Tabpage",
-          "tabpage"
+          "tabpage",
+          false
         ]
       ],
       "return_type": "ArrayOf(Window)",
@@ -1506,11 +1885,13 @@
       "parameters": [
         [
           "Tabpage",
-          "tabpage"
+          "tabpage",
+          false
         ],
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "Object",
@@ -1522,15 +1903,18 @@
       "parameters": [
         [
           "Tabpage",
-          "tabpage"
+          "tabpage",
+          false
         ],
         [
           "String",
-          "name"
+          "name",
+          false
         ],
         [
           "Object",
-          "value"
+          "value",
+          false
         ]
       ],
       "return_type": "void",
@@ -1542,11 +1926,13 @@
       "parameters": [
         [
           "Tabpage",
-          "tabpage"
+          "tabpage",
+          false
         ],
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "void",
@@ -1558,7 +1944,8 @@
       "parameters": [
         [
           "Tabpage",
-          "tabpage"
+          "tabpage",
+          false
         ]
       ],
       "return_type": "Window",
@@ -1566,11 +1953,30 @@
     },
     {
       "method": true,
+      "name": "nvim_tabpage_set_win",
+      "parameters": [
+        [
+          "Tabpage",
+          "tabpage",
+          false
+        ],
+        [
+          "Window",
+          "win",
+          false
+        ]
+      ],
+      "return_type": "void",
+      "since": 12
+    },
+    {
+      "method": true,
       "name": "nvim_tabpage_get_number",
       "parameters": [
         [
           "Tabpage",
-          "tabpage"
+          "tabpage",
+          false
         ]
       ],
       "return_type": "Integer",
@@ -1582,7 +1988,8 @@
       "parameters": [
         [
           "Tabpage",
-          "tabpage"
+          "tabpage",
+          false
         ]
       ],
       "return_type": "Boolean",
@@ -1590,19 +1997,45 @@
     },
     {
       "method": false,
+      "name": "nvim_open_tabpage",
+      "parameters": [
+        [
+          "Buffer",
+          "buf",
+          false
+        ],
+        [
+          "Boolean",
+          "enter",
+          false
+        ],
+        [
+          "Dict",
+          "config",
+          false
+        ]
+      ],
+      "return_type": "Tabpage",
+      "since": 14
+    },
+    {
+      "method": false,
       "name": "nvim_ui_attach",
       "parameters": [
         [
           "Integer",
-          "width"
+          "width",
+          false
         ],
         [
           "Integer",
-          "height"
+          "height",
+          false
         ],
         [
-          "Dictionary",
-          "options"
+          "Dict",
+          "options",
+          false
         ]
       ],
       "return_type": "void",
@@ -1615,15 +2048,18 @@
       "parameters": [
         [
           "Integer",
-          "width"
+          "width",
+          false
         ],
         [
           "Integer",
-          "height"
+          "height",
+          false
         ],
         [
           "Boolean",
-          "enable_rgb"
+          "enable_rgb",
+          false
         ]
       ],
       "return_type": "void",
@@ -1635,7 +2071,8 @@
       "parameters": [
         [
           "Boolean",
-          "gained"
+          "gained",
+          false
         ]
       ],
       "return_type": "void",
@@ -1654,11 +2091,13 @@
       "parameters": [
         [
           "Integer",
-          "width"
+          "width",
+          false
         ],
         [
           "Integer",
-          "height"
+          "height",
+          false
         ]
       ],
       "return_type": "void",
@@ -1670,11 +2109,13 @@
       "parameters": [
         [
           "String",
-          "name"
+          "name",
+          false
         ],
         [
           "Object",
-          "value"
+          "value",
+          false
         ]
       ],
       "return_type": "void",
@@ -1686,15 +2127,18 @@
       "parameters": [
         [
           "Integer",
-          "grid"
+          "grid",
+          false
         ],
         [
           "Integer",
-          "width"
+          "width",
+          false
         ],
         [
           "Integer",
-          "height"
+          "height",
+          false
         ]
       ],
       "return_type": "void",
@@ -1706,7 +2150,8 @@
       "parameters": [
         [
           "Integer",
-          "height"
+          "height",
+          false
         ]
       ],
       "return_type": "void",
@@ -1718,19 +2163,23 @@
       "parameters": [
         [
           "Float",
-          "width"
+          "width",
+          false
         ],
         [
           "Float",
-          "height"
+          "height",
+          false
         ],
         [
           "Float",
-          "row"
+          "row",
+          false
         ],
         [
           "Float",
-          "col"
+          "col",
+          false
         ]
       ],
       "return_type": "void",
@@ -1738,11 +2187,25 @@
     },
     {
       "method": false,
+      "name": "nvim_ui_send",
+      "parameters": [
+        [
+          "String",
+          "content",
+          false
+        ]
+      ],
+      "return_type": "void",
+      "since": 14
+    },
+    {
+      "method": false,
       "name": "nvim_get_hl_id_by_name",
       "parameters": [
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "Integer",
@@ -1754,14 +2217,16 @@
       "parameters": [
         [
           "Integer",
-          "ns_id"
+          "ns_id",
+          false
         ],
         [
-          "Dictionary",
-          "opts"
+          "Dict",
+          "opts",
+          true
         ]
       ],
-      "return_type": "Dictionary",
+      "return_type": "Dict",
       "since": 11
     },
     {
@@ -1770,15 +2235,18 @@
       "parameters": [
         [
           "Integer",
-          "ns_id"
+          "ns_id",
+          false
         ],
         [
           "String",
-          "name"
+          "name",
+          false
         ],
         [
-          "Dictionary",
-          "val"
+          "Dict",
+          "val",
+          false
         ]
       ],
       "return_type": "void",
@@ -1786,11 +2254,25 @@
     },
     {
       "method": false,
+      "name": "nvim_get_hl_ns",
+      "parameters": [
+        [
+          "Dict",
+          "opts",
+          true
+        ]
+      ],
+      "return_type": "Integer",
+      "since": 12
+    },
+    {
+      "method": false,
       "name": "nvim_set_hl_ns",
       "parameters": [
         [
           "Integer",
-          "ns_id"
+          "ns_id",
+          false
         ]
       ],
       "return_type": "void",
@@ -1802,7 +2284,8 @@
       "parameters": [
         [
           "Integer",
-          "ns_id"
+          "ns_id",
+          false
         ]
       ],
       "return_type": "void",
@@ -1814,15 +2297,18 @@
       "parameters": [
         [
           "String",
-          "keys"
+          "keys",
+          false
         ],
         [
           "String",
-          "mode"
+          "mode",
+          false
         ],
         [
           "Boolean",
-          "escape_ks"
+          "escape_ks",
+          false
         ]
       ],
       "return_type": "void",
@@ -1834,7 +2320,8 @@
       "parameters": [
         [
           "String",
-          "keys"
+          "keys",
+          false
         ]
       ],
       "return_type": "Integer",
@@ -1846,27 +2333,33 @@
       "parameters": [
         [
           "String",
-          "button"
+          "button",
+          false
         ],
         [
           "String",
-          "action"
+          "action",
+          false
         ],
         [
           "String",
-          "modifier"
+          "modifier",
+          false
         ],
         [
           "Integer",
-          "grid"
+          "grid",
+          false
         ],
         [
           "Integer",
-          "row"
+          "row",
+          false
         ],
         [
           "Integer",
-          "col"
+          "col",
+          false
         ]
       ],
       "return_type": "void",
@@ -1878,19 +2371,23 @@
       "parameters": [
         [
           "String",
-          "str"
+          "str",
+          false
         ],
         [
           "Boolean",
-          "from_part"
+          "from_part",
+          false
         ],
         [
           "Boolean",
-          "do_lt"
+          "do_lt",
+          false
         ],
         [
           "Boolean",
-          "special"
+          "special",
+          false
         ]
       ],
       "return_type": "String",
@@ -1902,31 +2399,13 @@
       "parameters": [
         [
           "String",
-          "code"
+          "code",
+          false
         ],
         [
           "Array",
-          "args"
-        ]
-      ],
-      "return_type": "Object",
-      "since": 7
-    },
-    {
-      "method": false,
-      "name": "nvim_notify",
-      "parameters": [
-        [
-          "String",
-          "msg"
-        ],
-        [
-          "Integer",
-          "log_level"
-        ],
-        [
-          "Dictionary",
-          "opts"
+          "args",
+          false
         ]
       ],
       "return_type": "Object",
@@ -1938,7 +2417,8 @@
       "parameters": [
         [
           "String",
-          "text"
+          "text",
+          false
         ]
       ],
       "return_type": "Integer",
@@ -1957,11 +2437,13 @@
       "parameters": [
         [
           "String",
-          "name"
+          "name",
+          false
         ],
         [
           "Boolean",
-          "all"
+          "all",
+          false
         ]
       ],
       "return_type": "ArrayOf(String)",
@@ -1973,7 +2455,8 @@
       "parameters": [
         [
           "String",
-          "dir"
+          "dir",
+          false
         ]
       ],
       "return_type": "void",
@@ -1992,7 +2475,8 @@
       "parameters": [
         [
           "String",
-          "line"
+          "line",
+          false
         ]
       ],
       "return_type": "void",
@@ -2011,7 +2495,8 @@
       "parameters": [
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "Object",
@@ -2023,11 +2508,13 @@
       "parameters": [
         [
           "String",
-          "name"
+          "name",
+          false
         ],
         [
           "Object",
-          "value"
+          "value",
+          false
         ]
       ],
       "return_type": "void",
@@ -2039,7 +2526,8 @@
       "parameters": [
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "void",
@@ -2051,7 +2539,8 @@
       "parameters": [
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "Object",
@@ -2063,11 +2552,13 @@
       "parameters": [
         [
           "String",
-          "name"
+          "name",
+          false
         ],
         [
           "Object",
-          "value"
+          "value",
+          false
         ]
       ],
       "return_type": "void",
@@ -2078,56 +2569,23 @@
       "name": "nvim_echo",
       "parameters": [
         [
-          "Array",
-          "chunks"
+          "ArrayOf(Array)",
+          "chunks",
+          false
         ],
         [
           "Boolean",
-          "history"
+          "history",
+          false
         ],
         [
-          "Dictionary",
-          "opts"
+          "Dict",
+          "opts",
+          true
         ]
       ],
-      "return_type": "void",
+      "return_type": "Object",
       "since": 7
-    },
-    {
-      "method": false,
-      "name": "nvim_out_write",
-      "parameters": [
-        [
-          "String",
-          "str"
-        ]
-      ],
-      "return_type": "void",
-      "since": 1
-    },
-    {
-      "method": false,
-      "name": "nvim_err_write",
-      "parameters": [
-        [
-          "String",
-          "str"
-        ]
-      ],
-      "return_type": "void",
-      "since": 1
-    },
-    {
-      "method": false,
-      "name": "nvim_err_writeln",
-      "parameters": [
-        [
-          "String",
-          "str"
-        ]
-      ],
-      "return_type": "void",
-      "since": 1
     },
     {
       "method": false,
@@ -2149,7 +2607,8 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ]
       ],
       "return_type": "void",
@@ -2175,7 +2634,8 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "win",
+          false
         ]
       ],
       "return_type": "void",
@@ -2187,11 +2647,13 @@
       "parameters": [
         [
           "Boolean",
-          "listed"
+          "listed",
+          false
         ],
         [
           "Boolean",
-          "scratch"
+          "scratch",
+          false
         ]
       ],
       "return_type": "Buffer",
@@ -2203,11 +2665,13 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ],
         [
-          "Dictionary",
-          "opts"
+          "Dict",
+          "opts",
+          true
         ]
       ],
       "return_type": "Integer",
@@ -2219,11 +2683,13 @@
       "parameters": [
         [
           "Integer",
-          "chan"
+          "chan",
+          false
         ],
         [
           "String",
-          "data"
+          "data",
+          false
         ]
       ],
       "return_type": "void",
@@ -2249,7 +2715,8 @@
       "parameters": [
         [
           "Tabpage",
-          "tabpage"
+          "tabpage",
+          false
         ]
       ],
       "return_type": "void",
@@ -2261,15 +2728,18 @@
       "parameters": [
         [
           "String",
-          "data"
+          "data",
+          false
         ],
         [
           "Boolean",
-          "crlf"
+          "crlf",
+          false
         ],
         [
           "Integer",
-          "phase"
+          "phase",
+          false
         ]
       ],
       "return_type": "Boolean",
@@ -2281,19 +2751,23 @@
       "parameters": [
         [
           "ArrayOf(String)",
-          "lines"
+          "lines",
+          false
         ],
         [
           "String",
-          "type"
+          "type",
+          false
         ],
         [
           "Boolean",
-          "after"
+          "after",
+          false
         ],
         [
           "Boolean",
-          "follow"
+          "follow",
+          false
         ]
       ],
       "return_type": "void",
@@ -2301,27 +2775,21 @@
     },
     {
       "method": false,
-      "name": "nvim_subscribe",
+      "name": "nvim_mcursor",
       "parameters": [
         [
-          "String",
-          "event"
-        ]
-      ],
-      "return_type": "void",
-      "since": 1
-    },
-    {
-      "method": false,
-      "name": "nvim_unsubscribe",
-      "parameters": [
+          "Buffer",
+          "buf",
+          false
+        ],
         [
-          "String",
-          "event"
+          "ArrayOf(Integer, 2)",
+          "pos",
+          false
         ]
       ],
-      "return_type": "void",
-      "since": 1
+      "return_type": "Integer",
+      "since": 15
     },
     {
       "method": false,
@@ -2329,7 +2797,8 @@
       "parameters": [
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "Integer",
@@ -2339,7 +2808,7 @@
       "method": false,
       "name": "nvim_get_color_map",
       "parameters": [],
-      "return_type": "Dictionary",
+      "return_type": "Dict",
       "since": 1
     },
     {
@@ -2347,11 +2816,12 @@
       "name": "nvim_get_context",
       "parameters": [
         [
-          "Dictionary",
-          "opts"
+          "Dict",
+          "opts",
+          true
         ]
       ],
-      "return_type": "Dictionary",
+      "return_type": "Dict",
       "since": 6
     },
     {
@@ -2359,8 +2829,9 @@
       "name": "nvim_load_context",
       "parameters": [
         [
-          "Dictionary",
-          "dict"
+          "Dict",
+          "dict",
+          false
         ]
       ],
       "return_type": "Object",
@@ -2370,7 +2841,7 @@
       "method": false,
       "name": "nvim_get_mode",
       "parameters": [],
-      "return_type": "Dictionary",
+      "return_type": "Dict",
       "since": 2
     },
     {
@@ -2379,10 +2850,11 @@
       "parameters": [
         [
           "String",
-          "mode"
+          "mode",
+          false
         ]
       ],
-      "return_type": "ArrayOf(Dictionary)",
+      "return_type": "ArrayOf(Dict)",
       "since": 3
     },
     {
@@ -2391,19 +2863,23 @@
       "parameters": [
         [
           "String",
-          "mode"
+          "mode",
+          false
         ],
         [
           "String",
-          "lhs"
+          "lhs",
+          false
         ],
         [
           "String",
-          "rhs"
+          "rhs",
+          false
         ],
         [
-          "Dictionary",
-          "opts"
+          "Dict",
+          "opts",
+          true
         ]
       ],
       "return_type": "void",
@@ -2415,11 +2891,18 @@
       "parameters": [
         [
           "String",
-          "mode"
+          "mode",
+          false
         ],
         [
           "String",
-          "lhs"
+          "lhs",
+          false
+        ],
+        [
+          "Dict",
+          "opts",
+          true
         ]
       ],
       "return_type": "void",
@@ -2429,7 +2912,7 @@
       "method": false,
       "name": "nvim_get_api_info",
       "parameters": [],
-      "return_type": "Array",
+      "return_type": "ArrayOf(Object, 2)",
       "since": 1
     },
     {
@@ -2438,23 +2921,28 @@
       "parameters": [
         [
           "String",
-          "name"
+          "name",
+          false
         ],
         [
-          "Dictionary",
-          "version"
+          "Dict",
+          "version",
+          false
         ],
         [
           "String",
-          "type"
+          "type",
+          false
         ],
         [
-          "Dictionary",
-          "methods"
+          "Dict",
+          "methods",
+          false
         ],
         [
-          "Dictionary",
-          "attributes"
+          "Dict",
+          "attributes",
+          false
         ]
       ],
       "return_type": "void",
@@ -2466,36 +2954,25 @@
       "parameters": [
         [
           "Integer",
-          "chan"
+          "chan",
+          false
         ]
       ],
-      "return_type": "Dictionary",
+      "return_type": "Dict",
       "since": 4
     },
     {
       "method": false,
       "name": "nvim_list_chans",
       "parameters": [],
-      "return_type": "Array",
+      "return_type": "ArrayOf(Dict)",
       "since": 4
-    },
-    {
-      "method": false,
-      "name": "nvim_call_atomic",
-      "parameters": [
-        [
-          "Array",
-          "calls"
-        ]
-      ],
-      "return_type": "Array",
-      "since": 1
     },
     {
       "method": false,
       "name": "nvim_list_uis",
       "parameters": [],
-      "return_type": "Array",
+      "return_type": "ArrayOf(Dict)",
       "since": 4
     },
     {
@@ -2504,7 +2981,8 @@
       "parameters": [
         [
           "Integer",
-          "pid"
+          "pid",
+          false
         ]
       ],
       "return_type": "Array",
@@ -2516,7 +2994,8 @@
       "parameters": [
         [
           "Integer",
-          "pid"
+          "pid",
+          false
         ]
       ],
       "return_type": "Object",
@@ -2528,19 +3007,23 @@
       "parameters": [
         [
           "Integer",
-          "item"
+          "item",
+          false
         ],
         [
           "Boolean",
-          "insert"
+          "insert",
+          false
         ],
         [
           "Boolean",
-          "finish"
+          "finish",
+          false
         ],
         [
-          "Dictionary",
-          "opts"
+          "Dict",
+          "opts",
+          true
         ]
       ],
       "return_type": "void",
@@ -2552,7 +3035,8 @@
       "parameters": [
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "Boolean",
@@ -2564,11 +3048,13 @@
       "parameters": [
         [
           "String",
-          "name"
+          "name",
+          false
         ],
         [
-          "Dictionary",
-          "opts"
+          "Dict",
+          "opts",
+          true
         ]
       ],
       "return_type": "Array",
@@ -2580,14 +3066,16 @@
       "parameters": [
         [
           "String",
-          "str"
+          "str",
+          false
         ],
         [
-          "Dictionary",
-          "opts"
+          "Dict",
+          "opts",
+          true
         ]
       ],
-      "return_type": "Dictionary",
+      "return_type": "Dict",
       "since": 8
     },
     {
@@ -2596,14 +3084,16 @@
       "parameters": [
         [
           "String",
-          "src"
+          "src",
+          false
         ],
         [
-          "Dictionary",
-          "opts"
+          "Dict",
+          "opts",
+          true
         ]
       ],
-      "return_type": "Dictionary",
+      "return_type": "Dict",
       "since": 11
     },
     {
@@ -2612,7 +3102,8 @@
       "parameters": [
         [
           "String",
-          "command"
+          "cmd",
+          false
         ]
       ],
       "return_type": "void",
@@ -2624,7 +3115,8 @@
       "parameters": [
         [
           "String",
-          "expr"
+          "expr",
+          false
         ]
       ],
       "return_type": "Object",
@@ -2636,11 +3128,13 @@
       "parameters": [
         [
           "String",
-          "fn"
+          "fn",
+          false
         ],
         [
           "Array",
-          "args"
+          "args",
+          false
         ]
       ],
       "return_type": "Object",
@@ -2652,15 +3146,18 @@
       "parameters": [
         [
           "Object",
-          "dict"
+          "dict",
+          false
         ],
         [
           "String",
-          "fn"
+          "fn",
+          false
         ],
         [
           "Array",
-          "args"
+          "args",
+          false
         ]
       ],
       "return_type": "Object",
@@ -2672,18 +3169,21 @@
       "parameters": [
         [
           "String",
-          "expr"
+          "expr",
+          false
         ],
         [
           "String",
-          "flags"
+          "flags",
+          false
         ],
         [
           "Boolean",
-          "highlight"
+          "hl",
+          false
         ]
       ],
-      "return_type": "Dictionary",
+      "return_type": "Dict",
       "since": 4
     },
     {
@@ -2692,15 +3192,18 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ],
         [
           "Boolean",
-          "enter"
+          "enter",
+          false
         ],
         [
-          "Dictionary",
-          "config"
+          "Dict",
+          "config",
+          false
         ]
       ],
       "return_type": "Window",
@@ -2712,11 +3215,13 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "win",
+          false
         ],
         [
-          "Dictionary",
-          "config"
+          "Dict",
+          "config",
+          false
         ]
       ],
       "return_type": "void",
@@ -2728,10 +3233,11 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "win",
+          false
         ]
       ],
-      "return_type": "Dictionary",
+      "return_type": "Dict",
       "since": 6
     },
     {
@@ -2740,7 +3246,8 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "win",
+          false
         ]
       ],
       "return_type": "Buffer",
@@ -2752,11 +3259,13 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "win",
+          false
         ],
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ]
       ],
       "return_type": "void",
@@ -2768,7 +3277,8 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "win",
+          false
         ]
       ],
       "return_type": "ArrayOf(Integer, 2)",
@@ -2780,11 +3290,13 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "win",
+          false
         ],
         [
           "ArrayOf(Integer, 2)",
-          "pos"
+          "pos",
+          false
         ]
       ],
       "return_type": "void",
@@ -2796,26 +3308,11 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "win",
+          false
         ]
       ],
       "return_type": "Integer",
-      "since": 1
-    },
-    {
-      "method": true,
-      "name": "nvim_win_set_height",
-      "parameters": [
-        [
-          "Window",
-          "window"
-        ],
-        [
-          "Integer",
-          "height"
-        ]
-      ],
-      "return_type": "void",
       "since": 1
     },
     {
@@ -2824,26 +3321,11 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "win",
+          false
         ]
       ],
       "return_type": "Integer",
-      "since": 1
-    },
-    {
-      "method": true,
-      "name": "nvim_win_set_width",
-      "parameters": [
-        [
-          "Window",
-          "window"
-        ],
-        [
-          "Integer",
-          "width"
-        ]
-      ],
-      "return_type": "void",
       "since": 1
     },
     {
@@ -2852,11 +3334,13 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "win",
+          false
         ],
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "Object",
@@ -2868,15 +3352,18 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "win",
+          false
         ],
         [
           "String",
-          "name"
+          "name",
+          false
         ],
         [
           "Object",
-          "value"
+          "value",
+          false
         ]
       ],
       "return_type": "void",
@@ -2888,11 +3375,13 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "win",
+          false
         ],
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "void",
@@ -2904,7 +3393,8 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "win",
+          false
         ]
       ],
       "return_type": "ArrayOf(Integer, 2)",
@@ -2916,7 +3406,8 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "win",
+          false
         ]
       ],
       "return_type": "Tabpage",
@@ -2928,7 +3419,8 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "win",
+          false
         ]
       ],
       "return_type": "Integer",
@@ -2940,7 +3432,8 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "win",
+          false
         ]
       ],
       "return_type": "Boolean",
@@ -2952,7 +3445,8 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "win",
+          false
         ]
       ],
       "return_type": "void",
@@ -2964,11 +3458,13 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "win",
+          false
         ],
         [
           "Boolean",
-          "force"
+          "force",
+          false
         ]
       ],
       "return_type": "void",
@@ -2980,11 +3476,13 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "win",
+          false
         ],
         [
           "LuaRef",
-          "fun"
+          "fn",
+          false
         ]
       ],
       "return_type": "Object",
@@ -2996,15 +3494,63 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "win",
+          false
         ],
         [
           "Integer",
-          "ns_id"
+          "ns_id",
+          false
         ]
       ],
       "return_type": "void",
       "since": 10
+    },
+    {
+      "method": true,
+      "name": "nvim_win_text_height",
+      "parameters": [
+        [
+          "Window",
+          "win",
+          false
+        ],
+        [
+          "Dict",
+          "opts",
+          true
+        ]
+      ],
+      "return_type": "Dict",
+      "since": 12
+    },
+    {
+      "method": true,
+      "name": "nvim_win_resize",
+      "parameters": [
+        [
+          "Window",
+          "win",
+          false
+        ],
+        [
+          "Integer",
+          "width",
+          false
+        ],
+        [
+          "Integer",
+          "height",
+          false
+        ],
+        [
+          "Dict",
+          "opts",
+          true
+        ]
+      ],
+      "return_type": "void",
+      "since": 15
     },
     {
       "deprecated_since": 1,
@@ -3013,7 +3559,8 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ]
       ],
       "return_type": "Integer",
@@ -3026,19 +3573,23 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ],
         [
           "Integer",
-          "start"
+          "start",
+          false
         ],
         [
           "Integer",
-          "end"
+          "end",
+          false
         ],
         [
           "Boolean",
-          "strict_indexing"
+          "strict_indexing",
+          false
         ]
       ],
       "return_type": "ArrayOf(String)",
@@ -3051,23 +3602,28 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ],
         [
           "Integer",
-          "start"
+          "start",
+          false
         ],
         [
           "Integer",
-          "end"
+          "end",
+          false
         ],
         [
           "Boolean",
-          "strict_indexing"
+          "strict_indexing",
+          false
         ],
         [
           "ArrayOf(String)",
-          "replacement"
+          "replacement",
+          false
         ]
       ],
       "return_type": "void",
@@ -3080,11 +3636,13 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ],
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "Object",
@@ -3097,7 +3655,8 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ]
       ],
       "return_type": "String",
@@ -3110,11 +3669,13 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ],
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "void",
@@ -3127,7 +3688,8 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ]
       ],
       "return_type": "Boolean",
@@ -3140,11 +3702,13 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ],
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "ArrayOf(Integer, 2)",
@@ -3157,7 +3721,8 @@
       "parameters": [
         [
           "String",
-          "command"
+          "command",
+          false
         ]
       ],
       "return_type": "String",
@@ -3170,7 +3735,8 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buffer",
+          false
         ]
       ],
       "return_type": "Integer",
@@ -3183,19 +3749,23 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buffer",
+          false
         ],
         [
           "Integer",
-          "ns_id"
+          "ns_id",
+          false
         ],
         [
           "Integer",
-          "line_start"
+          "line_start",
+          false
         ],
         [
           "Integer",
-          "line_end"
+          "line_end",
+          false
         ]
       ],
       "return_type": "void",
@@ -3208,27 +3778,33 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buffer",
+          false
         ],
         [
           "Integer",
-          "ns_id"
+          "ns_id",
+          false
         ],
         [
           "String",
-          "hl_group"
+          "hl_group",
+          false
         ],
         [
           "Integer",
-          "line"
+          "line",
+          false
         ],
         [
           "Integer",
-          "col_start"
+          "col_start",
+          false
         ],
         [
           "Integer",
-          "col_end"
+          "col_end",
+          false
         ]
       ],
       "return_type": "Integer",
@@ -3241,11 +3817,13 @@
       "parameters": [
         [
           "String",
-          "name"
+          "name",
+          false
         ],
         [
           "Object",
-          "value"
+          "value",
+          false
         ]
       ],
       "return_type": "void",
@@ -3258,7 +3836,8 @@
       "parameters": [
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "Object",
@@ -3271,11 +3850,13 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buffer",
+          false
         ],
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "Object",
@@ -3288,15 +3869,18 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buffer",
+          false
         ],
         [
           "String",
-          "name"
+          "name",
+          false
         ],
         [
           "Object",
-          "value"
+          "value",
+          false
         ]
       ],
       "return_type": "void",
@@ -3309,11 +3893,13 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "window",
+          false
         ],
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "Object",
@@ -3326,15 +3912,126 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "window",
+          false
         ],
         [
           "String",
-          "name"
+          "name",
+          false
         ],
         [
           "Object",
-          "value"
+          "value",
+          false
+        ]
+      ],
+      "return_type": "void",
+      "since": 0
+    },
+    {
+      "deprecated_since": 1,
+      "method": false,
+      "name": "vim_subscribe",
+      "parameters": [
+        [
+          "String",
+          "event",
+          false
+        ]
+      ],
+      "return_type": "void",
+      "since": 0
+    },
+    {
+      "deprecated_since": 1,
+      "method": false,
+      "name": "vim_unsubscribe",
+      "parameters": [
+        [
+          "String",
+          "event",
+          false
+        ]
+      ],
+      "return_type": "void",
+      "since": 0
+    },
+    {
+      "deprecated_since": 1,
+      "method": false,
+      "name": "vim_out_write",
+      "parameters": [
+        [
+          "String",
+          "str",
+          false
+        ]
+      ],
+      "return_type": "void",
+      "since": 0
+    },
+    {
+      "deprecated_since": 1,
+      "method": false,
+      "name": "vim_err_write",
+      "parameters": [
+        [
+          "String",
+          "str",
+          false
+        ]
+      ],
+      "return_type": "void",
+      "since": 0
+    },
+    {
+      "deprecated_since": 1,
+      "method": false,
+      "name": "vim_report_error",
+      "parameters": [
+        [
+          "String",
+          "str",
+          false
+        ]
+      ],
+      "return_type": "void",
+      "since": 0
+    },
+    {
+      "deprecated_since": 1,
+      "method": true,
+      "name": "window_set_height",
+      "parameters": [
+        [
+          "Window",
+          "win",
+          false
+        ],
+        [
+          "Integer",
+          "height",
+          false
+        ]
+      ],
+      "return_type": "void",
+      "since": 0
+    },
+    {
+      "deprecated_since": 1,
+      "method": true,
+      "name": "window_set_width",
+      "parameters": [
+        [
+          "Window",
+          "win",
+          false
+        ],
+        [
+          "Integer",
+          "width",
+          false
         ]
       ],
       "return_type": "void",
@@ -3347,7 +4044,8 @@
       "parameters": [
         [
           "Tabpage",
-          "tabpage"
+          "tabpage",
+          false
         ]
       ],
       "return_type": "ArrayOf(Window)",
@@ -3360,11 +4058,13 @@
       "parameters": [
         [
           "Tabpage",
-          "tabpage"
+          "tabpage",
+          false
         ],
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "Object",
@@ -3377,7 +4077,8 @@
       "parameters": [
         [
           "Tabpage",
-          "tabpage"
+          "tabpage",
+          false
         ]
       ],
       "return_type": "Window",
@@ -3390,7 +4091,8 @@
       "parameters": [
         [
           "Tabpage",
-          "tabpage"
+          "tabpage",
+          false
         ]
       ],
       "return_type": "Boolean",
@@ -3411,11 +4113,13 @@
       "parameters": [
         [
           "Integer",
-          "width"
+          "width",
+          false
         ],
         [
           "Integer",
-          "height"
+          "height",
+          false
         ]
       ],
       "return_type": "Object",
@@ -3428,15 +4132,18 @@
       "parameters": [
         [
           "String",
-          "keys"
+          "keys",
+          false
         ],
         [
           "String",
-          "mode"
+          "mode",
+          false
         ],
         [
           "Boolean",
-          "escape_ks"
+          "escape_ks",
+          false
         ]
       ],
       "return_type": "void",
@@ -3449,7 +4156,8 @@
       "parameters": [
         [
           "String",
-          "keys"
+          "keys",
+          false
         ]
       ],
       "return_type": "Integer",
@@ -3462,19 +4170,23 @@
       "parameters": [
         [
           "String",
-          "str"
+          "str",
+          false
         ],
         [
           "Boolean",
-          "from_part"
+          "from_part",
+          false
         ],
         [
           "Boolean",
-          "do_lt"
+          "do_lt",
+          false
         ],
         [
           "Boolean",
-          "special"
+          "special",
+          false
         ]
       ],
       "return_type": "String",
@@ -3487,7 +4199,8 @@
       "parameters": [
         [
           "String",
-          "text"
+          "text",
+          false
         ]
       ],
       "return_type": "Integer",
@@ -3508,7 +4221,8 @@
       "parameters": [
         [
           "String",
-          "dir"
+          "dir",
+          false
         ]
       ],
       "return_type": "void",
@@ -3529,7 +4243,8 @@
       "parameters": [
         [
           "String",
-          "line"
+          "line",
+          false
         ]
       ],
       "return_type": "void",
@@ -3550,7 +4265,8 @@
       "parameters": [
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "Object",
@@ -3563,49 +4279,11 @@
       "parameters": [
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "Object",
-      "since": 0
-    },
-    {
-      "deprecated_since": 1,
-      "method": false,
-      "name": "vim_out_write",
-      "parameters": [
-        [
-          "String",
-          "str"
-        ]
-      ],
-      "return_type": "void",
-      "since": 0
-    },
-    {
-      "deprecated_since": 1,
-      "method": false,
-      "name": "vim_err_write",
-      "parameters": [
-        [
-          "String",
-          "str"
-        ]
-      ],
-      "return_type": "void",
-      "since": 0
-    },
-    {
-      "deprecated_since": 1,
-      "method": false,
-      "name": "vim_report_error",
-      "parameters": [
-        [
-          "String",
-          "str"
-        ]
-      ],
-      "return_type": "void",
       "since": 0
     },
     {
@@ -3631,7 +4309,8 @@
       "parameters": [
         [
           "Buffer",
-          "buffer"
+          "buf",
+          false
         ]
       ],
       "return_type": "void",
@@ -3660,7 +4339,8 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "win",
+          false
         ]
       ],
       "return_type": "void",
@@ -3689,33 +4369,8 @@
       "parameters": [
         [
           "Tabpage",
-          "tabpage"
-        ]
-      ],
-      "return_type": "void",
-      "since": 0
-    },
-    {
-      "deprecated_since": 1,
-      "method": false,
-      "name": "vim_subscribe",
-      "parameters": [
-        [
-          "String",
-          "event"
-        ]
-      ],
-      "return_type": "void",
-      "since": 0
-    },
-    {
-      "deprecated_since": 1,
-      "method": false,
-      "name": "vim_unsubscribe",
-      "parameters": [
-        [
-          "String",
-          "event"
+          "tabpage",
+          false
         ]
       ],
       "return_type": "void",
@@ -3728,7 +4383,8 @@
       "parameters": [
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "Integer",
@@ -3739,7 +4395,7 @@
       "method": false,
       "name": "vim_get_color_map",
       "parameters": [],
-      "return_type": "Dictionary",
+      "return_type": "Dict",
       "since": 0
     },
     {
@@ -3747,7 +4403,7 @@
       "method": false,
       "name": "vim_get_api_info",
       "parameters": [],
-      "return_type": "Array",
+      "return_type": "ArrayOf(Object, 2)",
       "since": 0
     },
     {
@@ -3757,7 +4413,8 @@
       "parameters": [
         [
           "String",
-          "command"
+          "cmd",
+          false
         ]
       ],
       "return_type": "void",
@@ -3770,7 +4427,8 @@
       "parameters": [
         [
           "String",
-          "expr"
+          "expr",
+          false
         ]
       ],
       "return_type": "Object",
@@ -3783,11 +4441,13 @@
       "parameters": [
         [
           "String",
-          "fn"
+          "fn",
+          false
         ],
         [
           "Array",
-          "args"
+          "args",
+          false
         ]
       ],
       "return_type": "Object",
@@ -3800,7 +4460,8 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "win",
+          false
         ]
       ],
       "return_type": "Buffer",
@@ -3813,7 +4474,8 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "win",
+          false
         ]
       ],
       "return_type": "ArrayOf(Integer, 2)",
@@ -3826,11 +4488,13 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "win",
+          false
         ],
         [
           "ArrayOf(Integer, 2)",
-          "pos"
+          "pos",
+          false
         ]
       ],
       "return_type": "void",
@@ -3843,27 +4507,11 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "win",
+          false
         ]
       ],
       "return_type": "Integer",
-      "since": 0
-    },
-    {
-      "deprecated_since": 1,
-      "method": true,
-      "name": "window_set_height",
-      "parameters": [
-        [
-          "Window",
-          "window"
-        ],
-        [
-          "Integer",
-          "height"
-        ]
-      ],
-      "return_type": "void",
       "since": 0
     },
     {
@@ -3873,27 +4521,11 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "win",
+          false
         ]
       ],
       "return_type": "Integer",
-      "since": 0
-    },
-    {
-      "deprecated_since": 1,
-      "method": true,
-      "name": "window_set_width",
-      "parameters": [
-        [
-          "Window",
-          "window"
-        ],
-        [
-          "Integer",
-          "width"
-        ]
-      ],
-      "return_type": "void",
       "since": 0
     },
     {
@@ -3903,11 +4535,13 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "win",
+          false
         ],
         [
           "String",
-          "name"
+          "name",
+          false
         ]
       ],
       "return_type": "Object",
@@ -3920,7 +4554,8 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "win",
+          false
         ]
       ],
       "return_type": "ArrayOf(Integer, 2)",
@@ -3933,7 +4568,8 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "win",
+          false
         ]
       ],
       "return_type": "Tabpage",
@@ -3946,7 +4582,8 @@
       "parameters": [
         [
           "Window",
-          "window"
+          "win",
+          false
         ]
       ],
       "return_type": "Boolean",
@@ -4037,6 +4674,26 @@
       "since": 3
     },
     {
+      "name": "connect",
+      "parameters": [
+        [
+          "String",
+          "server_addr"
+        ]
+      ],
+      "since": 14
+    },
+    {
+      "name": "restart",
+      "parameters": [
+        [
+          "String",
+          "listen_addr"
+        ]
+      ],
+      "since": 14
+    },
+    {
       "name": "suspend",
       "parameters": [],
       "since": 3
@@ -4084,6 +4741,26 @@
         ]
       ],
       "since": 4
+    },
+    {
+      "name": "chdir",
+      "parameters": [
+        [
+          "String",
+          "path"
+        ]
+      ],
+      "since": 12
+    },
+    {
+      "name": "ui_send",
+      "parameters": [
+        [
+          "String",
+          "content"
+        ]
+      ],
+      "since": 14
     },
     {
       "name": "update_fg",
@@ -4331,6 +5008,10 @@
         [
           "Array",
           "data"
+        ],
+        [
+          "Boolean",
+          "wrap"
         ]
       ],
       "since": 5
@@ -4438,11 +5119,23 @@
         ],
         [
           "Boolean",
-          "focusable"
+          "mouse_enabled"
         ],
         [
           "Integer",
           "zindex"
+        ],
+        [
+          "Integer",
+          "compindex"
+        ],
+        [
+          "Integer",
+          "screen_row"
+        ],
+        [
+          "Integer",
+          "screen_col"
         ]
       ],
       "since": 6
@@ -4499,6 +5192,14 @@
         [
           "String",
           "sep_char"
+        ],
+        [
+          "Integer",
+          "zindex"
+        ],
+        [
+          "Integer",
+          "compindex"
         ]
       ],
       "since": 6
@@ -4540,6 +5241,36 @@
         ]
       ],
       "since": 7
+    },
+    {
+      "name": "win_viewport_margins",
+      "parameters": [
+        [
+          "Integer",
+          "grid"
+        ],
+        [
+          "Window",
+          "win"
+        ],
+        [
+          "Integer",
+          "top"
+        ],
+        [
+          "Integer",
+          "bottom"
+        ],
+        [
+          "Integer",
+          "left"
+        ],
+        [
+          "Integer",
+          "right"
+        ]
+      ],
+      "since": 12
     },
     {
       "name": "win_extmark",
@@ -4660,6 +5391,10 @@
         [
           "Integer",
           "level"
+        ],
+        [
+          "Integer",
+          "hl_id"
         ]
       ],
       "since": 3
@@ -4702,6 +5437,10 @@
         [
           "Integer",
           "level"
+        ],
+        [
+          "Boolean",
+          "abort"
         ]
       ],
       "since": 3
@@ -4770,6 +5509,22 @@
         [
           "Boolean",
           "replace_last"
+        ],
+        [
+          "Boolean",
+          "history"
+        ],
+        [
+          "Boolean",
+          "append"
+        ],
+        [
+          "Object",
+          "id"
+        ],
+        [
+          "String",
+          "trigger"
         ]
       ],
       "since": 6
@@ -4815,14 +5570,23 @@
         [
           "Array",
           "entries"
+        ],
+        [
+          "Boolean",
+          "prev_cmd"
         ]
       ],
       "since": 6
     },
     {
-      "name": "msg_history_clear",
-      "parameters": [],
-      "since": 10
+      "name": "error_exit",
+      "parameters": [
+        [
+          "Integer",
+          "status"
+        ]
+      ],
+      "since": 12
     }
   ],
   "ui_options": [
@@ -4839,10 +5603,11 @@
   ],
   "version": {
     "api_compatible": 0,
-    "api_level": 11,
-    "api_prerelease": false,
+    "api_level": 15,
+    "api_prerelease": true,
+    "build": "g48864161cd",
     "major": 0,
-    "minor": 10,
+    "minor": 13,
     "patch": 0,
     "prerelease": true
   }

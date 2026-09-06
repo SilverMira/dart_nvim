@@ -6,10 +6,10 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `9`
   ///
   /// Parameters:
-  /// - `opts`: `Dictionary`
+  /// - `opts`: `Dict`
   ///
-  /// Returns: `Array`
-  Future<List> nvimGetAutocmds(Map opts) async {
+  /// Returns: `ArrayOf(Dict)`
+  Future<List<dynamic>> nvimGetAutocmds(dynamic opts) async {
     final $$args = [opts];
     return await call(
       'nvim_get_autocmds',
@@ -23,12 +23,12 @@ extension NvimApiFunctions on NvimBridge {
   ///
   /// Parameters:
   /// - `event`: `Object`
-  /// - `opts`: `Dictionary`
+  /// - `opts`: `Dict`
   ///
   /// Returns: `Integer`
   Future<int> nvimCreateAutocmd(
     Object event,
-    Map opts,
+    dynamic opts,
   ) async {
     final $$args = [
       event,
@@ -61,10 +61,10 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `9`
   ///
   /// Parameters:
-  /// - `opts`: `Dictionary`
+  /// - `opts`: `Dict`
   ///
   /// Returns: `void`
-  Future<void> nvimClearAutocmds(Map opts) async {
+  Future<void> nvimClearAutocmds(dynamic opts) async {
     final $$args = [opts];
     return await call(
       'nvim_clear_autocmds',
@@ -78,12 +78,12 @@ extension NvimApiFunctions on NvimBridge {
   ///
   /// Parameters:
   /// - `name`: `String`
-  /// - `opts`: `Dictionary`
+  /// - `opts`: `Dict`
   ///
   /// Returns: `Integer`
   Future<int> nvimCreateAugroup(
     String name,
-    Map opts,
+    dynamic opts,
   ) async {
     final $$args = [
       name,
@@ -133,12 +133,12 @@ extension NvimApiFunctions on NvimBridge {
   ///
   /// Parameters:
   /// - `event`: `Object`
-  /// - `opts`: `Dictionary`
+  /// - `opts`: `Dict`
   ///
   /// Returns: `void`
   Future<void> nvimExecAutocmds(
     Object event,
-    Map opts,
+    dynamic opts,
   ) async {
     final $$args = [
       event,
@@ -155,11 +155,11 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `1`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   ///
   /// Returns: `Integer`
-  Future<int> nvimBufLineCount(NvimExt$Buffer buffer) async {
-    final $$args = [buffer];
+  Future<int> nvimBufLineCount(NvimExt$Buffer buf) async {
+    final $$args = [buf];
     return await call(
       'nvim_buf_line_count',
       $$args,
@@ -171,18 +171,18 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `4`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   /// - `send_buffer`: `Boolean`
-  /// - `opts`: `Dictionary`
+  /// - `opts`: `Dict`
   ///
   /// Returns: `Boolean`
   Future<bool> nvimBufAttach(
-    NvimExt$Buffer buffer,
+    NvimExt$Buffer buf,
     bool sendBuffer,
-    Map opts,
+    dynamic opts,
   ) async {
     final $$args = [
-      buffer,
+      buf,
       sendBuffer,
       opts,
     ];
@@ -197,11 +197,11 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `4`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   ///
   /// Returns: `Boolean`
-  Future<bool> nvimBufDetach(NvimExt$Buffer buffer) async {
-    final $$args = [buffer];
+  Future<bool> nvimBufDetach(NvimExt$Buffer buf) async {
+    final $$args = [buf];
     return await call(
       'nvim_buf_detach',
       $$args,
@@ -213,20 +213,20 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `1`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   /// - `start`: `Integer`
   /// - `end`: `Integer`
   /// - `strict_indexing`: `Boolean`
   ///
   /// Returns: `ArrayOf(String)`
   Future<List<String>> nvimBufGetLines(
-    NvimExt$Buffer buffer,
+    NvimExt$Buffer buf,
     int start,
     int end,
     bool strictIndexing,
   ) async {
     final $$args = [
-      buffer,
+      buf,
       start,
       end,
       strictIndexing,
@@ -242,7 +242,7 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `1`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   /// - `start`: `Integer`
   /// - `end`: `Integer`
   /// - `strict_indexing`: `Boolean`
@@ -250,14 +250,14 @@ extension NvimApiFunctions on NvimBridge {
   ///
   /// Returns: `void`
   Future<void> nvimBufSetLines(
-    NvimExt$Buffer buffer,
+    NvimExt$Buffer buf,
     int start,
     int end,
     bool strictIndexing,
     List<String> replacement,
   ) async {
     final $$args = [
-      buffer,
+      buf,
       start,
       end,
       strictIndexing,
@@ -274,7 +274,7 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `7`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   /// - `start_row`: `Integer`
   /// - `start_col`: `Integer`
   /// - `end_row`: `Integer`
@@ -283,7 +283,7 @@ extension NvimApiFunctions on NvimBridge {
   ///
   /// Returns: `void`
   Future<void> nvimBufSetText(
-    NvimExt$Buffer buffer,
+    NvimExt$Buffer buf,
     int startRow,
     int startCol,
     int endRow,
@@ -291,7 +291,7 @@ extension NvimApiFunctions on NvimBridge {
     List<String> replacement,
   ) async {
     final $$args = [
-      buffer,
+      buf,
       startRow,
       startCol,
       endRow,
@@ -309,24 +309,24 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `9`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   /// - `start_row`: `Integer`
   /// - `start_col`: `Integer`
   /// - `end_row`: `Integer`
   /// - `end_col`: `Integer`
-  /// - `opts`: `Dictionary`
+  /// - `opts`: `Dict`
   ///
   /// Returns: `ArrayOf(String)`
   Future<List<String>> nvimBufGetText(
-    NvimExt$Buffer buffer,
+    NvimExt$Buffer buf,
     int startRow,
     int startCol,
     int endRow,
     int endCol,
-    Map opts,
+    dynamic opts,
   ) async {
     final $$args = [
-      buffer,
+      buf,
       startRow,
       startCol,
       endRow,
@@ -344,16 +344,16 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `5`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   /// - `index`: `Integer`
   ///
   /// Returns: `Integer`
   Future<int> nvimBufGetOffset(
-    NvimExt$Buffer buffer,
+    NvimExt$Buffer buf,
     int index,
   ) async {
     final $$args = [
-      buffer,
+      buf,
       index,
     ];
     return await call(
@@ -367,16 +367,16 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `1`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   /// - `name`: `String`
   ///
   /// Returns: `Object`
   Future<Object> nvimBufGetVar(
-    NvimExt$Buffer buffer,
+    NvimExt$Buffer buf,
     String name,
   ) async {
     final $$args = [
-      buffer,
+      buf,
       name,
     ];
     return await call(
@@ -390,11 +390,11 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `2`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   ///
   /// Returns: `Integer`
-  Future<int> nvimBufGetChangedtick(NvimExt$Buffer buffer) async {
-    final $$args = [buffer];
+  Future<int> nvimBufGetChangedtick(NvimExt$Buffer buf) async {
+    final $$args = [buf];
     return await call(
       'nvim_buf_get_changedtick',
       $$args,
@@ -406,16 +406,16 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `3`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   /// - `mode`: `String`
   ///
-  /// Returns: `ArrayOf(Dictionary)`
-  Future<List<Map>> nvimBufGetKeymap(
-    NvimExt$Buffer buffer,
+  /// Returns: `ArrayOf(Dict)`
+  Future<List<dynamic>> nvimBufGetKeymap(
+    NvimExt$Buffer buf,
     String mode,
   ) async {
     final $$args = [
-      buffer,
+      buf,
       mode,
     ];
     return await call(
@@ -429,22 +429,22 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `6`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   /// - `mode`: `String`
   /// - `lhs`: `String`
   /// - `rhs`: `String`
-  /// - `opts`: `Dictionary`
+  /// - `opts`: `Dict`
   ///
   /// Returns: `void`
   Future<void> nvimBufSetKeymap(
-    NvimExt$Buffer buffer,
+    NvimExt$Buffer buf,
     String mode,
     String lhs,
     String rhs,
-    Map opts,
+    dynamic opts,
   ) async {
     final $$args = [
-      buffer,
+      buf,
       mode,
       lhs,
       rhs,
@@ -461,20 +461,23 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `6`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   /// - `mode`: `String`
   /// - `lhs`: `String`
+  /// - `opts`: `Dict`
   ///
   /// Returns: `void`
   Future<void> nvimBufDelKeymap(
-    NvimExt$Buffer buffer,
+    NvimExt$Buffer buf,
     String mode,
     String lhs,
+    dynamic opts,
   ) async {
     final $$args = [
-      buffer,
+      buf,
       mode,
       lhs,
+      opts,
     ];
     return await call(
       'nvim_buf_del_keymap',
@@ -487,18 +490,18 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `1`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   /// - `name`: `String`
   /// - `value`: `Object`
   ///
   /// Returns: `void`
   Future<void> nvimBufSetVar(
-    NvimExt$Buffer buffer,
+    NvimExt$Buffer buf,
     String name,
     Object value,
   ) async {
     final $$args = [
-      buffer,
+      buf,
       name,
       value,
     ];
@@ -513,16 +516,16 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `1`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   /// - `name`: `String`
   ///
   /// Returns: `void`
   Future<void> nvimBufDelVar(
-    NvimExt$Buffer buffer,
+    NvimExt$Buffer buf,
     String name,
   ) async {
     final $$args = [
-      buffer,
+      buf,
       name,
     ];
     return await call(
@@ -536,11 +539,11 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `1`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   ///
   /// Returns: `String`
-  Future<String> nvimBufGetName(NvimExt$Buffer buffer) async {
-    final $$args = [buffer];
+  Future<String> nvimBufGetName(NvimExt$Buffer buf) async {
+    final $$args = [buf];
     return await call(
       'nvim_buf_get_name',
       $$args,
@@ -552,16 +555,16 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `1`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   /// - `name`: `String`
   ///
   /// Returns: `void`
   Future<void> nvimBufSetName(
-    NvimExt$Buffer buffer,
+    NvimExt$Buffer buf,
     String name,
   ) async {
     final $$args = [
-      buffer,
+      buf,
       name,
     ];
     return await call(
@@ -575,11 +578,11 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `5`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   ///
   /// Returns: `Boolean`
-  Future<bool> nvimBufIsLoaded(NvimExt$Buffer buffer) async {
-    final $$args = [buffer];
+  Future<bool> nvimBufIsLoaded(NvimExt$Buffer buf) async {
+    final $$args = [buf];
     return await call(
       'nvim_buf_is_loaded',
       $$args,
@@ -591,16 +594,16 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `7`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
-  /// - `opts`: `Dictionary`
+  /// - `buf`: `Buffer`
+  /// - `opts`: `Dict`
   ///
   /// Returns: `void`
   Future<void> nvimBufDelete(
-    NvimExt$Buffer buffer,
-    Map opts,
+    NvimExt$Buffer buf,
+    dynamic opts,
   ) async {
     final $$args = [
-      buffer,
+      buf,
       opts,
     ];
     return await call(
@@ -614,11 +617,11 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `1`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   ///
   /// Returns: `Boolean`
-  Future<bool> nvimBufIsValid(NvimExt$Buffer buffer) async {
-    final $$args = [buffer];
+  Future<bool> nvimBufIsValid(NvimExt$Buffer buf) async {
+    final $$args = [buf];
     return await call(
       'nvim_buf_is_valid',
       $$args,
@@ -630,16 +633,16 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `8`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   /// - `name`: `String`
   ///
   /// Returns: `Boolean`
   Future<bool> nvimBufDelMark(
-    NvimExt$Buffer buffer,
+    NvimExt$Buffer buf,
     String name,
   ) async {
     final $$args = [
-      buffer,
+      buf,
       name,
     ];
     return await call(
@@ -653,22 +656,22 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `8`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   /// - `name`: `String`
   /// - `line`: `Integer`
   /// - `col`: `Integer`
-  /// - `opts`: `Dictionary`
+  /// - `opts`: `Dict`
   ///
   /// Returns: `Boolean`
   Future<bool> nvimBufSetMark(
-    NvimExt$Buffer buffer,
+    NvimExt$Buffer buf,
     String name,
     int line,
     int col,
-    Map opts,
+    dynamic opts,
   ) async {
     final $$args = [
-      buffer,
+      buf,
       name,
       line,
       col,
@@ -685,16 +688,16 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `1`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   /// - `name`: `String`
   ///
   /// Returns: `ArrayOf(Integer, 2)`
   Future<List<int>> nvimBufGetMark(
-    NvimExt$Buffer buffer,
+    NvimExt$Buffer buf,
     String name,
   ) async {
     final $$args = [
-      buffer,
+      buf,
       name,
     ];
     return await call(
@@ -708,17 +711,17 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `7`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
-  /// - `fun`: `LuaRef`
+  /// - `buf`: `Buffer`
+  /// - `fn`: `LuaRef`
   ///
   /// Returns: `Object`
   Future<Object> nvimBufCall(
-    NvimExt$Buffer buffer,
-    dynamic fun,
+    NvimExt$Buffer buf,
+    dynamic fn,
   ) async {
     final $$args = [
-      buffer,
-      fun,
+      buf,
+      fn,
     ];
     return await call(
       'nvim_buf_call',
@@ -732,12 +735,12 @@ extension NvimApiFunctions on NvimBridge {
   ///
   /// Parameters:
   /// - `str`: `String`
-  /// - `opts`: `Dictionary`
+  /// - `opts`: `Dict`
   ///
-  /// Returns: `Dictionary`
-  Future<Map> nvimParseCmd(
+  /// Returns: `Dict`
+  Future<dynamic> nvimParseCmd(
     String str,
-    Map opts,
+    dynamic opts,
   ) async {
     final $$args = [
       str,
@@ -754,13 +757,13 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `10`
   ///
   /// Parameters:
-  /// - `cmd`: `Dictionary`
-  /// - `opts`: `Dictionary`
+  /// - `cmd`: `Dict`
+  /// - `opts`: `Dict`
   ///
   /// Returns: `String`
   Future<String> nvimCmd(
-    Map cmd,
-    Map opts,
+    dynamic cmd,
+    dynamic opts,
   ) async {
     final $$args = [
       cmd,
@@ -778,18 +781,18 @@ extension NvimApiFunctions on NvimBridge {
   ///
   /// Parameters:
   /// - `name`: `String`
-  /// - `command`: `Object`
-  /// - `opts`: `Dictionary`
+  /// - `cmd`: `Object`
+  /// - `opts`: `Dict`
   ///
   /// Returns: `void`
   Future<void> nvimCreateUserCommand(
     String name,
-    Object command,
-    Map opts,
+    Object cmd,
+    dynamic opts,
   ) async {
     final $$args = [
       name,
-      command,
+      cmd,
       opts,
     ];
     return await call(
@@ -819,22 +822,22 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `9`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   /// - `name`: `String`
-  /// - `command`: `Object`
-  /// - `opts`: `Dictionary`
+  /// - `cmd`: `Object`
+  /// - `opts`: `Dict`
   ///
   /// Returns: `void`
   Future<void> nvimBufCreateUserCommand(
-    NvimExt$Buffer buffer,
+    NvimExt$Buffer buf,
     String name,
-    Object command,
-    Map opts,
+    Object cmd,
+    dynamic opts,
   ) async {
     final $$args = [
-      buffer,
+      buf,
       name,
-      command,
+      cmd,
       opts,
     ];
     return await call(
@@ -848,16 +851,16 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `9`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   /// - `name`: `String`
   ///
   /// Returns: `void`
   Future<void> nvimBufDelUserCommand(
-    NvimExt$Buffer buffer,
+    NvimExt$Buffer buf,
     String name,
   ) async {
     final $$args = [
-      buffer,
+      buf,
       name,
     ];
     return await call(
@@ -871,10 +874,10 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `4`
   ///
   /// Parameters:
-  /// - `opts`: `Dictionary`
+  /// - `opts`: `Dict`
   ///
-  /// Returns: `Dictionary`
-  Future<Map> nvimGetCommands(Map opts) async {
+  /// Returns: `Dict`
+  Future<dynamic> nvimGetCommands(dynamic opts) async {
     final $$args = [opts];
     return await call(
       'nvim_get_commands',
@@ -887,16 +890,16 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `4`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
-  /// - `opts`: `Dictionary`
+  /// - `buf`: `Buffer`
+  /// - `opts`: `Dict`
   ///
-  /// Returns: `Dictionary`
-  Future<Map> nvimBufGetCommands(
-    NvimExt$Buffer buffer,
-    Map opts,
+  /// Returns: `Dict`
+  Future<dynamic> nvimBufGetCommands(
+    NvimExt$Buffer buf,
+    dynamic opts,
   ) async {
     final $$args = [
-      buffer,
+      buf,
       opts,
     ];
     return await call(
@@ -1022,6 +1025,43 @@ extension NvimApiFunctions on NvimBridge {
     );
   }
 
+  /// Generated from `nvim_buf_add_highlight`
+  ///
+  /// Since API level: `1`
+  /// Deprecated since API level: `13`
+  ///
+  /// Parameters:
+  /// - `buffer`: `Buffer`
+  /// - `ns_id`: `Integer`
+  /// - `hl_group`: `String`
+  /// - `line`: `Integer`
+  /// - `col_start`: `Integer`
+  /// - `col_end`: `Integer`
+  ///
+  /// Returns: `Integer`
+  @Deprecated('Deprecated since API level: `13`')
+  Future<int> nvimBufAddHighlight(
+    NvimExt$Buffer buffer,
+    int nsId,
+    String hlGroup,
+    int line,
+    int colStart,
+    int colEnd,
+  ) async {
+    final $$args = [
+      buffer,
+      nsId,
+      hlGroup,
+      line,
+      colStart,
+      colEnd,
+    ];
+    return await call(
+      'nvim_buf_add_highlight',
+      $$args,
+    );
+  }
+
   /// Generated from `nvim_buf_set_virtual_text`
   ///
   /// Since API level: `5`
@@ -1032,7 +1072,7 @@ extension NvimApiFunctions on NvimBridge {
   /// - `src_id`: `Integer`
   /// - `line`: `Integer`
   /// - `chunks`: `Array`
-  /// - `opts`: `Dictionary`
+  /// - `opts`: `Dict`
   ///
   /// Returns: `Integer`
   @Deprecated('Deprecated since API level: `8`')
@@ -1041,7 +1081,7 @@ extension NvimApiFunctions on NvimBridge {
     int srcId,
     int line,
     List chunks,
-    Map opts,
+    dynamic opts,
   ) async {
     final $$args = [
       buffer,
@@ -1065,9 +1105,9 @@ extension NvimApiFunctions on NvimBridge {
   /// - `hl_id`: `Integer`
   /// - `rgb`: `Boolean`
   ///
-  /// Returns: `Dictionary`
+  /// Returns: `Dict`
   @Deprecated('Deprecated since API level: `9`')
-  Future<Map> nvimGetHlById(
+  Future<dynamic> nvimGetHlById(
     int hlId,
     bool rgb,
   ) async {
@@ -1090,9 +1130,9 @@ extension NvimApiFunctions on NvimBridge {
   /// - `name`: `String`
   /// - `rgb`: `Boolean`
   ///
-  /// Returns: `Dictionary`
+  /// Returns: `Dict`
   @Deprecated('Deprecated since API level: `9`')
-  Future<Map> nvimGetHlByName(
+  Future<dynamic> nvimGetHlByName(
     String name,
     bool rgb,
   ) async {
@@ -1488,15 +1528,375 @@ extension NvimApiFunctions on NvimBridge {
   /// Generated from `nvim_get_option_info`
   ///
   /// Since API level: `7`
+  /// Deprecated since API level: `11`
   ///
   /// Parameters:
   /// - `name`: `String`
   ///
-  /// Returns: `Dictionary`
-  Future<Map> nvimGetOptionInfo(String name) async {
+  /// Returns: `Dict`
+  @Deprecated('Deprecated since API level: `11`')
+  Future<dynamic> nvimGetOptionInfo(String name) async {
     final $$args = [name];
     return await call(
       'nvim_get_option_info',
+      $$args,
+    );
+  }
+
+  /// Generated from `nvim_set_option`
+  ///
+  /// Since API level: `1`
+  /// Deprecated since API level: `11`
+  ///
+  /// Parameters:
+  /// - `name`: `String`
+  /// - `value`: `Object`
+  ///
+  /// Returns: `void`
+  @Deprecated('Deprecated since API level: `11`')
+  Future<void> nvimSetOption(
+    String name,
+    Object value,
+  ) async {
+    final $$args = [
+      name,
+      value,
+    ];
+    return await call(
+      'nvim_set_option',
+      $$args,
+    );
+  }
+
+  /// Generated from `nvim_get_option`
+  ///
+  /// Since API level: `1`
+  /// Deprecated since API level: `11`
+  ///
+  /// Parameters:
+  /// - `name`: `String`
+  ///
+  /// Returns: `Object`
+  @Deprecated('Deprecated since API level: `11`')
+  Future<Object> nvimGetOption(String name) async {
+    final $$args = [name];
+    return await call(
+      'nvim_get_option',
+      $$args,
+    );
+  }
+
+  /// Generated from `nvim_buf_get_option`
+  ///
+  /// Since API level: `1`
+  /// Deprecated since API level: `11`
+  ///
+  /// Parameters:
+  /// - `buffer`: `Buffer`
+  /// - `name`: `String`
+  ///
+  /// Returns: `Object`
+  @Deprecated('Deprecated since API level: `11`')
+  Future<Object> nvimBufGetOption(
+    NvimExt$Buffer buffer,
+    String name,
+  ) async {
+    final $$args = [
+      buffer,
+      name,
+    ];
+    return await call(
+      'nvim_buf_get_option',
+      $$args,
+    );
+  }
+
+  /// Generated from `nvim_buf_set_option`
+  ///
+  /// Since API level: `1`
+  /// Deprecated since API level: `11`
+  ///
+  /// Parameters:
+  /// - `buffer`: `Buffer`
+  /// - `name`: `String`
+  /// - `value`: `Object`
+  ///
+  /// Returns: `void`
+  @Deprecated('Deprecated since API level: `11`')
+  Future<void> nvimBufSetOption(
+    NvimExt$Buffer buffer,
+    String name,
+    Object value,
+  ) async {
+    final $$args = [
+      buffer,
+      name,
+      value,
+    ];
+    return await call(
+      'nvim_buf_set_option',
+      $$args,
+    );
+  }
+
+  /// Generated from `nvim_win_get_option`
+  ///
+  /// Since API level: `1`
+  /// Deprecated since API level: `11`
+  ///
+  /// Parameters:
+  /// - `window`: `Window`
+  /// - `name`: `String`
+  ///
+  /// Returns: `Object`
+  @Deprecated('Deprecated since API level: `11`')
+  Future<Object> nvimWinGetOption(
+    NvimExt$Window window,
+    String name,
+  ) async {
+    final $$args = [
+      window,
+      name,
+    ];
+    return await call(
+      'nvim_win_get_option',
+      $$args,
+    );
+  }
+
+  /// Generated from `nvim_win_set_option`
+  ///
+  /// Since API level: `1`
+  /// Deprecated since API level: `11`
+  ///
+  /// Parameters:
+  /// - `window`: `Window`
+  /// - `name`: `String`
+  /// - `value`: `Object`
+  ///
+  /// Returns: `void`
+  @Deprecated('Deprecated since API level: `11`')
+  Future<void> nvimWinSetOption(
+    NvimExt$Window window,
+    String name,
+    Object value,
+  ) async {
+    final $$args = [
+      window,
+      name,
+      value,
+    ];
+    return await call(
+      'nvim_win_set_option',
+      $$args,
+    );
+  }
+
+  /// Generated from `nvim_call_atomic`
+  ///
+  /// Since API level: `1`
+  /// Deprecated since API level: `12`
+  ///
+  /// Parameters:
+  /// - `calls`: `Array`
+  ///
+  /// Returns: `Array`
+  @Deprecated('Deprecated since API level: `12`')
+  Future<List> nvimCallAtomic(List calls) async {
+    final $$args = [calls];
+    return await call(
+      'nvim_call_atomic',
+      $$args,
+    );
+  }
+
+  /// Generated from `nvim_subscribe`
+  ///
+  /// Since API level: `1`
+  /// Deprecated since API level: `13`
+  ///
+  /// Parameters:
+  /// - `event`: `String`
+  ///
+  /// Returns: `void`
+  @Deprecated('Deprecated since API level: `13`')
+  Future<void> nvimSubscribe(String event) async {
+    final $$args = [event];
+    return await call(
+      'nvim_subscribe',
+      $$args,
+    );
+  }
+
+  /// Generated from `nvim_unsubscribe`
+  ///
+  /// Since API level: `1`
+  /// Deprecated since API level: `13`
+  ///
+  /// Parameters:
+  /// - `event`: `String`
+  ///
+  /// Returns: `void`
+  @Deprecated('Deprecated since API level: `13`')
+  Future<void> nvimUnsubscribe(String event) async {
+    final $$args = [event];
+    return await call(
+      'nvim_unsubscribe',
+      $$args,
+    );
+  }
+
+  /// Generated from `nvim_out_write`
+  ///
+  /// Since API level: `1`
+  /// Deprecated since API level: `13`
+  ///
+  /// Parameters:
+  /// - `str`: `String`
+  ///
+  /// Returns: `void`
+  @Deprecated('Deprecated since API level: `13`')
+  Future<void> nvimOutWrite(String str) async {
+    final $$args = [str];
+    return await call(
+      'nvim_out_write',
+      $$args,
+    );
+  }
+
+  /// Generated from `nvim_err_write`
+  ///
+  /// Since API level: `1`
+  /// Deprecated since API level: `13`
+  ///
+  /// Parameters:
+  /// - `str`: `String`
+  ///
+  /// Returns: `void`
+  @Deprecated('Deprecated since API level: `13`')
+  Future<void> nvimErrWrite(String str) async {
+    final $$args = [str];
+    return await call(
+      'nvim_err_write',
+      $$args,
+    );
+  }
+
+  /// Generated from `nvim_err_writeln`
+  ///
+  /// Since API level: `1`
+  /// Deprecated since API level: `13`
+  ///
+  /// Parameters:
+  /// - `str`: `String`
+  ///
+  /// Returns: `void`
+  @Deprecated('Deprecated since API level: `13`')
+  Future<void> nvimErrWriteln(String str) async {
+    final $$args = [str];
+    return await call(
+      'nvim_err_writeln',
+      $$args,
+    );
+  }
+
+  /// Generated from `nvim_notify`
+  ///
+  /// Since API level: `7`
+  /// Deprecated since API level: `13`
+  ///
+  /// Parameters:
+  /// - `msg`: `String`
+  /// - `log_level`: `Integer`
+  /// - `opts`: `Dict`
+  ///
+  /// Returns: `Object`
+  @Deprecated('Deprecated since API level: `13`')
+  Future<Object> nvimNotify(
+    String msg,
+    int logLevel,
+    dynamic opts,
+  ) async {
+    final $$args = [
+      msg,
+      logLevel,
+      opts,
+    ];
+    return await call(
+      'nvim_notify',
+      $$args,
+    );
+  }
+
+  /// Generated from `nvim_win_set_height`
+  ///
+  /// Since API level: `1`
+  /// Deprecated since API level: `15`
+  ///
+  /// Parameters:
+  /// - `win`: `Window`
+  /// - `height`: `Integer`
+  ///
+  /// Returns: `void`
+  @Deprecated('Deprecated since API level: `15`')
+  Future<void> nvimWinSetHeight(
+    NvimExt$Window win,
+    int height,
+  ) async {
+    final $$args = [
+      win,
+      height,
+    ];
+    return await call(
+      'nvim_win_set_height',
+      $$args,
+    );
+  }
+
+  /// Generated from `nvim_win_set_width`
+  ///
+  /// Since API level: `1`
+  /// Deprecated since API level: `15`
+  ///
+  /// Parameters:
+  /// - `win`: `Window`
+  /// - `width`: `Integer`
+  ///
+  /// Returns: `void`
+  @Deprecated('Deprecated since API level: `15`')
+  Future<void> nvimWinSetWidth(
+    NvimExt$Window win,
+    int width,
+  ) async {
+    final $$args = [
+      win,
+      width,
+    ];
+    return await call(
+      'nvim_win_set_width',
+      $$args,
+    );
+  }
+
+  /// Generated from `nvim_ui_term_event`
+  ///
+  /// Since API level: `12`
+  ///
+  /// Parameters:
+  /// - `event`: `String`
+  /// - `value`: `Object`
+  ///
+  /// Returns: `void`
+  Future<void> nvimUiTermEvent(
+    String event,
+    Object value,
+  ) async {
+    final $$args = [
+      event,
+      value,
+    ];
+    return await call(
+      'nvim_ui_term_event',
       $$args,
     );
   }
@@ -1522,8 +1922,8 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `5`
   ///
   ///
-  /// Returns: `Dictionary`
-  Future<Map> nvimGetNamespaces() async {
+  /// Returns: `Dict`
+  Future<dynamic> nvimGetNamespaces() async {
     final $$args = [];
     return await call(
       'nvim_get_namespaces',
@@ -1536,20 +1936,20 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `7`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   /// - `ns_id`: `Integer`
   /// - `id`: `Integer`
-  /// - `opts`: `Dictionary`
+  /// - `opts`: `Dict`
   ///
-  /// Returns: `ArrayOf(Integer)`
-  Future<List<int>> nvimBufGetExtmarkById(
-    NvimExt$Buffer buffer,
+  /// Returns: `Array`
+  Future<List> nvimBufGetExtmarkById(
+    NvimExt$Buffer buf,
     int nsId,
     int id,
-    Map opts,
+    dynamic opts,
   ) async {
     final $$args = [
-      buffer,
+      buf,
       nsId,
       id,
       opts,
@@ -1565,22 +1965,22 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `7`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   /// - `ns_id`: `Integer`
   /// - `start`: `Object`
   /// - `end`: `Object`
-  /// - `opts`: `Dictionary`
+  /// - `opts`: `Dict`
   ///
-  /// Returns: `Array`
-  Future<List> nvimBufGetExtmarks(
-    NvimExt$Buffer buffer,
+  /// Returns: `ArrayOf(Dict)`
+  Future<List<dynamic>> nvimBufGetExtmarks(
+    NvimExt$Buffer buf,
     int nsId,
     Object start,
     Object end,
-    Map opts,
+    dynamic opts,
   ) async {
     final $$args = [
-      buffer,
+      buf,
       nsId,
       start,
       end,
@@ -1597,22 +1997,22 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `7`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   /// - `ns_id`: `Integer`
   /// - `line`: `Integer`
   /// - `col`: `Integer`
-  /// - `opts`: `Dictionary`
+  /// - `opts`: `Dict`
   ///
   /// Returns: `Integer`
   Future<int> nvimBufSetExtmark(
-    NvimExt$Buffer buffer,
+    NvimExt$Buffer buf,
     int nsId,
     int line,
     int col,
-    Map opts,
+    dynamic opts,
   ) async {
     final $$args = [
-      buffer,
+      buf,
       nsId,
       line,
       col,
@@ -1629,18 +2029,18 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `7`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   /// - `ns_id`: `Integer`
   /// - `id`: `Integer`
   ///
   /// Returns: `Boolean`
   Future<bool> nvimBufDelExtmark(
-    NvimExt$Buffer buffer,
+    NvimExt$Buffer buf,
     int nsId,
     int id,
   ) async {
     final $$args = [
-      buffer,
+      buf,
       nsId,
       id,
     ];
@@ -1650,60 +2050,25 @@ extension NvimApiFunctions on NvimBridge {
     );
   }
 
-  /// Generated from `nvim_buf_add_highlight`
-  ///
-  /// Since API level: `1`
-  ///
-  /// Parameters:
-  /// - `buffer`: `Buffer`
-  /// - `ns_id`: `Integer`
-  /// - `hl_group`: `String`
-  /// - `line`: `Integer`
-  /// - `col_start`: `Integer`
-  /// - `col_end`: `Integer`
-  ///
-  /// Returns: `Integer`
-  Future<int> nvimBufAddHighlight(
-    NvimExt$Buffer buffer,
-    int nsId,
-    String hlGroup,
-    int line,
-    int colStart,
-    int colEnd,
-  ) async {
-    final $$args = [
-      buffer,
-      nsId,
-      hlGroup,
-      line,
-      colStart,
-      colEnd,
-    ];
-    return await call(
-      'nvim_buf_add_highlight',
-      $$args,
-    );
-  }
-
   /// Generated from `nvim_buf_clear_namespace`
   ///
   /// Since API level: `5`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   /// - `ns_id`: `Integer`
   /// - `line_start`: `Integer`
   /// - `line_end`: `Integer`
   ///
   /// Returns: `void`
   Future<void> nvimBufClearNamespace(
-    NvimExt$Buffer buffer,
+    NvimExt$Buffer buf,
     int nsId,
     int lineStart,
     int lineEnd,
   ) async {
     final $$args = [
-      buffer,
+      buf,
       nsId,
       lineStart,
       lineEnd,
@@ -1720,12 +2085,12 @@ extension NvimApiFunctions on NvimBridge {
   ///
   /// Parameters:
   /// - `ns_id`: `Integer`
-  /// - `opts`: `Dictionary`
+  /// - `opts`: `Dict`
   ///
   /// Returns: `void`
   Future<void> nvimSetDecorationProvider(
     int nsId,
-    Map opts,
+    dynamic opts,
   ) async {
     final $$args = [
       nsId,
@@ -1743,12 +2108,12 @@ extension NvimApiFunctions on NvimBridge {
   ///
   /// Parameters:
   /// - `name`: `String`
-  /// - `opts`: `Dictionary`
+  /// - `opts`: `Dict`
   ///
   /// Returns: `Object`
   Future<Object> nvimGetOptionValue(
     String name,
-    Map opts,
+    dynamic opts,
   ) async {
     final $$args = [
       name,
@@ -1767,13 +2132,13 @@ extension NvimApiFunctions on NvimBridge {
   /// Parameters:
   /// - `name`: `String`
   /// - `value`: `Object`
-  /// - `opts`: `Dictionary`
+  /// - `opts`: `Dict`
   ///
-  /// Returns: `void`
-  Future<void> nvimSetOptionValue(
+  /// Returns: `Object`
+  Future<Object> nvimSetOptionValue(
     String name,
     Object value,
-    Map opts,
+    dynamic opts,
   ) async {
     final $$args = [
       name,
@@ -1791,8 +2156,8 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `7`
   ///
   ///
-  /// Returns: `Dictionary`
-  Future<Map> nvimGetAllOptionsInfo() async {
+  /// Returns: `Dict`
+  Future<dynamic> nvimGetAllOptionsInfo() async {
     final $$args = [];
     return await call(
       'nvim_get_all_options_info',
@@ -1806,12 +2171,12 @@ extension NvimApiFunctions on NvimBridge {
   ///
   /// Parameters:
   /// - `name`: `String`
-  /// - `opts`: `Dictionary`
+  /// - `opts`: `Dict`
   ///
-  /// Returns: `Dictionary`
-  Future<Map> nvimGetOptionInfo2(
+  /// Returns: `Dict`
+  Future<dynamic> nvimGetOptionInfo2(
     String name,
-    Map opts,
+    dynamic opts,
   ) async {
     final $$args = [
       name,
@@ -1819,143 +2184,6 @@ extension NvimApiFunctions on NvimBridge {
     ];
     return await call(
       'nvim_get_option_info2',
-      $$args,
-    );
-  }
-
-  /// Generated from `nvim_set_option`
-  ///
-  /// Since API level: `1`
-  ///
-  /// Parameters:
-  /// - `name`: `String`
-  /// - `value`: `Object`
-  ///
-  /// Returns: `void`
-  Future<void> nvimSetOption(
-    String name,
-    Object value,
-  ) async {
-    final $$args = [
-      name,
-      value,
-    ];
-    return await call(
-      'nvim_set_option',
-      $$args,
-    );
-  }
-
-  /// Generated from `nvim_get_option`
-  ///
-  /// Since API level: `1`
-  ///
-  /// Parameters:
-  /// - `name`: `String`
-  ///
-  /// Returns: `Object`
-  Future<Object> nvimGetOption(String name) async {
-    final $$args = [name];
-    return await call(
-      'nvim_get_option',
-      $$args,
-    );
-  }
-
-  /// Generated from `nvim_buf_get_option`
-  ///
-  /// Since API level: `1`
-  ///
-  /// Parameters:
-  /// - `buffer`: `Buffer`
-  /// - `name`: `String`
-  ///
-  /// Returns: `Object`
-  Future<Object> nvimBufGetOption(
-    NvimExt$Buffer buffer,
-    String name,
-  ) async {
-    final $$args = [
-      buffer,
-      name,
-    ];
-    return await call(
-      'nvim_buf_get_option',
-      $$args,
-    );
-  }
-
-  /// Generated from `nvim_buf_set_option`
-  ///
-  /// Since API level: `1`
-  ///
-  /// Parameters:
-  /// - `buffer`: `Buffer`
-  /// - `name`: `String`
-  /// - `value`: `Object`
-  ///
-  /// Returns: `void`
-  Future<void> nvimBufSetOption(
-    NvimExt$Buffer buffer,
-    String name,
-    Object value,
-  ) async {
-    final $$args = [
-      buffer,
-      name,
-      value,
-    ];
-    return await call(
-      'nvim_buf_set_option',
-      $$args,
-    );
-  }
-
-  /// Generated from `nvim_win_get_option`
-  ///
-  /// Since API level: `1`
-  ///
-  /// Parameters:
-  /// - `window`: `Window`
-  /// - `name`: `String`
-  ///
-  /// Returns: `Object`
-  Future<Object> nvimWinGetOption(
-    NvimExt$Window window,
-    String name,
-  ) async {
-    final $$args = [
-      window,
-      name,
-    ];
-    return await call(
-      'nvim_win_get_option',
-      $$args,
-    );
-  }
-
-  /// Generated from `nvim_win_set_option`
-  ///
-  /// Since API level: `1`
-  ///
-  /// Parameters:
-  /// - `window`: `Window`
-  /// - `name`: `String`
-  /// - `value`: `Object`
-  ///
-  /// Returns: `void`
-  Future<void> nvimWinSetOption(
-    NvimExt$Window window,
-    String name,
-    Object value,
-  ) async {
-    final $$args = [
-      window,
-      name,
-      value,
-    ];
-    return await call(
-      'nvim_win_set_option',
       $$args,
     );
   }
@@ -2065,6 +2293,29 @@ extension NvimApiFunctions on NvimBridge {
     );
   }
 
+  /// Generated from `nvim_tabpage_set_win`
+  ///
+  /// Since API level: `12`
+  ///
+  /// Parameters:
+  /// - `tabpage`: `Tabpage`
+  /// - `win`: `Window`
+  ///
+  /// Returns: `void`
+  Future<void> nvimTabpageSetWin(
+    NvimExt$Tabpage tabpage,
+    NvimExt$Window win,
+  ) async {
+    final $$args = [
+      tabpage,
+      win,
+    ];
+    return await call(
+      'nvim_tabpage_set_win',
+      $$args,
+    );
+  }
+
   /// Generated from `nvim_tabpage_get_number`
   ///
   /// Since API level: `1`
@@ -2097,6 +2348,32 @@ extension NvimApiFunctions on NvimBridge {
     );
   }
 
+  /// Generated from `nvim_open_tabpage`
+  ///
+  /// Since API level: `14`
+  ///
+  /// Parameters:
+  /// - `buf`: `Buffer`
+  /// - `enter`: `Boolean`
+  /// - `config`: `Dict`
+  ///
+  /// Returns: `Tabpage`
+  Future<NvimExt$Tabpage> nvimOpenTabpage(
+    NvimExt$Buffer buf,
+    bool enter,
+    dynamic config,
+  ) async {
+    final $$args = [
+      buf,
+      enter,
+      config,
+    ];
+    return await call(
+      'nvim_open_tabpage',
+      $$args,
+    );
+  }
+
   /// Generated from `nvim_ui_attach`
   ///
   /// Since API level: `1`
@@ -2104,13 +2381,13 @@ extension NvimApiFunctions on NvimBridge {
   /// Parameters:
   /// - `width`: `Integer`
   /// - `height`: `Integer`
-  /// - `options`: `Dictionary`
+  /// - `options`: `Dict`
   ///
   /// Returns: `void`
   Future<void> nvimUiAttach(
     int width,
     int height,
-    Map options,
+    dynamic options,
   ) async {
     final $$args = [
       width,
@@ -2298,6 +2575,22 @@ extension NvimApiFunctions on NvimBridge {
     );
   }
 
+  /// Generated from `nvim_ui_send`
+  ///
+  /// Since API level: `14`
+  ///
+  /// Parameters:
+  /// - `content`: `String`
+  ///
+  /// Returns: `void`
+  Future<void> nvimUiSend(String content) async {
+    final $$args = [content];
+    return await call(
+      'nvim_ui_send',
+      $$args,
+    );
+  }
+
   /// Generated from `nvim_get_hl_id_by_name`
   ///
   /// Since API level: `7`
@@ -2320,12 +2613,12 @@ extension NvimApiFunctions on NvimBridge {
   ///
   /// Parameters:
   /// - `ns_id`: `Integer`
-  /// - `opts`: `Dictionary`
+  /// - `opts`: `Dict`
   ///
-  /// Returns: `Dictionary`
-  Future<Map> nvimGetHl(
+  /// Returns: `Dict`
+  Future<dynamic> nvimGetHl(
     int nsId,
-    Map opts,
+    dynamic opts,
   ) async {
     final $$args = [
       nsId,
@@ -2344,13 +2637,13 @@ extension NvimApiFunctions on NvimBridge {
   /// Parameters:
   /// - `ns_id`: `Integer`
   /// - `name`: `String`
-  /// - `val`: `Dictionary`
+  /// - `val`: `Dict`
   ///
   /// Returns: `void`
   Future<void> nvimSetHl(
     int nsId,
     String name,
-    Map val,
+    dynamic val,
   ) async {
     final $$args = [
       nsId,
@@ -2359,6 +2652,22 @@ extension NvimApiFunctions on NvimBridge {
     ];
     return await call(
       'nvim_set_hl',
+      $$args,
+    );
+  }
+
+  /// Generated from `nvim_get_hl_ns`
+  ///
+  /// Since API level: `12`
+  ///
+  /// Parameters:
+  /// - `opts`: `Dict`
+  ///
+  /// Returns: `Integer`
+  Future<int> nvimGetHlNs(dynamic opts) async {
+    final $$args = [opts];
+    return await call(
+      'nvim_get_hl_ns',
       $$args,
     );
   }
@@ -2520,32 +2829,6 @@ extension NvimApiFunctions on NvimBridge {
     ];
     return await call(
       'nvim_exec_lua',
-      $$args,
-    );
-  }
-
-  /// Generated from `nvim_notify`
-  ///
-  /// Since API level: `7`
-  ///
-  /// Parameters:
-  /// - `msg`: `String`
-  /// - `log_level`: `Integer`
-  /// - `opts`: `Dictionary`
-  ///
-  /// Returns: `Object`
-  Future<Object> nvimNotify(
-    String msg,
-    int logLevel,
-    Map opts,
-  ) async {
-    final $$args = [
-      msg,
-      logLevel,
-      opts,
-    ];
-    return await call(
-      'nvim_notify',
       $$args,
     );
   }
@@ -2762,15 +3045,15 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `7`
   ///
   /// Parameters:
-  /// - `chunks`: `Array`
+  /// - `chunks`: `ArrayOf(Array)`
   /// - `history`: `Boolean`
-  /// - `opts`: `Dictionary`
+  /// - `opts`: `Dict`
   ///
-  /// Returns: `void`
-  Future<void> nvimEcho(
-    List chunks,
+  /// Returns: `Object`
+  Future<Object> nvimEcho(
+    List<List> chunks,
     bool history,
-    Map opts,
+    dynamic opts,
   ) async {
     final $$args = [
       chunks,
@@ -2779,54 +3062,6 @@ extension NvimApiFunctions on NvimBridge {
     ];
     return await call(
       'nvim_echo',
-      $$args,
-    );
-  }
-
-  /// Generated from `nvim_out_write`
-  ///
-  /// Since API level: `1`
-  ///
-  /// Parameters:
-  /// - `str`: `String`
-  ///
-  /// Returns: `void`
-  Future<void> nvimOutWrite(String str) async {
-    final $$args = [str];
-    return await call(
-      'nvim_out_write',
-      $$args,
-    );
-  }
-
-  /// Generated from `nvim_err_write`
-  ///
-  /// Since API level: `1`
-  ///
-  /// Parameters:
-  /// - `str`: `String`
-  ///
-  /// Returns: `void`
-  Future<void> nvimErrWrite(String str) async {
-    final $$args = [str];
-    return await call(
-      'nvim_err_write',
-      $$args,
-    );
-  }
-
-  /// Generated from `nvim_err_writeln`
-  ///
-  /// Since API level: `1`
-  ///
-  /// Parameters:
-  /// - `str`: `String`
-  ///
-  /// Returns: `void`
-  Future<void> nvimErrWriteln(String str) async {
-    final $$args = [str];
-    return await call(
-      'nvim_err_writeln',
       $$args,
     );
   }
@@ -2864,11 +3099,11 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `1`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   ///
   /// Returns: `void`
-  Future<void> nvimSetCurrentBuf(NvimExt$Buffer buffer) async {
-    final $$args = [buffer];
+  Future<void> nvimSetCurrentBuf(NvimExt$Buffer buf) async {
+    final $$args = [buf];
     return await call(
       'nvim_set_current_buf',
       $$args,
@@ -2908,11 +3143,11 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `1`
   ///
   /// Parameters:
-  /// - `window`: `Window`
+  /// - `win`: `Window`
   ///
   /// Returns: `void`
-  Future<void> nvimSetCurrentWin(NvimExt$Window window) async {
-    final $$args = [window];
+  Future<void> nvimSetCurrentWin(NvimExt$Window win) async {
+    final $$args = [win];
     return await call(
       'nvim_set_current_win',
       $$args,
@@ -2947,16 +3182,16 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `7`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
-  /// - `opts`: `Dictionary`
+  /// - `buf`: `Buffer`
+  /// - `opts`: `Dict`
   ///
   /// Returns: `Integer`
   Future<int> nvimOpenTerm(
-    NvimExt$Buffer buffer,
-    Map opts,
+    NvimExt$Buffer buf,
+    dynamic opts,
   ) async {
     final $$args = [
-      buffer,
+      buf,
       opts,
     ];
     return await call(
@@ -3087,34 +3322,25 @@ extension NvimApiFunctions on NvimBridge {
     );
   }
 
-  /// Generated from `nvim_subscribe`
+  /// Generated from `nvim_mcursor`
   ///
-  /// Since API level: `1`
-  ///
-  /// Parameters:
-  /// - `event`: `String`
-  ///
-  /// Returns: `void`
-  Future<void> nvimSubscribe(String event) async {
-    final $$args = [event];
-    return await call(
-      'nvim_subscribe',
-      $$args,
-    );
-  }
-
-  /// Generated from `nvim_unsubscribe`
-  ///
-  /// Since API level: `1`
+  /// Since API level: `15`
   ///
   /// Parameters:
-  /// - `event`: `String`
+  /// - `buf`: `Buffer`
+  /// - `pos`: `ArrayOf(Integer, 2)`
   ///
-  /// Returns: `void`
-  Future<void> nvimUnsubscribe(String event) async {
-    final $$args = [event];
+  /// Returns: `Integer`
+  Future<int> nvimMcursor(
+    NvimExt$Buffer buf,
+    List<int> pos,
+  ) async {
+    final $$args = [
+      buf,
+      pos,
+    ];
     return await call(
-      'nvim_unsubscribe',
+      'nvim_mcursor',
       $$args,
     );
   }
@@ -3140,8 +3366,8 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `1`
   ///
   ///
-  /// Returns: `Dictionary`
-  Future<Map> nvimGetColorMap() async {
+  /// Returns: `Dict`
+  Future<dynamic> nvimGetColorMap() async {
     final $$args = [];
     return await call(
       'nvim_get_color_map',
@@ -3154,10 +3380,10 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `6`
   ///
   /// Parameters:
-  /// - `opts`: `Dictionary`
+  /// - `opts`: `Dict`
   ///
-  /// Returns: `Dictionary`
-  Future<Map> nvimGetContext(Map opts) async {
+  /// Returns: `Dict`
+  Future<dynamic> nvimGetContext(dynamic opts) async {
     final $$args = [opts];
     return await call(
       'nvim_get_context',
@@ -3170,10 +3396,10 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `6`
   ///
   /// Parameters:
-  /// - `dict`: `Dictionary`
+  /// - `dict`: `Dict`
   ///
   /// Returns: `Object`
-  Future<Object> nvimLoadContext(Map dict) async {
+  Future<Object> nvimLoadContext(dynamic dict) async {
     final $$args = [dict];
     return await call(
       'nvim_load_context',
@@ -3186,8 +3412,8 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `2`
   ///
   ///
-  /// Returns: `Dictionary`
-  Future<Map> nvimGetMode() async {
+  /// Returns: `Dict`
+  Future<dynamic> nvimGetMode() async {
     final $$args = [];
     return await call(
       'nvim_get_mode',
@@ -3202,8 +3428,8 @@ extension NvimApiFunctions on NvimBridge {
   /// Parameters:
   /// - `mode`: `String`
   ///
-  /// Returns: `ArrayOf(Dictionary)`
-  Future<List<Map>> nvimGetKeymap(String mode) async {
+  /// Returns: `ArrayOf(Dict)`
+  Future<List<dynamic>> nvimGetKeymap(String mode) async {
     final $$args = [mode];
     return await call(
       'nvim_get_keymap',
@@ -3219,14 +3445,14 @@ extension NvimApiFunctions on NvimBridge {
   /// - `mode`: `String`
   /// - `lhs`: `String`
   /// - `rhs`: `String`
-  /// - `opts`: `Dictionary`
+  /// - `opts`: `Dict`
   ///
   /// Returns: `void`
   Future<void> nvimSetKeymap(
     String mode,
     String lhs,
     String rhs,
-    Map opts,
+    dynamic opts,
   ) async {
     final $$args = [
       mode,
@@ -3247,15 +3473,18 @@ extension NvimApiFunctions on NvimBridge {
   /// Parameters:
   /// - `mode`: `String`
   /// - `lhs`: `String`
+  /// - `opts`: `Dict`
   ///
   /// Returns: `void`
   Future<void> nvimDelKeymap(
     String mode,
     String lhs,
+    dynamic opts,
   ) async {
     final $$args = [
       mode,
       lhs,
+      opts,
     ];
     return await call(
       'nvim_del_keymap',
@@ -3268,8 +3497,8 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `1`
   ///
   ///
-  /// Returns: `Array`
-  Future<List> nvimGetApiInfo() async {
+  /// Returns: `ArrayOf(Object, 2)`
+  Future<List<Object>> nvimGetApiInfo() async {
     final $$args = [];
     return await call(
       'nvim_get_api_info',
@@ -3283,18 +3512,18 @@ extension NvimApiFunctions on NvimBridge {
   ///
   /// Parameters:
   /// - `name`: `String`
-  /// - `version`: `Dictionary`
+  /// - `version`: `Dict`
   /// - `type`: `String`
-  /// - `methods`: `Dictionary`
-  /// - `attributes`: `Dictionary`
+  /// - `methods`: `Dict`
+  /// - `attributes`: `Dict`
   ///
   /// Returns: `void`
   Future<void> nvimSetClientInfo(
     String name,
-    Map version,
+    dynamic version,
     String type,
-    Map methods,
-    Map attributes,
+    dynamic methods,
+    dynamic attributes,
   ) async {
     final $$args = [
       name,
@@ -3316,8 +3545,8 @@ extension NvimApiFunctions on NvimBridge {
   /// Parameters:
   /// - `chan`: `Integer`
   ///
-  /// Returns: `Dictionary`
-  Future<Map> nvimGetChanInfo(int chan) async {
+  /// Returns: `Dict`
+  Future<dynamic> nvimGetChanInfo(int chan) async {
     final $$args = [chan];
     return await call(
       'nvim_get_chan_info',
@@ -3330,27 +3559,11 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `4`
   ///
   ///
-  /// Returns: `Array`
-  Future<List> nvimListChans() async {
+  /// Returns: `ArrayOf(Dict)`
+  Future<List<dynamic>> nvimListChans() async {
     final $$args = [];
     return await call(
       'nvim_list_chans',
-      $$args,
-    );
-  }
-
-  /// Generated from `nvim_call_atomic`
-  ///
-  /// Since API level: `1`
-  ///
-  /// Parameters:
-  /// - `calls`: `Array`
-  ///
-  /// Returns: `Array`
-  Future<List> nvimCallAtomic(List calls) async {
-    final $$args = [calls];
-    return await call(
-      'nvim_call_atomic',
       $$args,
     );
   }
@@ -3360,8 +3573,8 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `4`
   ///
   ///
-  /// Returns: `Array`
-  Future<List> nvimListUis() async {
+  /// Returns: `ArrayOf(Dict)`
+  Future<List<dynamic>> nvimListUis() async {
     final $$args = [];
     return await call(
       'nvim_list_uis',
@@ -3409,14 +3622,14 @@ extension NvimApiFunctions on NvimBridge {
   /// - `item`: `Integer`
   /// - `insert`: `Boolean`
   /// - `finish`: `Boolean`
-  /// - `opts`: `Dictionary`
+  /// - `opts`: `Dict`
   ///
   /// Returns: `void`
   Future<void> nvimSelectPopupmenuItem(
     int item,
     bool insert,
     bool finish,
-    Map opts,
+    dynamic opts,
   ) async {
     final $$args = [
       item,
@@ -3452,12 +3665,12 @@ extension NvimApiFunctions on NvimBridge {
   ///
   /// Parameters:
   /// - `name`: `String`
-  /// - `opts`: `Dictionary`
+  /// - `opts`: `Dict`
   ///
   /// Returns: `Array`
   Future<List> nvimGetMark(
     String name,
-    Map opts,
+    dynamic opts,
   ) async {
     final $$args = [
       name,
@@ -3475,12 +3688,12 @@ extension NvimApiFunctions on NvimBridge {
   ///
   /// Parameters:
   /// - `str`: `String`
-  /// - `opts`: `Dictionary`
+  /// - `opts`: `Dict`
   ///
-  /// Returns: `Dictionary`
-  Future<Map> nvimEvalStatusline(
+  /// Returns: `Dict`
+  Future<dynamic> nvimEvalStatusline(
     String str,
-    Map opts,
+    dynamic opts,
   ) async {
     final $$args = [
       str,
@@ -3498,12 +3711,12 @@ extension NvimApiFunctions on NvimBridge {
   ///
   /// Parameters:
   /// - `src`: `String`
-  /// - `opts`: `Dictionary`
+  /// - `opts`: `Dict`
   ///
-  /// Returns: `Dictionary`
-  Future<Map> nvimExec2(
+  /// Returns: `Dict`
+  Future<dynamic> nvimExec2(
     String src,
-    Map opts,
+    dynamic opts,
   ) async {
     final $$args = [
       src,
@@ -3520,11 +3733,11 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `1`
   ///
   /// Parameters:
-  /// - `command`: `String`
+  /// - `cmd`: `String`
   ///
   /// Returns: `void`
-  Future<void> nvimCommand(String command) async {
-    final $$args = [command];
+  Future<void> nvimCommand(String cmd) async {
+    final $$args = [cmd];
     return await call(
       'nvim_command',
       $$args,
@@ -3603,18 +3816,18 @@ extension NvimApiFunctions on NvimBridge {
   /// Parameters:
   /// - `expr`: `String`
   /// - `flags`: `String`
-  /// - `highlight`: `Boolean`
+  /// - `hl`: `Boolean`
   ///
-  /// Returns: `Dictionary`
-  Future<Map> nvimParseExpression(
+  /// Returns: `Dict`
+  Future<dynamic> nvimParseExpression(
     String expr,
     String flags,
-    bool highlight,
+    bool hl,
   ) async {
     final $$args = [
       expr,
       flags,
-      highlight,
+      hl,
     ];
     return await call(
       'nvim_parse_expression',
@@ -3627,18 +3840,18 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `6`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   /// - `enter`: `Boolean`
-  /// - `config`: `Dictionary`
+  /// - `config`: `Dict`
   ///
   /// Returns: `Window`
   Future<NvimExt$Window> nvimOpenWin(
-    NvimExt$Buffer buffer,
+    NvimExt$Buffer buf,
     bool enter,
-    Map config,
+    dynamic config,
   ) async {
     final $$args = [
-      buffer,
+      buf,
       enter,
       config,
     ];
@@ -3653,16 +3866,16 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `6`
   ///
   /// Parameters:
-  /// - `window`: `Window`
-  /// - `config`: `Dictionary`
+  /// - `win`: `Window`
+  /// - `config`: `Dict`
   ///
   /// Returns: `void`
   Future<void> nvimWinSetConfig(
-    NvimExt$Window window,
-    Map config,
+    NvimExt$Window win,
+    dynamic config,
   ) async {
     final $$args = [
-      window,
+      win,
       config,
     ];
     return await call(
@@ -3676,11 +3889,11 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `6`
   ///
   /// Parameters:
-  /// - `window`: `Window`
+  /// - `win`: `Window`
   ///
-  /// Returns: `Dictionary`
-  Future<Map> nvimWinGetConfig(NvimExt$Window window) async {
-    final $$args = [window];
+  /// Returns: `Dict`
+  Future<dynamic> nvimWinGetConfig(NvimExt$Window win) async {
+    final $$args = [win];
     return await call(
       'nvim_win_get_config',
       $$args,
@@ -3692,11 +3905,11 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `1`
   ///
   /// Parameters:
-  /// - `window`: `Window`
+  /// - `win`: `Window`
   ///
   /// Returns: `Buffer`
-  Future<NvimExt$Buffer> nvimWinGetBuf(NvimExt$Window window) async {
-    final $$args = [window];
+  Future<NvimExt$Buffer> nvimWinGetBuf(NvimExt$Window win) async {
+    final $$args = [win];
     return await call(
       'nvim_win_get_buf',
       $$args,
@@ -3708,17 +3921,17 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `5`
   ///
   /// Parameters:
-  /// - `window`: `Window`
-  /// - `buffer`: `Buffer`
+  /// - `win`: `Window`
+  /// - `buf`: `Buffer`
   ///
   /// Returns: `void`
   Future<void> nvimWinSetBuf(
-    NvimExt$Window window,
-    NvimExt$Buffer buffer,
+    NvimExt$Window win,
+    NvimExt$Buffer buf,
   ) async {
     final $$args = [
-      window,
-      buffer,
+      win,
+      buf,
     ];
     return await call(
       'nvim_win_set_buf',
@@ -3731,11 +3944,11 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `1`
   ///
   /// Parameters:
-  /// - `window`: `Window`
+  /// - `win`: `Window`
   ///
   /// Returns: `ArrayOf(Integer, 2)`
-  Future<List<int>> nvimWinGetCursor(NvimExt$Window window) async {
-    final $$args = [window];
+  Future<List<int>> nvimWinGetCursor(NvimExt$Window win) async {
+    final $$args = [win];
     return await call(
       'nvim_win_get_cursor',
       $$args,
@@ -3747,16 +3960,16 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `1`
   ///
   /// Parameters:
-  /// - `window`: `Window`
+  /// - `win`: `Window`
   /// - `pos`: `ArrayOf(Integer, 2)`
   ///
   /// Returns: `void`
   Future<void> nvimWinSetCursor(
-    NvimExt$Window window,
+    NvimExt$Window win,
     List<int> pos,
   ) async {
     final $$args = [
-      window,
+      win,
       pos,
     ];
     return await call(
@@ -3770,36 +3983,13 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `1`
   ///
   /// Parameters:
-  /// - `window`: `Window`
+  /// - `win`: `Window`
   ///
   /// Returns: `Integer`
-  Future<int> nvimWinGetHeight(NvimExt$Window window) async {
-    final $$args = [window];
+  Future<int> nvimWinGetHeight(NvimExt$Window win) async {
+    final $$args = [win];
     return await call(
       'nvim_win_get_height',
-      $$args,
-    );
-  }
-
-  /// Generated from `nvim_win_set_height`
-  ///
-  /// Since API level: `1`
-  ///
-  /// Parameters:
-  /// - `window`: `Window`
-  /// - `height`: `Integer`
-  ///
-  /// Returns: `void`
-  Future<void> nvimWinSetHeight(
-    NvimExt$Window window,
-    int height,
-  ) async {
-    final $$args = [
-      window,
-      height,
-    ];
-    return await call(
-      'nvim_win_set_height',
       $$args,
     );
   }
@@ -3809,36 +3999,13 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `1`
   ///
   /// Parameters:
-  /// - `window`: `Window`
+  /// - `win`: `Window`
   ///
   /// Returns: `Integer`
-  Future<int> nvimWinGetWidth(NvimExt$Window window) async {
-    final $$args = [window];
+  Future<int> nvimWinGetWidth(NvimExt$Window win) async {
+    final $$args = [win];
     return await call(
       'nvim_win_get_width',
-      $$args,
-    );
-  }
-
-  /// Generated from `nvim_win_set_width`
-  ///
-  /// Since API level: `1`
-  ///
-  /// Parameters:
-  /// - `window`: `Window`
-  /// - `width`: `Integer`
-  ///
-  /// Returns: `void`
-  Future<void> nvimWinSetWidth(
-    NvimExt$Window window,
-    int width,
-  ) async {
-    final $$args = [
-      window,
-      width,
-    ];
-    return await call(
-      'nvim_win_set_width',
       $$args,
     );
   }
@@ -3848,16 +4015,16 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `1`
   ///
   /// Parameters:
-  /// - `window`: `Window`
+  /// - `win`: `Window`
   /// - `name`: `String`
   ///
   /// Returns: `Object`
   Future<Object> nvimWinGetVar(
-    NvimExt$Window window,
+    NvimExt$Window win,
     String name,
   ) async {
     final $$args = [
-      window,
+      win,
       name,
     ];
     return await call(
@@ -3871,18 +4038,18 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `1`
   ///
   /// Parameters:
-  /// - `window`: `Window`
+  /// - `win`: `Window`
   /// - `name`: `String`
   /// - `value`: `Object`
   ///
   /// Returns: `void`
   Future<void> nvimWinSetVar(
-    NvimExt$Window window,
+    NvimExt$Window win,
     String name,
     Object value,
   ) async {
     final $$args = [
-      window,
+      win,
       name,
       value,
     ];
@@ -3897,16 +4064,16 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `1`
   ///
   /// Parameters:
-  /// - `window`: `Window`
+  /// - `win`: `Window`
   /// - `name`: `String`
   ///
   /// Returns: `void`
   Future<void> nvimWinDelVar(
-    NvimExt$Window window,
+    NvimExt$Window win,
     String name,
   ) async {
     final $$args = [
-      window,
+      win,
       name,
     ];
     return await call(
@@ -3920,11 +4087,11 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `1`
   ///
   /// Parameters:
-  /// - `window`: `Window`
+  /// - `win`: `Window`
   ///
   /// Returns: `ArrayOf(Integer, 2)`
-  Future<List<int>> nvimWinGetPosition(NvimExt$Window window) async {
-    final $$args = [window];
+  Future<List<int>> nvimWinGetPosition(NvimExt$Window win) async {
+    final $$args = [win];
     return await call(
       'nvim_win_get_position',
       $$args,
@@ -3936,11 +4103,11 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `1`
   ///
   /// Parameters:
-  /// - `window`: `Window`
+  /// - `win`: `Window`
   ///
   /// Returns: `Tabpage`
-  Future<NvimExt$Tabpage> nvimWinGetTabpage(NvimExt$Window window) async {
-    final $$args = [window];
+  Future<NvimExt$Tabpage> nvimWinGetTabpage(NvimExt$Window win) async {
+    final $$args = [win];
     return await call(
       'nvim_win_get_tabpage',
       $$args,
@@ -3952,11 +4119,11 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `1`
   ///
   /// Parameters:
-  /// - `window`: `Window`
+  /// - `win`: `Window`
   ///
   /// Returns: `Integer`
-  Future<int> nvimWinGetNumber(NvimExt$Window window) async {
-    final $$args = [window];
+  Future<int> nvimWinGetNumber(NvimExt$Window win) async {
+    final $$args = [win];
     return await call(
       'nvim_win_get_number',
       $$args,
@@ -3968,11 +4135,11 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `1`
   ///
   /// Parameters:
-  /// - `window`: `Window`
+  /// - `win`: `Window`
   ///
   /// Returns: `Boolean`
-  Future<bool> nvimWinIsValid(NvimExt$Window window) async {
-    final $$args = [window];
+  Future<bool> nvimWinIsValid(NvimExt$Window win) async {
+    final $$args = [win];
     return await call(
       'nvim_win_is_valid',
       $$args,
@@ -3984,11 +4151,11 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `7`
   ///
   /// Parameters:
-  /// - `window`: `Window`
+  /// - `win`: `Window`
   ///
   /// Returns: `void`
-  Future<void> nvimWinHide(NvimExt$Window window) async {
-    final $$args = [window];
+  Future<void> nvimWinHide(NvimExt$Window win) async {
+    final $$args = [win];
     return await call(
       'nvim_win_hide',
       $$args,
@@ -4000,16 +4167,16 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `6`
   ///
   /// Parameters:
-  /// - `window`: `Window`
+  /// - `win`: `Window`
   /// - `force`: `Boolean`
   ///
   /// Returns: `void`
   Future<void> nvimWinClose(
-    NvimExt$Window window,
+    NvimExt$Window win,
     bool force,
   ) async {
     final $$args = [
-      window,
+      win,
       force,
     ];
     return await call(
@@ -4023,17 +4190,17 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `7`
   ///
   /// Parameters:
-  /// - `window`: `Window`
-  /// - `fun`: `LuaRef`
+  /// - `win`: `Window`
+  /// - `fn`: `LuaRef`
   ///
   /// Returns: `Object`
   Future<Object> nvimWinCall(
-    NvimExt$Window window,
-    dynamic fun,
+    NvimExt$Window win,
+    dynamic fn,
   ) async {
     final $$args = [
-      window,
-      fun,
+      win,
+      fn,
     ];
     return await call(
       'nvim_win_call',
@@ -4046,20 +4213,72 @@ extension NvimApiFunctions on NvimBridge {
   /// Since API level: `10`
   ///
   /// Parameters:
-  /// - `window`: `Window`
+  /// - `win`: `Window`
   /// - `ns_id`: `Integer`
   ///
   /// Returns: `void`
   Future<void> nvimWinSetHlNs(
-    NvimExt$Window window,
+    NvimExt$Window win,
     int nsId,
   ) async {
     final $$args = [
-      window,
+      win,
       nsId,
     ];
     return await call(
       'nvim_win_set_hl_ns',
+      $$args,
+    );
+  }
+
+  /// Generated from `nvim_win_text_height`
+  ///
+  /// Since API level: `12`
+  ///
+  /// Parameters:
+  /// - `win`: `Window`
+  /// - `opts`: `Dict`
+  ///
+  /// Returns: `Dict`
+  Future<dynamic> nvimWinTextHeight(
+    NvimExt$Window win,
+    dynamic opts,
+  ) async {
+    final $$args = [
+      win,
+      opts,
+    ];
+    return await call(
+      'nvim_win_text_height',
+      $$args,
+    );
+  }
+
+  /// Generated from `nvim_win_resize`
+  ///
+  /// Since API level: `15`
+  ///
+  /// Parameters:
+  /// - `win`: `Window`
+  /// - `width`: `Integer`
+  /// - `height`: `Integer`
+  /// - `opts`: `Dict`
+  ///
+  /// Returns: `void`
+  Future<void> nvimWinResize(
+    NvimExt$Window win,
+    int width,
+    int height,
+    dynamic opts,
+  ) async {
+    final $$args = [
+      win,
+      width,
+      height,
+      opts,
+    ];
+    return await call(
+      'nvim_win_resize',
       $$args,
     );
   }
@@ -4070,12 +4289,12 @@ extension NvimApiFunctions on NvimBridge {
   /// Deprecated since API level: `1`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   ///
   /// Returns: `Integer`
   @Deprecated('Deprecated since API level: `1`')
-  Future<int> bufferLineCount(NvimExt$Buffer buffer) async {
-    final $$args = [buffer];
+  Future<int> bufferLineCount(NvimExt$Buffer buf) async {
+    final $$args = [buf];
     return await call(
       'buffer_line_count',
       $$args,
@@ -4088,7 +4307,7 @@ extension NvimApiFunctions on NvimBridge {
   /// Deprecated since API level: `1`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   /// - `start`: `Integer`
   /// - `end`: `Integer`
   /// - `strict_indexing`: `Boolean`
@@ -4096,13 +4315,13 @@ extension NvimApiFunctions on NvimBridge {
   /// Returns: `ArrayOf(String)`
   @Deprecated('Deprecated since API level: `1`')
   Future<List<String>> bufferGetLines(
-    NvimExt$Buffer buffer,
+    NvimExt$Buffer buf,
     int start,
     int end,
     bool strictIndexing,
   ) async {
     final $$args = [
-      buffer,
+      buf,
       start,
       end,
       strictIndexing,
@@ -4119,7 +4338,7 @@ extension NvimApiFunctions on NvimBridge {
   /// Deprecated since API level: `1`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   /// - `start`: `Integer`
   /// - `end`: `Integer`
   /// - `strict_indexing`: `Boolean`
@@ -4128,14 +4347,14 @@ extension NvimApiFunctions on NvimBridge {
   /// Returns: `void`
   @Deprecated('Deprecated since API level: `1`')
   Future<void> bufferSetLines(
-    NvimExt$Buffer buffer,
+    NvimExt$Buffer buf,
     int start,
     int end,
     bool strictIndexing,
     List<String> replacement,
   ) async {
     final $$args = [
-      buffer,
+      buf,
       start,
       end,
       strictIndexing,
@@ -4153,17 +4372,17 @@ extension NvimApiFunctions on NvimBridge {
   /// Deprecated since API level: `1`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   /// - `name`: `String`
   ///
   /// Returns: `Object`
   @Deprecated('Deprecated since API level: `1`')
   Future<Object> bufferGetVar(
-    NvimExt$Buffer buffer,
+    NvimExt$Buffer buf,
     String name,
   ) async {
     final $$args = [
-      buffer,
+      buf,
       name,
     ];
     return await call(
@@ -4178,12 +4397,12 @@ extension NvimApiFunctions on NvimBridge {
   /// Deprecated since API level: `1`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   ///
   /// Returns: `String`
   @Deprecated('Deprecated since API level: `1`')
-  Future<String> bufferGetName(NvimExt$Buffer buffer) async {
-    final $$args = [buffer];
+  Future<String> bufferGetName(NvimExt$Buffer buf) async {
+    final $$args = [buf];
     return await call(
       'buffer_get_name',
       $$args,
@@ -4196,17 +4415,17 @@ extension NvimApiFunctions on NvimBridge {
   /// Deprecated since API level: `1`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   /// - `name`: `String`
   ///
   /// Returns: `void`
   @Deprecated('Deprecated since API level: `1`')
   Future<void> bufferSetName(
-    NvimExt$Buffer buffer,
+    NvimExt$Buffer buf,
     String name,
   ) async {
     final $$args = [
-      buffer,
+      buf,
       name,
     ];
     return await call(
@@ -4221,12 +4440,12 @@ extension NvimApiFunctions on NvimBridge {
   /// Deprecated since API level: `1`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   ///
   /// Returns: `Boolean`
   @Deprecated('Deprecated since API level: `1`')
-  Future<bool> bufferIsValid(NvimExt$Buffer buffer) async {
-    final $$args = [buffer];
+  Future<bool> bufferIsValid(NvimExt$Buffer buf) async {
+    final $$args = [buf];
     return await call(
       'buffer_is_valid',
       $$args,
@@ -4239,17 +4458,17 @@ extension NvimApiFunctions on NvimBridge {
   /// Deprecated since API level: `1`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   /// - `name`: `String`
   ///
   /// Returns: `ArrayOf(Integer, 2)`
   @Deprecated('Deprecated since API level: `1`')
   Future<List<int>> bufferGetMark(
-    NvimExt$Buffer buffer,
+    NvimExt$Buffer buf,
     String name,
   ) async {
     final $$args = [
-      buffer,
+      buf,
       name,
     ];
     return await call(
@@ -4507,6 +4726,146 @@ extension NvimApiFunctions on NvimBridge {
     ];
     return await call(
       'window_set_option',
+      $$args,
+    );
+  }
+
+  /// Generated from `vim_subscribe`
+  ///
+  /// Since API level: `0`
+  /// Deprecated since API level: `1`
+  ///
+  /// Parameters:
+  /// - `event`: `String`
+  ///
+  /// Returns: `void`
+  @Deprecated('Deprecated since API level: `1`')
+  Future<void> vimSubscribe(String event) async {
+    final $$args = [event];
+    return await call(
+      'vim_subscribe',
+      $$args,
+    );
+  }
+
+  /// Generated from `vim_unsubscribe`
+  ///
+  /// Since API level: `0`
+  /// Deprecated since API level: `1`
+  ///
+  /// Parameters:
+  /// - `event`: `String`
+  ///
+  /// Returns: `void`
+  @Deprecated('Deprecated since API level: `1`')
+  Future<void> vimUnsubscribe(String event) async {
+    final $$args = [event];
+    return await call(
+      'vim_unsubscribe',
+      $$args,
+    );
+  }
+
+  /// Generated from `vim_out_write`
+  ///
+  /// Since API level: `0`
+  /// Deprecated since API level: `1`
+  ///
+  /// Parameters:
+  /// - `str`: `String`
+  ///
+  /// Returns: `void`
+  @Deprecated('Deprecated since API level: `1`')
+  Future<void> vimOutWrite(String str) async {
+    final $$args = [str];
+    return await call(
+      'vim_out_write',
+      $$args,
+    );
+  }
+
+  /// Generated from `vim_err_write`
+  ///
+  /// Since API level: `0`
+  /// Deprecated since API level: `1`
+  ///
+  /// Parameters:
+  /// - `str`: `String`
+  ///
+  /// Returns: `void`
+  @Deprecated('Deprecated since API level: `1`')
+  Future<void> vimErrWrite(String str) async {
+    final $$args = [str];
+    return await call(
+      'vim_err_write',
+      $$args,
+    );
+  }
+
+  /// Generated from `vim_report_error`
+  ///
+  /// Since API level: `0`
+  /// Deprecated since API level: `1`
+  ///
+  /// Parameters:
+  /// - `str`: `String`
+  ///
+  /// Returns: `void`
+  @Deprecated('Deprecated since API level: `1`')
+  Future<void> vimReportError(String str) async {
+    final $$args = [str];
+    return await call(
+      'vim_report_error',
+      $$args,
+    );
+  }
+
+  /// Generated from `window_set_height`
+  ///
+  /// Since API level: `0`
+  /// Deprecated since API level: `1`
+  ///
+  /// Parameters:
+  /// - `win`: `Window`
+  /// - `height`: `Integer`
+  ///
+  /// Returns: `void`
+  @Deprecated('Deprecated since API level: `1`')
+  Future<void> windowSetHeight(
+    NvimExt$Window win,
+    int height,
+  ) async {
+    final $$args = [
+      win,
+      height,
+    ];
+    return await call(
+      'window_set_height',
+      $$args,
+    );
+  }
+
+  /// Generated from `window_set_width`
+  ///
+  /// Since API level: `0`
+  /// Deprecated since API level: `1`
+  ///
+  /// Parameters:
+  /// - `win`: `Window`
+  /// - `width`: `Integer`
+  ///
+  /// Returns: `void`
+  @Deprecated('Deprecated since API level: `1`')
+  Future<void> windowSetWidth(
+    NvimExt$Window win,
+    int width,
+  ) async {
+    final $$args = [
+      win,
+      width,
+    ];
+    return await call(
+      'window_set_width',
       $$args,
     );
   }
@@ -4847,60 +5206,6 @@ extension NvimApiFunctions on NvimBridge {
     );
   }
 
-  /// Generated from `vim_out_write`
-  ///
-  /// Since API level: `0`
-  /// Deprecated since API level: `1`
-  ///
-  /// Parameters:
-  /// - `str`: `String`
-  ///
-  /// Returns: `void`
-  @Deprecated('Deprecated since API level: `1`')
-  Future<void> vimOutWrite(String str) async {
-    final $$args = [str];
-    return await call(
-      'vim_out_write',
-      $$args,
-    );
-  }
-
-  /// Generated from `vim_err_write`
-  ///
-  /// Since API level: `0`
-  /// Deprecated since API level: `1`
-  ///
-  /// Parameters:
-  /// - `str`: `String`
-  ///
-  /// Returns: `void`
-  @Deprecated('Deprecated since API level: `1`')
-  Future<void> vimErrWrite(String str) async {
-    final $$args = [str];
-    return await call(
-      'vim_err_write',
-      $$args,
-    );
-  }
-
-  /// Generated from `vim_report_error`
-  ///
-  /// Since API level: `0`
-  /// Deprecated since API level: `1`
-  ///
-  /// Parameters:
-  /// - `str`: `String`
-  ///
-  /// Returns: `void`
-  @Deprecated('Deprecated since API level: `1`')
-  Future<void> vimReportError(String str) async {
-    final $$args = [str];
-    return await call(
-      'vim_report_error',
-      $$args,
-    );
-  }
-
   /// Generated from `vim_get_buffers`
   ///
   /// Since API level: `0`
@@ -4939,12 +5244,12 @@ extension NvimApiFunctions on NvimBridge {
   /// Deprecated since API level: `1`
   ///
   /// Parameters:
-  /// - `buffer`: `Buffer`
+  /// - `buf`: `Buffer`
   ///
   /// Returns: `void`
   @Deprecated('Deprecated since API level: `1`')
-  Future<void> vimSetCurrentBuffer(NvimExt$Buffer buffer) async {
-    final $$args = [buffer];
+  Future<void> vimSetCurrentBuffer(NvimExt$Buffer buf) async {
+    final $$args = [buf];
     return await call(
       'vim_set_current_buffer',
       $$args,
@@ -4989,12 +5294,12 @@ extension NvimApiFunctions on NvimBridge {
   /// Deprecated since API level: `1`
   ///
   /// Parameters:
-  /// - `window`: `Window`
+  /// - `win`: `Window`
   ///
   /// Returns: `void`
   @Deprecated('Deprecated since API level: `1`')
-  Future<void> vimSetCurrentWindow(NvimExt$Window window) async {
-    final $$args = [window];
+  Future<void> vimSetCurrentWindow(NvimExt$Window win) async {
+    final $$args = [win];
     return await call(
       'vim_set_current_window',
       $$args,
@@ -5051,42 +5356,6 @@ extension NvimApiFunctions on NvimBridge {
     );
   }
 
-  /// Generated from `vim_subscribe`
-  ///
-  /// Since API level: `0`
-  /// Deprecated since API level: `1`
-  ///
-  /// Parameters:
-  /// - `event`: `String`
-  ///
-  /// Returns: `void`
-  @Deprecated('Deprecated since API level: `1`')
-  Future<void> vimSubscribe(String event) async {
-    final $$args = [event];
-    return await call(
-      'vim_subscribe',
-      $$args,
-    );
-  }
-
-  /// Generated from `vim_unsubscribe`
-  ///
-  /// Since API level: `0`
-  /// Deprecated since API level: `1`
-  ///
-  /// Parameters:
-  /// - `event`: `String`
-  ///
-  /// Returns: `void`
-  @Deprecated('Deprecated since API level: `1`')
-  Future<void> vimUnsubscribe(String event) async {
-    final $$args = [event];
-    return await call(
-      'vim_unsubscribe',
-      $$args,
-    );
-  }
-
   /// Generated from `vim_name_to_color`
   ///
   /// Since API level: `0`
@@ -5111,9 +5380,9 @@ extension NvimApiFunctions on NvimBridge {
   /// Deprecated since API level: `1`
   ///
   ///
-  /// Returns: `Dictionary`
+  /// Returns: `Dict`
   @Deprecated('Deprecated since API level: `1`')
-  Future<Map> vimGetColorMap() async {
+  Future<dynamic> vimGetColorMap() async {
     final $$args = [];
     return await call(
       'vim_get_color_map',
@@ -5127,9 +5396,9 @@ extension NvimApiFunctions on NvimBridge {
   /// Deprecated since API level: `1`
   ///
   ///
-  /// Returns: `Array`
+  /// Returns: `ArrayOf(Object, 2)`
   @Deprecated('Deprecated since API level: `1`')
-  Future<List> vimGetApiInfo() async {
+  Future<List<Object>> vimGetApiInfo() async {
     final $$args = [];
     return await call(
       'vim_get_api_info',
@@ -5143,12 +5412,12 @@ extension NvimApiFunctions on NvimBridge {
   /// Deprecated since API level: `1`
   ///
   /// Parameters:
-  /// - `command`: `String`
+  /// - `cmd`: `String`
   ///
   /// Returns: `void`
   @Deprecated('Deprecated since API level: `1`')
-  Future<void> vimCommand(String command) async {
-    final $$args = [command];
+  Future<void> vimCommand(String cmd) async {
+    final $$args = [cmd];
     return await call(
       'vim_command',
       $$args,
@@ -5204,12 +5473,12 @@ extension NvimApiFunctions on NvimBridge {
   /// Deprecated since API level: `1`
   ///
   /// Parameters:
-  /// - `window`: `Window`
+  /// - `win`: `Window`
   ///
   /// Returns: `Buffer`
   @Deprecated('Deprecated since API level: `1`')
-  Future<NvimExt$Buffer> windowGetBuffer(NvimExt$Window window) async {
-    final $$args = [window];
+  Future<NvimExt$Buffer> windowGetBuffer(NvimExt$Window win) async {
+    final $$args = [win];
     return await call(
       'window_get_buffer',
       $$args,
@@ -5222,12 +5491,12 @@ extension NvimApiFunctions on NvimBridge {
   /// Deprecated since API level: `1`
   ///
   /// Parameters:
-  /// - `window`: `Window`
+  /// - `win`: `Window`
   ///
   /// Returns: `ArrayOf(Integer, 2)`
   @Deprecated('Deprecated since API level: `1`')
-  Future<List<int>> windowGetCursor(NvimExt$Window window) async {
-    final $$args = [window];
+  Future<List<int>> windowGetCursor(NvimExt$Window win) async {
+    final $$args = [win];
     return await call(
       'window_get_cursor',
       $$args,
@@ -5240,17 +5509,17 @@ extension NvimApiFunctions on NvimBridge {
   /// Deprecated since API level: `1`
   ///
   /// Parameters:
-  /// - `window`: `Window`
+  /// - `win`: `Window`
   /// - `pos`: `ArrayOf(Integer, 2)`
   ///
   /// Returns: `void`
   @Deprecated('Deprecated since API level: `1`')
   Future<void> windowSetCursor(
-    NvimExt$Window window,
+    NvimExt$Window win,
     List<int> pos,
   ) async {
     final $$args = [
-      window,
+      win,
       pos,
     ];
     return await call(
@@ -5265,39 +5534,14 @@ extension NvimApiFunctions on NvimBridge {
   /// Deprecated since API level: `1`
   ///
   /// Parameters:
-  /// - `window`: `Window`
+  /// - `win`: `Window`
   ///
   /// Returns: `Integer`
   @Deprecated('Deprecated since API level: `1`')
-  Future<int> windowGetHeight(NvimExt$Window window) async {
-    final $$args = [window];
+  Future<int> windowGetHeight(NvimExt$Window win) async {
+    final $$args = [win];
     return await call(
       'window_get_height',
-      $$args,
-    );
-  }
-
-  /// Generated from `window_set_height`
-  ///
-  /// Since API level: `0`
-  /// Deprecated since API level: `1`
-  ///
-  /// Parameters:
-  /// - `window`: `Window`
-  /// - `height`: `Integer`
-  ///
-  /// Returns: `void`
-  @Deprecated('Deprecated since API level: `1`')
-  Future<void> windowSetHeight(
-    NvimExt$Window window,
-    int height,
-  ) async {
-    final $$args = [
-      window,
-      height,
-    ];
-    return await call(
-      'window_set_height',
       $$args,
     );
   }
@@ -5308,39 +5552,14 @@ extension NvimApiFunctions on NvimBridge {
   /// Deprecated since API level: `1`
   ///
   /// Parameters:
-  /// - `window`: `Window`
+  /// - `win`: `Window`
   ///
   /// Returns: `Integer`
   @Deprecated('Deprecated since API level: `1`')
-  Future<int> windowGetWidth(NvimExt$Window window) async {
-    final $$args = [window];
+  Future<int> windowGetWidth(NvimExt$Window win) async {
+    final $$args = [win];
     return await call(
       'window_get_width',
-      $$args,
-    );
-  }
-
-  /// Generated from `window_set_width`
-  ///
-  /// Since API level: `0`
-  /// Deprecated since API level: `1`
-  ///
-  /// Parameters:
-  /// - `window`: `Window`
-  /// - `width`: `Integer`
-  ///
-  /// Returns: `void`
-  @Deprecated('Deprecated since API level: `1`')
-  Future<void> windowSetWidth(
-    NvimExt$Window window,
-    int width,
-  ) async {
-    final $$args = [
-      window,
-      width,
-    ];
-    return await call(
-      'window_set_width',
       $$args,
     );
   }
@@ -5351,17 +5570,17 @@ extension NvimApiFunctions on NvimBridge {
   /// Deprecated since API level: `1`
   ///
   /// Parameters:
-  /// - `window`: `Window`
+  /// - `win`: `Window`
   /// - `name`: `String`
   ///
   /// Returns: `Object`
   @Deprecated('Deprecated since API level: `1`')
   Future<Object> windowGetVar(
-    NvimExt$Window window,
+    NvimExt$Window win,
     String name,
   ) async {
     final $$args = [
-      window,
+      win,
       name,
     ];
     return await call(
@@ -5376,12 +5595,12 @@ extension NvimApiFunctions on NvimBridge {
   /// Deprecated since API level: `1`
   ///
   /// Parameters:
-  /// - `window`: `Window`
+  /// - `win`: `Window`
   ///
   /// Returns: `ArrayOf(Integer, 2)`
   @Deprecated('Deprecated since API level: `1`')
-  Future<List<int>> windowGetPosition(NvimExt$Window window) async {
-    final $$args = [window];
+  Future<List<int>> windowGetPosition(NvimExt$Window win) async {
+    final $$args = [win];
     return await call(
       'window_get_position',
       $$args,
@@ -5394,12 +5613,12 @@ extension NvimApiFunctions on NvimBridge {
   /// Deprecated since API level: `1`
   ///
   /// Parameters:
-  /// - `window`: `Window`
+  /// - `win`: `Window`
   ///
   /// Returns: `Tabpage`
   @Deprecated('Deprecated since API level: `1`')
-  Future<NvimExt$Tabpage> windowGetTabpage(NvimExt$Window window) async {
-    final $$args = [window];
+  Future<NvimExt$Tabpage> windowGetTabpage(NvimExt$Window win) async {
+    final $$args = [win];
     return await call(
       'window_get_tabpage',
       $$args,
@@ -5412,12 +5631,12 @@ extension NvimApiFunctions on NvimBridge {
   /// Deprecated since API level: `1`
   ///
   /// Parameters:
-  /// - `window`: `Window`
+  /// - `win`: `Window`
   ///
   /// Returns: `Boolean`
   @Deprecated('Deprecated since API level: `1`')
-  Future<bool> windowIsValid(NvimExt$Window window) async {
-    final $$args = [window];
+  Future<bool> windowIsValid(NvimExt$Window win) async {
+    final $$args = [win];
     return await call(
       'window_is_valid',
       $$args,
